@@ -13,7 +13,7 @@ export default function HomePage() {
       {/* Mobile Header */}
       <MobileHeader />
       {/* Mobile Layout: Hero+Card Section */}
-      <div className="md:hidden w-full min-h-screen pt-4 px-4 pb-1 py-8 relative overflow-hidden">
+      <div className="md:hidden w-full min-h-screen pt-2 px-4 pb-2 relative overflow-auto">
         {/* Hero Image with overlapping card */}
         <div className="relative w-[90%] mx-auto h-[600px] overflow-visible z-10  ">
           <Image
@@ -25,7 +25,7 @@ export default function HomePage() {
             quality={100}
           />
           {/* Overlapping Card - half on image, half below */}
-          <div className="absolute left-[10%] bottom-[22px] translate-y-1/2 w-[110%] max-w-[95vw] max-h-[420px] bg-black text-white shadow-xl flex flex-col justify-between p-4 z-20 overflow-y-auto break-words whitespace-normal">
+          <div className="absolute left-[10%] bottom-[22px] translate-y-1/2 w-[110%] max-w-[95vw] max-h-[420px] bg-black text-white shadow-xl flex flex-col justify-between p-4 pt-0 z-20 overflow-y-auto break-words whitespace-normal">
             <div>
               <h1 className="text-2xl leading-tight mb-4 mt-8 text-white">
                 Shabbir Khan
@@ -88,7 +88,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </div>  
+      </div>
 
       {/* Desktop Layout */}
       <div className="hidden md:block relative w-full h-screen items-center justify-center overflow-hidden">

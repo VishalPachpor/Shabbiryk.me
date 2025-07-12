@@ -40,10 +40,13 @@ export default function InvestmentsPage() {
       <MobileHeader />
       <div className="p-8">
         <div className="max-w-7xl mx-auto w-full">
-          <h1 className="text-3xl mb-4 mt-8 text-left font-medium">
+          <h3 className="text-2xl mb-4 mt-8 text-left font-medium">
+            Investments
+          </h3>
+          <p className="mb-4 mt-8 text-left font-medium ">
             i am grateful to founder friends who've allowed me to make small
             investments in their projects.
-          </h1>
+          </p>
           <p className="text-gray-600 mb-8 text-left">
             we typically write first checks ranging 100k-250k.
           </p>
