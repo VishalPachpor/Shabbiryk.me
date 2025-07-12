@@ -58,9 +58,9 @@ export default function PublicationsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pt-16 pb-16">
       <div className="p-8">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto w-full">
           <h1 className="text-3xl mb-4 text-left font-medium">
             Articles & Publications
           </h1>
