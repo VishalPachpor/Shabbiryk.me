@@ -38,7 +38,7 @@ export default function RootLayout({
             <div className="block md:hidden">
               <MobileMenu />
             </div>
-            <main className="flex-1 flex justify-center px-6">
+            <main className="flex-1 flex justify-center px-6 md:ml-60">
               <div className="w-full max-w-5xl">{children}</div>
             </main>
           </div>
