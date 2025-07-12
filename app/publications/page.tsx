@@ -57,9 +57,9 @@ export default function PublicationsPage() {
           <h1 className="text-3xl mb-4 mt-8 text-left font-medium">
             Articles & Publications
           </h1>
-          <p className="text-gray-600 mb-8 text-left">
-            technical writings on blockchain, DeFi, Web3, and the future of
-            cyberspace.
+          <p className="text-gray-600 lowercase mb-8 text-left">
+            i mostly write about fundraising on-chain analysis, and actionable
+            insights on startups.
           </p>
 
           {/* Articles Section */}

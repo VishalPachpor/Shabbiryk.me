@@ -33,7 +33,7 @@ const MobileMenu = () => {
     <div className="md:hidden">
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-40 flex items-center justify-center bg-gray-400/90 transition-all duration-300 animate-fade-in">
+        <div className="fixed inset-0 z-40 flex items-center justify-center bg-gray-400/90 transition-all duration-300 animate-fade-in mobile-menu-custom">
           <div
             className="absolute inset-0 bg-gray-400/90"
             onClick={() => setIsMenuOpen(false)}
