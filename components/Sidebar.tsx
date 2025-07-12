@@ -30,11 +30,13 @@ const Sidebar = () => {
       <div>
         {/* Logo - Small circular logo at the top */}
         <div className="flex flex-col items-center mb-12">
-          <img
-            src="/ethereum.png"
-            alt="Ethereum Logo"
-            className="w-16 h-16 rounded-full object-cover shadow-md"
-          />
+          <Link href="/" className="cursor-pointer">
+            <img
+              src="/side.gif"
+              alt="Sidebar Logo"
+              className="w-16 h-16 rounded-full object-cover shadow-md hover:shadow-lg transition-shadow duration-200"
+            />
+          </Link>
         </div>
 
         {/* Navigation Menu - Vertical navigation with links */}

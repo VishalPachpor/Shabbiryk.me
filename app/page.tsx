@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { MapPin } from "lucide-react";
+import { MapPin, Linkedin, Twitter, Calendar, Link } from "lucide-react";
 import MobileHeader from "@/components/MobileHeader";
 import { useMobileMenu } from "./providers";
 
@@ -12,7 +12,8 @@ export default function HomePage() {
     <main className="flex-1">
       {/* Mobile Header */}
       <MobileHeader />
-      <div className="md:hidden w-full min-h-screen pt-6 px-4 pb-64 py-8 relative overflow-hidden">
+      {/* Mobile Layout: Hero+Card Section */}
+      <div className="md:hidden w-full min-h-screen pt-6 px-4 pb-2 py-8 relative overflow-hidden">
         {/* Hero Image with overlapping card */}
         <div className="relative w-[90%] mx-auto h-[600px] overflow-visible z-10 rounded-2xl ">
           <Image
@@ -53,8 +54,44 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* Social Links - Mobile (completely below hero+card section) */}
+      <div className="md:hidden flex justify-center space-x-6 z-30 absolute bottom-[-20px] left-0 right-0">
+        <a
+          href="https://linkedin.com/in/shabbirkhan"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-800 hover:text-black transition-colors duration-200"
+        >
+          <Linkedin className="w-6 h-6" />
+        </a>
+        <a
+          href="https://twitter.com/shabbirkhan"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-800 hover:text-black transition-colors duration-200"
+        >
+          <Twitter className="w-6 h-6" />
+        </a>
+        <a
+          href="https://cal.com/shabbir-khan-dhkgcs/15min"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-800 hover:text-black transition-colors duration-200"
+        >
+          <Calendar className="w-6 h-6" />
+        </a>
+        <a
+          href="https://linktr.ee/shabbiryk"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-800 hover:text-black transition-colors duration-200"
+        >
+          <Link className="w-6 h-6" />
+        </a>
+      </div>
+
       {/* Desktop Layout */}
-      <div className="hidden md:block relative w-full h-[calc(100vh-2rem)] mt-4 pt-6 px-4 flex items-center justify-center overflow-hidden">
+      <div className="hidden md:block relative w-full h-[calc(100vh-2rem)] mt-4 pt-6 px-4 items-center justify-center overflow-hidden">
         {/* Hero Image - slightly reduced width, with padding */}
         <div className="relative w-2/3 h-full ml-auto p-6 z-10">
           <Image
@@ -95,6 +132,42 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Social Links - Desktop (now below hero+card section) */}
+      <div className="hidden md:flex mt-6 justify-center space-x-8 z-30">
+        <a
+          href="https://linkedin.com/in/shabbirkhan"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-800 hover:text-black transition-colors duration-200"
+        >
+          <Linkedin className="w-7 h-7" />
+        </a>
+        <a
+          href="https://twitter.com/shabbirkhan"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-800 hover:text-black transition-colors duration-200"
+        >
+          <Twitter className="w-7 h-7" />
+        </a>
+        <a
+          href="https://cal.com/shabbir-khan-dhkgcs/15min"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-800 hover:text-black transition-colors duration-200"
+        >
+          <Calendar className="w-7 h-7" />
+        </a>
+        <a
+          href="https://linktr.ee/shabbiryk"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-800 hover:text-black transition-colors duration-200"
+        >
+          <Link className="w-7 h-7" />
+        </a>
       </div>
     </main>
   );

@@ -11,11 +11,13 @@ const MobileHeader = () => {
       {/* Ethereum Logo */}
       <Link
         href="/"
-        className={`w-12 h-12 transition-opacity duration-300 ${isMenuOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+        className={`w-12 h-12 transition-opacity duration-300 ${
+          isMenuOpen ? "opacity-0 pointer-events-none" : "opacity-100"
+        }`}
       >
         <img
-          src="/ethereum.png"
-          alt="Ethereum Logo"
+          src="/side.gif"
+          alt="Sidebar Logo"
           className="w-full h-full cursor-pointer"
         />
       </Link>
@@ -25,10 +27,20 @@ const MobileHeader = () => {
         className="w-12 h-12 flex items-center justify-center text-gray-400 text-lg font-medium rounded-lg bg-transparent"
       >
         <span className="sr-only">Menu</span>
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-menu">
-          <line x1="4" x2="20" y1="12" y2="12"/>
-          <line x1="4" x2="20" y1="6" y2="6"/>
-          <line x1="4" x2="20" y1="18" y2="18"/>
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-menu"
+        >
+          <line x1="4" x2="20" y1="12" y2="12" />
+          <line x1="4" x2="20" y1="6" y2="6" />
+          <line x1="4" x2="20" y1="18" y2="18" />
         </svg>
       </button>
     </div>
