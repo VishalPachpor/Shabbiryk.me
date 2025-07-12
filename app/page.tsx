@@ -5,9 +5,15 @@ export default function HomePage() {
   return (
     <main className="flex-1">
       {/* Mobile Layout */}
-      <div className="md:hidden w-full min-h-screen pt-6 px-0 pb-64 relative overflow-hidden">
+      {/* Ethereum logo top left on mobile */}
+      <img
+        src="/ethereum.png"
+        alt="Ethereum Logo"
+        className="md:hidden fixed top-4 left-4 w-12 h-12 z-50"
+      />
+      <div className="md:hidden w-full min-h-screen pt-6 px-4 pb-64 py-8 relative overflow-hidden">
         {/* Hero Image with overlapping card */}
-        <div className="relative w-full h-[600px] overflow-visible z-10 rounded-lg mt-20">
+        <div className="relative w-[90%] mx-auto h-[600px] overflow-visible z-10 rounded-2xl mt-20">
           <Image
             src="/hero.JPG"
             alt="Landscape photo of person sitting on rocky cliff overlooking coastal town with cloudy sky"
@@ -17,7 +23,7 @@ export default function HomePage() {
             quality={100}
           />
           {/* Overlapping Card - half on image, half below */}
-          <div className="absolute left-1/2 bottom-0 translate-x-[-50%] translate-y-1/2 w-[98%] max-h-[420px] bg-black text-white shadow-xl flex flex-col justify-center p-3 rounded-lg z-20 overflow-y-auto">
+          <div className="absolute left-[10%] bottom-0 translate-y-1/2 w-[110%] max-w-[95vw] max-h-[420px] bg-black text-white shadow-xl flex flex-col justify-center p-7 z-20 overflow-y-auto break-words whitespace-normal">
             <h1 className="text-2xl leading-tight mb-4 text-white">
               Shabbir Khan
             </h1>
@@ -38,9 +44,9 @@ export default function HomePage() {
             <div className="italic text-gray-300 text-xs mb-4">
               Prev. JP Morgan's ONYX, Chainlink, Coinswitch Ventures
             </div>
-            <div className="text-white text-sm flex items-center space-x-2 hover:text-gray-300">
+            <div className="text-white text-sm flex items-center space-x-2">
               <MapPin className="w-4 h-4" />
-              <span>Dubai, UAE</span>
+              <span className="text-white">Dubai, UAE</span>
             </div>
           </div>
         </div>

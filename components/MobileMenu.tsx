@@ -33,7 +33,7 @@ const MobileMenu = () => {
       {/* Hamburger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-2 right-4 z-[100] px-4 py-2 text-gray-300 text-lg font-medium rounded-lg tracking-wide bg-transparent shadow-none backdrop-blur-none"
+        className="fixed top-2 right-4 z-[100] px-4 py-2 text-gray-400 text-lg font-medium rounded-lg tracking-wide bg-transparent shadow-none backdrop-blur-none"
         style={{ pointerEvents: "auto" }}
       >
         Menu
