@@ -5,20 +5,9 @@ export default function HomePage() {
   return (
     <main className="flex-1">
       {/* Mobile Layout */}
-      <div className="md:hidden w-full min-h-screen pt-6 px-4 relative overflow-hidden">
-        {/* SFimage background */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/SFimage.avif"
-            alt="San Francisco painting background"
-            fill
-            className="object-cover opacity-20 blur-sm"
-            priority={false}
-            quality={60}
-          />
-        </div>
-        {/* Hero Image - full width on mobile */}
-        <div className="relative w-full h-64 mb-6 z-10">
+      <div className="md:hidden w-full min-h-screen pt-6 px-0 pb-64 relative overflow-hidden">
+        {/* Hero Image with overlapping card */}
+        <div className="relative w-full h-[600px] overflow-visible z-10 rounded-lg mt-20">
           <Image
             src="/hero.JPG"
             alt="Landscape photo of person sitting on rocky cliff overlooking coastal town with cloudy sky"
@@ -27,11 +16,8 @@ export default function HomePage() {
             priority
             quality={100}
           />
-        </div>
-
-        {/* Card - below image on mobile */}
-        <div className="w-full z-10 relative">
-          <div className="bg-black text-white shadow-xl w-full flex flex-col justify-center p-6 rounded-lg">
+          {/* Overlapping Card - half on image, half below */}
+          <div className="absolute left-1/2 bottom-0 translate-x-[-50%] translate-y-1/2 w-[98%] max-h-[420px] bg-black text-white shadow-xl flex flex-col justify-center p-3 rounded-lg z-20 overflow-y-auto">
             <h1 className="text-2xl leading-tight mb-4 text-white">
               Shabbir Khan
             </h1>
@@ -61,18 +47,7 @@ export default function HomePage() {
       </div>
 
       {/* Desktop Layout */}
-      <div className="md:block relative w-full h-[calc(100vh-2rem)] mt-4 pt-6 px-4 flex items-center justify-center overflow-hidden">
-        {/* SFimage background */}
-        {/* <div className="absolute inset-0 z-0">
-          <Image
-            src="/SFimage.avif"
-            alt="San Francisco painting background"
-            fill
-            className="object-cover opacity-20 "
-            priority={false}
-            quality={60}
-          />
-        </div> */}
+      <div className="hidden md:block relative w-full h-[calc(100vh-2rem)] mt-4 pt-6 px-4 flex items-center justify-center overflow-hidden">
         {/* Hero Image - slightly reduced width, with padding */}
         <div className="relative w-2/3 h-full ml-auto p-6 z-10">
           <Image

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "./providers";
 import Sidebar from "@/components/Sidebar";
+import MobileMenu from "@/components/MobileMenu";
 
 export const metadata: Metadata = {
   title: "shabbiryk",
@@ -26,11 +27,17 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@400;500;600&display=swap"
           rel="stylesheet"
         />
+        <link rel="icon" type="image/png" href="/ethereum.png" />
       </head>
       <body>
         <Providers>
           <div className="flex min-h-screen bg-white">
-            <Sidebar />
+            <div className="hidden md:block">
+              <Sidebar />
+            </div>
+            <div className="block md:hidden">
+              <MobileMenu />
+            </div>
             <main className="flex-1 flex justify-center px-6">
               <div className="w-full max-w-5xl">{children}</div>
             </main>

@@ -66,17 +66,17 @@ export default function InvestmentsPage() {
                 className="border border-gray-200 rounded-xl p-6 bg-white hover:shadow-lg transition-all duration-200 flex flex-col items-center justify-center cursor-pointer hover:border-gray-300 min-h-[180px]"
               >
                 <div className="w-24 h-24 flex items-center justify-center mb-4">
-                  <Image
+                <Image
                     src={company.img}
                     alt={company.name}
                     width={96}
                     height={96}
-                    className="object-contain"
-                  />
-                </div>
+                  className="object-contain"
+                />
+              </div>
                 <div className="text-gray-900 text-base text-center font-medium truncate w-full">
                   {company.name}
-                </div>
+              </div>
               </a>
             ))}
           </div>

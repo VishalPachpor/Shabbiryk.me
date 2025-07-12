@@ -7,7 +7,6 @@ const navLinks = [
   { name: "Home", href: "/" },
   { name: "Publications", href: "/publications" },
   { name: "Investments", href: "/investments" },
-  // { name: "Shelf", href: "/shelf" },
   {
     name: "Curriculum Vitae",
     href: "https://docs.google.com/document/d/1VIBwHr-z3-Eb1Ghfqf6DASF0A6bAVyCjUd83-hjWcy4/edit?tab=t.0",
@@ -32,8 +31,8 @@ const Sidebar = () => {
         {/* Logo - Small circular logo at the top */}
         <div className="flex flex-col items-center mb-12">
           <img
-            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=facearea&w=64&h=64&facepad=2&q=80"
-            alt="Profile Logo"
+            src="/ethereum.png"
+            alt="Ethereum Logo"
             className="w-16 h-16 rounded-full object-cover shadow-md"
           />
         </div>
