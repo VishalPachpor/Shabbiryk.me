@@ -14,7 +14,7 @@ export default function HomePage() {
       <MobileHeader />
       <div className="md:hidden w-full min-h-screen pt-6 px-4 pb-64 py-8 relative overflow-hidden">
         {/* Hero Image with overlapping card */}
-        <div className="relative w-[90%] mx-auto h-[600px] overflow-visible z-10 rounded-2xl mt-20">
+        <div className="relative w-[90%] mx-auto h-[600px] overflow-visible z-10 rounded-2xl ">
           <Image
             src="/hero.JPG"
             alt="Landscape photo of person sitting on rocky cliff overlooking coastal town with cloudy sky"

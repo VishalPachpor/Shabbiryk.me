@@ -66,7 +66,7 @@ export default function PublicationsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white pt-16 pb-16">
+    <div className="min-h-screen bg-white pb-16">
       {/* Mobile Header */}
       <MobileHeader />
       <div className="p-8">

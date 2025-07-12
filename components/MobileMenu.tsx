@@ -30,15 +30,6 @@ const MobileMenu = () => {
 
   return (
     <div className="md:hidden">
-      {/* Hamburger Button */}
-      <button
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="fixed top-2 right-4 z-[100] px-4 py-2 text-gray-400 text-lg font-medium rounded-lg tracking-wide bg-transparent shadow-none backdrop-blur-none"
-        style={{ pointerEvents: "auto" }}
-      >
-        Menu
-      </button>
-
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-gray-400/90 transition-all duration-300 animate-fade-in">
