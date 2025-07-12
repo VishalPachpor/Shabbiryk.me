@@ -142,7 +142,7 @@ const TwitterEmbedCarousel = () => {
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 px-4 rounded-lg transition-colors"
+              className="flex items-center justify-center w-full bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-lg transition-colors"
             >
               <ExternalLink className="w-4 h-4 mr-2" />
               View on Twitter
@@ -162,9 +162,7 @@ const TwitterEmbedCarousel = () => {
   return (
     <div className="max-w-6xl mx-auto p-8 bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">
-          Featured Tweets
-        </h1>
+        <h1 className="text-4xl text-gray-900 mb-2">Featured Tweets</h1>
         <p className="text-gray-600">
           Curated collection of top tweets from the community
         </p>
@@ -208,7 +206,7 @@ const TwitterEmbedCarousel = () => {
         <div className="flex justify-center mt-4">
           <button
             onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-            className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
+            className={`px-6 py-2 rounded-full text-sm transition-all ${
               isAutoPlaying
                 ? "bg-blue-600 text-white shadow-lg"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -220,7 +218,7 @@ const TwitterEmbedCarousel = () => {
       </div>
       {/* Tweet List */}
       <div className="mt-12 bg-white rounded-xl shadow-lg p-6">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+        <h2 className="text-2xl text-gray-900 mb-6 flex items-center">
           <Twitter className="w-6 h-6 text-blue-400 mr-2" />
           All Featured Tweets
         </h2>
@@ -238,12 +236,12 @@ const TwitterEmbedCarousel = () => {
                 onClick={() => goToSlide(index)}
               >
                 <div className="flex items-center">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center text-white font-bold text-sm mr-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center text-white text-sm mr-3">
                     <Twitter className="w-5 h-5" />
                   </div>
                   <div>
                     <div className="flex items-center">
-                      <p className="font-semibold text-gray-900">@{username}</p>
+                      <p className="text-gray-900">@{username}</p>
                     </div>
                     <p className="text-sm text-gray-500">Tweet ID: {tweetId}</p>
                     <p className="text-sm text-gray-600">
@@ -251,39 +249,15 @@ const TwitterEmbedCarousel = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center space-x-4">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      window.open(url, "_blank");
-                    }}
-                    className="text-blue-500 hover:text-blue-600 text-sm font-medium transition-colors"
-                  >
-                    View Tweet
-                  </button>
-                  {index === currentIndex && (
-                    <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                  )}
+                <div className="text-right">
+                  <span className="text-xs text-gray-400">
+                    {index + 1} / {tweetUrls.length}
+                  </span>
                 </div>
               </div>
             );
           })}
         </div>
-      </div>
-    
-      {/* Instructions */}
-      <div className="mt-8 bg-yellow-50 border border-yellow-200 rounded-xl p-6">
-        <h3 className="text-lg font-semibold text-yellow-800 mb-2">
-          How to Add Your Own Tweets
-        </h3>
-        <p className="text-yellow-700">
-          To customize this carousel with your own tweets, simply replace the
-          URLs in the{" "}
-          <code className="bg-yellow-100 px-2 py-1 rounded">tweetUrls</code>{" "}
-          array with the actual Twitter URLs you want to showcase. The embeds
-          will automatically load the real tweet content, images, and
-          interactions.
-        </p>
       </div>
     </div>
   );

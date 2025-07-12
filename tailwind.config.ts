@@ -20,6 +20,14 @@ export default {
     extend: {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
+        "proxima-nova": [
+          "Proxima Nova",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "sans-serif",
+        ],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -75,7 +75,7 @@ const MobileMenu = () => {
                         key={link.href}
                         href={link.href}
                         onClick={() => setIsOpen(false)}
-                        className={`text-xl font-semibold transition-colors duration-200 cursor-pointer hover:text-gray-600 ${
+                        className={`text-xl transition-colors duration-200 cursor-pointer hover:text-gray-600 ${
                           isActive
                             ? "text-black"
                             : link.name === "Publications"

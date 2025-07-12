@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter_Tight } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import Sidebar from "@/components/Sidebar";
@@ -9,8 +8,6 @@ export const metadata: Metadata = {
   description: "shabbiryk portfolio website",
 };
 
-const interTight = Inter_Tight({ subsets: ["latin"] });
-
 export default function RootLayout({
   children,
 }: {
@@ -19,9 +16,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-          
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@400;500;600&display=swap"
+          rel="stylesheet"
+        />
       </head>
-      <body className={interTight.className}>
+      <body>
         <Providers>
           <div className="flex min-h-screen bg-white">
             <Sidebar />
