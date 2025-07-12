@@ -45,7 +45,7 @@ const companies = [
 
 export default function InvestmentsPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pt-16 pb-16">
       <div className="p-8">
         <div className="max-w-7xl mx-auto w-full">
           <h1 className="text-xl mb-4 text-left">
@@ -56,27 +56,27 @@ export default function InvestmentsPage() {
             We typically write first checks ranging 100k-250k
           </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 w-full">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-7 w-full">
             {companies.map((company) => (
               <a
                 key={company.name}
                 href={company.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border border-gray-200 rounded-xl p-6 bg-white hover:shadow-lg transition-all duration-200 flex flex-col items-center justify-center cursor-pointer hover:border-gray-300 min-h-[180px]"
+                className="border border-gray-200 rounded-2xl p-8 bg-white shadow-md hover:shadow-lg transition-all duration-200 flex flex-col items-center justify-center cursor-pointer hover:border-gray-300 min-h-[180px]"
               >
-                <div className="w-24 h-24 flex items-center justify-center mb-4">
-                <Image
+                <div className="w-20 h-20 flex items-center justify-center mb-6">
+                  <Image
                     src={company.img}
                     alt={company.name}
-                    width={96}
-                    height={96}
-                  className="object-contain"
-                />
-              </div>
-                <div className="text-gray-900 text-base text-center font-medium truncate w-full">
+                    width={80}
+                    height={80}
+                    className="object-contain"
+                  />
+                </div>
+                <div className="text-gray-900 text-base text-center font-medium w-full break-words">
                   {company.name}
-              </div>
+                </div>
               </a>
             ))}
           </div>
