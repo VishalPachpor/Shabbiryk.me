@@ -1,16 +1,17 @@
+"use client";
+
 import Image from "next/image";
 import { MapPin } from "lucide-react";
+import MobileHeader from "@/components/MobileHeader";
+import { useMobileMenu } from "./providers";
 
 export default function HomePage() {
+  const { isMenuOpen } = useMobileMenu();
+
   return (
     <main className="flex-1">
-      {/* Mobile Layout */}
-      {/* Ethereum logo top left on mobile */}
-      <img
-        src="/ethereum.png"
-        alt="Ethereum Logo"
-        className="md:hidden fixed top-4 left-4 w-12 h-12 z-50"
-      />
+      {/* Mobile Header */}
+      <MobileHeader />
       <div className="md:hidden w-full min-h-screen pt-6 px-4 pb-64 py-8 relative overflow-hidden">
         {/* Hero Image with overlapping card */}
         <div className="relative w-[90%] mx-auto h-[600px] overflow-visible z-10 rounded-2xl mt-20">

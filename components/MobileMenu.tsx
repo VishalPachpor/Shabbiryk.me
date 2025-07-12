@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useMobileMenu } from "@/app/providers";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -25,14 +25,14 @@ const bottomLinks = [
 ];
 
 const MobileMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isMenuOpen, setIsMenuOpen } = useMobileMenu();
   const pathname = usePathname();
 
   return (
     <div className="md:hidden">
       {/* Hamburger Button */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
         className="fixed top-2 right-4 z-[100] px-4 py-2 text-gray-400 text-lg font-medium rounded-lg tracking-wide bg-transparent shadow-none backdrop-blur-none"
         style={{ pointerEvents: "auto" }}
       >
@@ -40,11 +40,11 @@ const MobileMenu = () => {
       </button>
 
       {/* Mobile Menu Overlay */}
-      {isOpen && (
+      {isMenuOpen && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-gray-400/90 transition-all duration-300 animate-fade-in">
           <div
             className="absolute inset-0 bg-gray-400/90"
-            onClick={() => setIsOpen(false)}
+            onClick={() => setIsMenuOpen(false)}
           />
           <div className="relative w-full h-full flex flex-col items-center justify-center">
             <nav className="flex flex-col items-center gap-8 w-full">
@@ -61,7 +61,7 @@ const MobileMenu = () => {
                       rel="noopener noreferrer"
                       className="text-2xl font-semibold text-white text-center"
                       style={{ letterSpacing: 0.5 }}
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => setIsMenuOpen(false)}
                     >
                       {link.name}
                     </a>
@@ -71,7 +71,7 @@ const MobileMenu = () => {
                   <Link
                     key={link.href}
                     href={link.href}
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => setIsMenuOpen(false)}
                     className="text-2xl font-semibold text-white text-center"
                     style={{ letterSpacing: 0.5 }}
                   >
@@ -88,7 +88,7 @@ const MobileMenu = () => {
                   className="text-lg text-white text-center opacity-80 hover:opacity-100 transition"
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {link.name}
                 </a>

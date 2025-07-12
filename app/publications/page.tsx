@@ -1,4 +1,12 @@
+"use client";
+
+import Link from "next/link";
+import MobileHeader from "@/components/MobileHeader";
+import { useMobileMenu } from "../providers";
+
 export default function PublicationsPage() {
+  const { isMenuOpen } = useMobileMenu();
+
   // All publications in a simple array
   const publications = [
     {
@@ -59,6 +67,8 @@ export default function PublicationsPage() {
 
   return (
     <div className="min-h-screen bg-white pt-16 pb-16">
+      {/* Mobile Header */}
+      <MobileHeader />
       <div className="p-8">
         <div className="max-w-7xl mx-auto w-full">
           <h1 className="text-3xl mb-4 text-left font-medium">
