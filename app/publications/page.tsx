@@ -23,47 +23,30 @@ export default function PublicationsPage() {
       url: "https://dev.to/shabbirykk/creating-an-nft-with-stacks-3cg6",
     },
     {
-      title: "Growing Convicted Sector: RWA",
-      url: "https://www.linkedin.com/posts/ugcPost-7305749466022584321-6rqG?utm_source=share&utm_medium=member_ios&rcm=ACoAACOXbm0B1apdlZER6b_xIWet9XbQGjLP8vQ",
+      title: "Provocations for a better internet",
+      url: "https://medium.com/berkman-klein-center/provocations-for-a-better-internet-b5ba53585717",
+    },
+    {
+      title: "Bad incentives ruined the internet",
+      url: "https://medium.com/berkman-klein-center/bad-incentives-ruined-the-internet-a711434be92d",
+    },
+    {
+      title: "Wellness and the new Web",
+      url: "https://wired.jp/magazine/vol_44/",
+    },
+    {
+      title: "Toward A More Cooperative Web",
+      url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4302681",
     },
     {
       title:
-        "Where The Smart Money Flows: VC Predictions For The DeFAI Frontier",
-      url: "https://www.linkedin.com/posts/nikilster_1-trillion-market-cap-25-trillion-aum-activity-7308957830160560129-nPE9?utm_source=share&utm_medium=member_ios&rcm=ACoAACOXbm0B1apdlZER6b_xIWet9XbQGjLP8vQ",
-    },
-    {
-      title: "Blockchain Technologies and Entrepreneurship",
-      url: "https://www.linkedin.com/posts/ugcPost-7305749466022584321-6rqG?utm_source=share&utm_medium=member_ios&rcm=ACoAACOXbm0B1apdlZER6b_xIWet9XbQGjLP8vQ",
-    },
-    {
-      title: "2025 Crypto Plans",
-      url: "https://www.linkedin.com/posts/nikilster_1-trillion-market-cap-25-trillion-aum-activity-7308957830160560129-nPE9?utm_source=share&utm_medium=member_ios&rcm=ACoAACOXbm0B1apdlZER6b_xIWet9XbQGjLP8vQ",
-    },
-    {
-      title: "World Economic Forum: Session On Crypto",
-      url: "https://www.linkedin.com/posts/activity-7291279229785194496-RuKt?utm_source=share&utm_medium=member_ios&rcm=ACoAACOXbm0B1apdlZER6b_xIWet9XbQGjLP8vQ",
-    },
-    {
-      title: "Building Investors Communities",
-      url: "https://www.linkedin.com/posts/activity-7270882888483504128-E3Fn?utm_source=share&utm_medium=member_ios&rcm=ACoAACOXbm0B1apdlZER6b_xIWet9XbQGjLP8vQ",
-    },
-    {
-      title: "The case for diversified portfolios & no pro-rata",
-      url: "https://www.linkedin.com/posts/s21-is_web3-venturecapital-istanbul-ugcPost-7346119028177817600-_qO4?utm_source=share&utm_medium=member_ios&rcm=ACoAACOXbm0B1apdlZER6b_xIWet9XbQGjLP8vQ",
-    },
-    {
-      title: "Future of Fundraising and Liquidity in Web3",
-      url: "https://www.linkedin.com/posts/joy-sim-kia_token2049-dubai-was-intense-telegram-ugcPost-7325795420704518144-Z7f6?utm_source=share&utm_medium=member_ios&rcm=ACoAACOXbm0B1apdlZER6b_xIWet9XbQGjLP8vQ",
-    },
-    {
-      title: "Dealflow Den: $80B in AUM",
-      url: "https://www.linkedin.com/posts/activity-7333469707385098241-0wzD?utm_source=share&utm_medium=member_ios&rcm=ACoAACOXbm0B1apdlZER6b_xIWet9XbQGjLP8vQ",
-    },
-    {
-      title: "State Of Solana Consumer Apps",
-      url: "https://www.linkedin.com/posts/activity-7303181245314711552-_PG4?utm_source=share&utm_medium=member_ios&rcm=ACoAACOXbm0B1apdlZER6b_xIWet9XbQGjLP8vQ",
+        "The Next Phase of the Data Economy: Economic & Technological Perspectives",
+      url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5025403",
     },
   ];
+
+  // All publications are now articles (talks and panels moved to separate page)
+  const articles = publications;
 
   return (
     <div className="min-h-screen bg-white pb-16">
@@ -71,16 +54,17 @@ export default function PublicationsPage() {
       <MobileHeader />
       <div className="p-8">
         <div className="max-w-7xl mx-auto w-full">
-          <h1 className="text-3xl mb-4 text-left font-medium">
+          <h1 className="text-3xl mb-4 mt-8 text-left font-medium">
             Articles & Publications
           </h1>
           <p className="text-gray-600 mb-8 text-left">
-            Technical writings on blockchain, DeFi, Web3, and the future of
+            technical writings on blockchain, DeFi, Web3, and the future of
             cyberspace.
           </p>
 
+          {/* Articles Section */}
           <ul className="list-disc pl-6 space-y-2 text-left">
-            {publications.map((publication, index) => (
+            {articles.map((publication, index) => (
               <li key={index}>
                 <a
                   href={publication.url}

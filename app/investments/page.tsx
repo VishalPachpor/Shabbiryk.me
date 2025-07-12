@@ -40,12 +40,12 @@ export default function InvestmentsPage() {
       <MobileHeader />
       <div className="p-8">
         <div className="max-w-7xl mx-auto w-full">
-          <h1 className="text-gray-600 mb-4 text-left">
-            I am grateful to founder friends who've allowed me to make small
+          <h1 className="text-3xl mb-4 mt-8 text-left font-medium">
+            i am grateful to founder friends who've allowed me to make small
             investments in their projects.
           </h1>
           <p className="text-gray-600 mb-8 text-left">
-            We typically write first checks ranging 100k-250k.
+            we typically write first checks ranging 100k-250k.
           </p>
 
           <ul className="list-disc pl-6 space-y-2 text-left">

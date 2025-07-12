@@ -7,6 +7,7 @@ import { useMobileMenu } from "@/app/providers";
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Publications", href: "/publications" },
+  { name: "Talks and Panels", href: "/talks-and-panels" },
   { name: "Investments", href: "/investments" },
   {
     name: "Curriculum Vitae",
