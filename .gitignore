@@ -1,0 +1,90 @@
+# =========================
+# Node.js
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# =========================
+# macOS
+# =========================
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# =========================
+# Linux
+# =========================
+*~ 
+.nfs*
+
+# =========================
+# Windows
+# =========================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# =========================
+# Logs
+# =========================
+logs
+*.log
+*.log.*
+log/
+
+# =========================
+# IDEs and editors
+# =========================
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# =========================
+# Environment files
+# =========================
+.env
+.env.* 
+!.env.example
+
+# =========================
+# Build / Output folders
+# =========================
+dist/
+build/
+coverage/
+out/
+.cache/
+.next/
+.vercel/
+functions/node_modules/
+
+# =========================
+# Test coverage
+# =========================
+coverage/
+.nyc_output/
+
+# =========================
+# Misc
+# =========================
+*.swp
+*.bak
+*.tmp
+*.orig
+
+# =========================
+# Git-related
+# =========================
+*.orig
+*.rej
+*.patch
+
+# =========================
+# Dependency directories
+# =========================
+bower_components/
+jspm_packages/

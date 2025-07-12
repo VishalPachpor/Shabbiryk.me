@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Marquee animation for shelf carousels */
+.animate-marquee-right { animation: marquee-right 30s linear infinite; }
+.animate-marquee-left { animation: marquee-left 30s linear infinite; }
+@keyframes marquee-right {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+@keyframes marquee-left {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+} 
