@@ -79,7 +79,7 @@ export default function PublicationsPage() {
           </ul>
 
           <div className="mt-12 pt-8 border-t border-gray-200">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 mb-3">
               <span className="text-blue-600">🔗</span>
               <a
                 href="https://dev.to/shabbirykk"
@@ -88,6 +88,17 @@ export default function PublicationsPage() {
                 className=" hover:text-gray-500 transition-colors duration-200"
               >
                 DEV Community Profile
+              </a>
+            </div>
+            <div className="flex items-center space-x-3">
+              <span className="text-blue-600">📊</span>
+              <a
+                href="https://dune.com/dannytrump"
+                target="_blank"
+                rel="noopener noreferrer"
+                className=" hover:text-gray-500 transition-colors duration-200"
+              >
+                Dune Analytics Profile
               </a>
             </div>
           </div>
