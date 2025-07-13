@@ -99,4 +99,21 @@
   font-weight: 400;
   line-height: 22.4px;
   color: rgb(102, 102, 102);
+}
+
+/* Enhanced smooth scrolling for mobile */
+@layer utilities {
+  .scroll-smooth {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Mobile-specific smooth scrolling improvements */
+  @media (max-width: 768px) {
+    .scroll-smooth {
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+    }
+  }
 } 

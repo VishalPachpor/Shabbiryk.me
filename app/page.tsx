@@ -15,7 +15,7 @@ export default function HomePage() {
       {/* Mobile Layout: Hero+Card Section */}
       <div className="md:hidden w-full min-h-screen pt-2 px-4 pb-2 relative overflow-auto">
         {/* Hero Image with overlapping card */}
-        <div className="relative w-[90%] mx-auto h-[600px] overflow-visible z-10  ">
+        <div className="relative w-[90%] mx-auto h-[600px] overflow-visible z-10">
           <Image
             src="/hero.JPG"
             alt="Landscape photo of person sitting on rocky cliff overlooking coastal town with cloudy sky"
@@ -27,28 +27,28 @@ export default function HomePage() {
           {/* Overlapping Card - half on image, half below */}
           <div className="absolute left-[10%] bottom-[22px] translate-y-1/2 w-[110%] max-w-[95vw] max-h-[420px] bg-black text-white shadow-xl flex flex-col justify-between p-4 pt-0 z-20 overflow-y-auto break-words whitespace-normal">
             <div>
-              <h1 className="text-2xl leading-tight mb-4 mt-8 text-white">
+              <h1 className="text-2xl leading-tight mb-2 mt-4 text-white">
                 Shabbir Khan
               </h1>
-              <div className="text-white text-sm mb-4 leading-relaxed">
+              <div className="text-white text-sm mb-2 leading-relaxed">
                 investment partner at EAK Ventures (fund based in dubai) —
                 mainly deploying in AI, longevity and RWAs
               </div>
-              <div className="text-white text-sm mb-4 leading-relaxed">
+              <div className="text-white text-sm mb-2 leading-relaxed">
                 an angel and a finance nerd who loves to hold assets in a
                 decentralized way.
               </div>
-              <div className="text-gray-300 text-sm italic mb-4 leading-relaxed">
+              <div className="text-gray-300 text-sm italic mb-2 leading-relaxed">
                 Academics: system programming, algorithms, distributed systems,
                 hyperledger fabric.
               </div>
-              <div className="space-y-3 mb-3"></div>
-              <div className="italic text-gray-300 text-xs mb-4">
+              <div className="space-y-3 mb-2"></div>
+              <div className="italic text-gray-300 text-xs mb-2">
                 prev. JP Morgan's ONYX, Chainlink, Coinswitch Ventures
               </div>
-              <div className="text-white text-sm flex items-center space-x-2 mb-6">
+              <div className="text-white text-sm flex items-center space-x-2 mb-4">
                 <MapPin className="w-4 h-4" />
-                <span className="text-white">Dubai, UAE</span>
+                <span className="text-gray-400">dubai</span>
               </div>
             </div>
             {/* Social Links - Mobile (inside card, bottom) */}
@@ -104,30 +104,30 @@ export default function HomePage() {
           />
         </div>
         {/* Card - left, overlapping image, moved left */}
-        <div className="absolute top-1/2 left-0 -translate-y-1/2 z-20 w-[420px] h-[480px] flex flex-col items-center justify-center">
-          <div className="bg-black text-white shadow-xl w-full h-full flex flex-col justify-center p-8">
-            <h1 className="text-2xl leading-tight mb-4 mt-8 text-white">
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 z-20 w-[420px] h-[360px] flex flex-col items-center justify-center">
+          <div className="bg-black text-white shadow-xl w-full h-full flex flex-col justify-center p-4">
+            <h1 className="text-2xl leading-tight mb-2 mt-4 text-white">
               Shabbir Khan
             </h1>
-            <div className="text-white text-sm mb-4 leading-relaxed">
+            <div className="text-white text-sm mb-2 leading-relaxed">
               investment partner at EAK Ventures (fund based in dubai) — mainly
               deploying in AI, longevity and RWAs
             </div>
-            <div className="text-white text-sm mb-4 leading-relaxed">
+            <div className="text-white text-sm mb-2 leading-relaxed">
               an angel and a finance nerd who loves to hold assets in a
               decentralized way.
             </div>
-            <div className="text-gray-300 text-sm italic mb-4 leading-relaxed">
+            <div className="text-gray-300 text-sm italic mb-2 leading-relaxed">
               Academics: system programming, algorithms, distributed systems,
               hyperledger fabric.
             </div>
-            <div className="space-y-3 mb-3"></div>
-            <div className="italic text-gray-300 text-xs mb-4">
+            <div className="space-y-3 mb-2"></div>
+            <div className="italic text-gray-300 text-xs mb-2">
               prev. JP Morgan's ONYX, Chainlink, Coinswitch Ventures
             </div>
             <div className="text-white text-sm flex items-center space-x-2">
               <MapPin className="w-4 h-4" />
-              <span className="text-white">Dubai, UAE</span>
+              <span className="text-gray-400">dubai</span>
             </div>
             {/* Social Links - Mobile (inside card, below content) */}
             <div className="flex md:hidden flex-row space-x-4 justify-start mt-2">

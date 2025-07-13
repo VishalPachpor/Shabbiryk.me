@@ -54,8 +54,8 @@ export default function PublicationsPage() {
       <MobileHeader />
       <div className="p-8">
         <div className="max-w-7xl mx-auto w-full">
-          <h1 className="text-3xl mb-4 mt-8 text-left font-medium">
-            Articles & Publications
+          <h1 className="text-xl mb-4 mt-8 text-left font-medium">
+            articles & publications
           </h1>
           <p className="text-gray-600 lowercase mb-8 text-left">
             i mostly write about fundraising on-chain analysis, and actionable
