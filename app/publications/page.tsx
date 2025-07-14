@@ -49,7 +49,7 @@ export default function PublicationsPage() {
   const articles = publications;
 
   return (
-    <div className="min-h-screen bg-white pb-16">
+    <div className="min-h-screen bg-white pb-4">
       {/* Mobile Header */}
       <MobileHeader />
       <div className="p-8">
@@ -90,7 +90,7 @@ export default function PublicationsPage() {
                 DEV Community Profile
               </a>
             </div>
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 mb-6">
               <span className="text-blue-600">📊</span>
               <a
                 href="https://dune.com/dannytrump"
@@ -100,6 +100,20 @@ export default function PublicationsPage() {
               >
                 Dune Analytics Profile
               </a>
+            </div>
+            
+            {/* End Video */}
+            <div className="mt-8">
+              <video 
+                className="w-full max-w-2xl rounded-lg shadow-lg"
+                controls
+                autoPlay
+                muted
+                loop
+              >
+                <source src="/end-video.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>

@@ -94,7 +94,7 @@ const Sidebar = () => {
         </div>
 
         {/* Navigation Menu - Vertical navigation with links */}
-        <nav className="flex flex-col gap-1 text-start">
+        <nav className="flex flex-col gap-3 text-start">
           {navLinks.map((link) => {
             const isActive =
               pathname === link.href ||
@@ -133,7 +133,7 @@ const Sidebar = () => {
         </nav>
 
         {/* Secondary Links - Below main nav, not in footer */}
-        <div className="flex flex-col gap-1 mt-4 pl-0 text-start">
+        <div className="flex flex-col gap-3 mt-4 pl-0 text-start">
           {secondaryLinks.map((link) => (
             <a
               key={link.name}

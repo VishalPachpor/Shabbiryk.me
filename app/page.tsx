@@ -25,13 +25,10 @@ export default function HomePage() {
             quality={100}
           />
           {/* Overlapping Card - half on image, half below */}
-          <div className="absolute left-[10%] bottom-[22px] translate-y-1/2 w-[110%] max-w-[95vw] max-h-[420px] bg-black text-white shadow-xl flex flex-col justify-between p-4 pt-0 z-20 overflow-y-auto break-words whitespace-normal">
+          <div className="absolute left-[10%] bottom-[22px] translate-y-1/2 w-[110%] max-w-[95vw] max-h-[420px] bg-black text-white shadow-xl flex flex-col justify-between p-4 pt-6 z-20 overflow-y-auto break-words whitespace-normal">
             <div>
-              <h1 className="text-2xl leading-tight mb-2 mt-4 text-white">
-                Shabbir Khan
-              </h1>
               <div className="text-white text-sm mb-2 leading-relaxed">
-                investment partner at EAK Ventures (fund based in dubai) —
+                Shabbir Khan investment partner at EAK Ventures (fund based in dubai) —
                 mainly deploying in AI, longevity and RWAs
               </div>
               <div className="text-white text-sm mb-2 leading-relaxed">
@@ -105,12 +102,9 @@ export default function HomePage() {
         </div>
         {/* Card - left, overlapping image, moved left */}
         <div className="absolute top-1/2 left-0 -translate-y-1/2 z-20 w-[420px] h-[360px] flex flex-col items-center justify-center">
-          <div className="bg-black text-white shadow-xl w-full h-full flex flex-col justify-center p-4">
-            <h1 className="text-2xl leading-tight mb-2 mt-4 text-white">
-              Shabbir Khan
-            </h1>
+          <div className="bg-black text-white shadow-xl w-full h-full flex flex-col justify-center p-4 pt-6">
             <div className="text-white text-sm mb-2 leading-relaxed">
-              investment partner at EAK Ventures (fund based in dubai) — mainly
+              Shabbir Khan investment partner at EAK Ventures (fund based in dubai) — mainly
               deploying in AI, longevity and RWAs
             </div>
             <div className="text-white text-sm mb-2 leading-relaxed">

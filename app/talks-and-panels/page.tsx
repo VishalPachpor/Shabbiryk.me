@@ -83,7 +83,7 @@ export default function TalksAndPanelsPage() {
       <MobileHeader />
       <div className="p-8">
         <div className="max-w-7xl mx-auto w-full">
-          <h1 className="text-3xl mb-4 mt-8 text-left font-medium">
+          <h1 className="text-xl mb-4 mt-8 text-left font-medium">
             talks and panels
           </h1>
           <p className="text-gray-600 mb-8 text-left">

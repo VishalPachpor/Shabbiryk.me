@@ -40,7 +40,7 @@ export default function InvestmentsPage() {
       <MobileHeader />
       <div className="p-8">
         <div className="max-w-7xl mx-auto w-full">
-          <h3 className="text-xl mb-2 mt-8 text-left font-medium tracking-wide">
+          <h3 className="text-xl mb-4 mt-8 text-left font-medium tracking-wide">
             investments
           </h3>
           <p className="mb-2 mt-2 text-left font-medium tracking-wide">
