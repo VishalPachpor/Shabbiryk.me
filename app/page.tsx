@@ -27,8 +27,11 @@ export default function HomePage() {
           {/* Overlapping Card - half on image, half below */}
           <div className="absolute left-[10%] bottom-[22px] translate-y-1/2 w-[110%] max-w-[95vw] max-h-[420px] bg-black text-white shadow-xl flex flex-col justify-between p-4 pt-6 z-20 overflow-y-auto break-words whitespace-normal">
             <div>
+              <div className="text-white text-lg font-bold mb-1 leading-relaxed">
+                Shabbir Khan
+              </div>
               <div className="text-white text-sm mb-2 leading-relaxed">
-                Shabbir Khan investment partner at EAK Ventures (fund based in dubai) —
+                investment partner at EAK Ventures (fund based in dubai) —
                 mainly deploying in AI, longevity and RWAs
               </div>
               <div className="text-white text-sm mb-2 leading-relaxed">
@@ -45,7 +48,7 @@ export default function HomePage() {
               </div>
               <div className="text-white text-sm flex items-center space-x-2 mb-4">
                 <MapPin className="w-4 h-4" />
-                <span className="text-gray-400">dubai</span>
+                <span className="text-gray-400">Dubai</span>
               </div>
             </div>
             {/* Social Links - Mobile (inside card, bottom) */}
@@ -103,8 +106,11 @@ export default function HomePage() {
         {/* Card - left, overlapping image, moved left */}
         <div className="absolute top-1/2 left-0 -translate-y-1/2 z-20 w-[420px] h-[360px] flex flex-col items-center justify-center">
           <div className="bg-black text-white shadow-xl w-full h-full flex flex-col justify-center p-4 pt-6">
+            <div className="text-white text-lg font-bold mb-1 leading-relaxed">
+              Shabbir Khan
+            </div>
             <div className="text-white text-sm mb-2 leading-relaxed">
-              Shabbir Khan investment partner at EAK Ventures (fund based in dubai) — mainly
+              investment partner at EAK Ventures (fund based in dubai) — mainly
               deploying in AI, longevity and RWAs
             </div>
             <div className="text-white text-sm mb-2 leading-relaxed">
@@ -121,7 +127,7 @@ export default function HomePage() {
             </div>
             <div className="text-white text-sm flex items-center space-x-2">
               <MapPin className="w-4 h-4" />
-              <span className="text-gray-400">dubai</span>
+              <span className="text-gray-400">Dubai</span>
             </div>
             {/* Social Links - Mobile (inside card, below content) */}
             <div className="flex md:hidden flex-row space-x-4 justify-start mt-2">

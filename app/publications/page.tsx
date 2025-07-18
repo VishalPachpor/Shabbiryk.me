@@ -55,7 +55,7 @@ export default function PublicationsPage() {
       <div className="p-8">
         <div className="max-w-7xl mx-auto w-full">
           <h1 className="text-xl mb-4 mt-8 text-left font-medium">
-            articles & publications
+            Articles & Publications
           </h1>
           <p className="text-gray-600 lowercase mb-8 text-left">
             i mostly write about fundraising on-chain analysis, and actionable
@@ -101,11 +101,11 @@ export default function PublicationsPage() {
                 Dune Analytics Profile
               </a>
             </div>
-            
+
             {/* End Video */}
             <div className="mt-8">
-              <video 
-                className="w-full max-w-2xl rounded-lg shadow-lg"
+              <video
+                className="w-full rounded-lg shadow-lg"
                 controls
                 autoPlay
                 muted

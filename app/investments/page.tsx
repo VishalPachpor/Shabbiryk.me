@@ -41,7 +41,7 @@ export default function InvestmentsPage() {
       <div className="p-8">
         <div className="max-w-7xl mx-auto w-full">
           <h3 className="text-xl mb-4 mt-8 text-left font-medium tracking-wide">
-            investments
+            Investments
           </h3>
           <p className="mb-2 mt-2 text-left font-medium tracking-wide">
             i am grateful to founder friends who've allowed me to make small

@@ -42,12 +42,12 @@ const MobileMenu = () => {
     const updateTime = () => setCurrentTime(audio.currentTime);
     const updateDuration = () => setDuration(audio.duration);
 
-    audio.addEventListener('timeupdate', updateTime);
-    audio.addEventListener('loadedmetadata', updateDuration);
+    audio.addEventListener("timeupdate", updateTime);
+    audio.addEventListener("loadedmetadata", updateDuration);
 
     return () => {
-      audio.removeEventListener('timeupdate', updateTime);
-      audio.removeEventListener('loadedmetadata', updateDuration);
+      audio.removeEventListener("timeupdate", updateTime);
+      audio.removeEventListener("loadedmetadata", updateDuration);
     };
   }, []);
 
@@ -60,7 +60,7 @@ const MobileMenu = () => {
       setIsPlaying(false);
     } else {
       audio.play().catch((error) => {
-        console.log('Audio file not found or cannot be played');
+        console.log("Audio file not found or cannot be played");
         setIsPlaying(false);
       });
       setIsPlaying(true);
@@ -74,6 +74,12 @@ const MobileMenu = () => {
     const newTime = (parseFloat(e.target.value) / 100) * duration;
     audio.currentTime = newTime;
     setCurrentTime(newTime);
+  };
+
+  const formatTime = (seconds: number) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+    return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
   };
 
   return (
@@ -117,30 +123,6 @@ const MobileMenu = () => {
                 );
               })}
             </nav>
-            
-            {/* Music Player */}
-            <div className="flex items-center gap-3 mt-8 px-8">
-              <button
-                onClick={togglePlay}
-                className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
-              >
-                {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-              </button>
-              
-              <div className="flex-1">
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  value={duration ? (currentTime / duration) * 100 : 0}
-                  onChange={handleProgressChange}
-                  className="w-full h-2 bg-white/30 rounded-lg appearance-none cursor-pointer slider"
-                  style={{
-                    background: `linear-gradient(to right, #fff 0%, #fff ${duration ? (currentTime / duration) * 100 : 0}%, rgba(255,255,255,0.3) ${duration ? (currentTime / duration) * 100 : 0}%, rgba(255,255,255,0.3) 100%)`
-                  }}
-                />
-              </div>
-            </div>
 
             <div className="flex flex-col items-center gap-2 mt-4 w-full text-center">
               {bottomLinks.map((link) => (
@@ -156,6 +138,40 @@ const MobileMenu = () => {
                 </a>
               ))}
             </div>
+
+            {/* Music Player - now below Twitter and LinkedIn */}
+            <div className="flex items-center gap-3 mt-8 px-8">
+              <button
+                onClick={togglePlay}
+                className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
+              >
+                {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+              </button>
+              {/* Progress Bar - slider only, no timing */}
+              <div className="flex-1 flex items-center">
+                <input
+                  type="range"
+                  min="0"
+                  max={duration}
+                  value={currentTime}
+                  onChange={(e) => {
+                    const audio = audioRef.current;
+                    if (!audio) return;
+                    const newTime = parseFloat(e.target.value);
+                    audio.currentTime = newTime;
+                    setCurrentTime(newTime);
+                  }}
+                  className="w-full h-2 bg-white/30 rounded-lg appearance-none cursor-pointer slider"
+                  style={{
+                    background: `linear-gradient(to right, #fff 0%, #fff ${
+                      duration ? (currentTime / duration) * 100 : 0
+                    }%, rgba(255,255,255,0.3) ${
+                      duration ? (currentTime / duration) * 100 : 0
+                    }%, rgba(255,255,255,0.3) 100%)`,
+                  }}
+                />
+              </div>
+            </div>
           </div>
 
           {/* Hidden Audio Element */}
@@ -163,7 +179,7 @@ const MobileMenu = () => {
             ref={audioRef}
             src="/music.mp3"
             onEnded={() => setIsPlaying(false)}
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
           />
         </div>
       )}

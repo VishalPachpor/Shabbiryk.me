@@ -39,12 +39,12 @@ const Sidebar = () => {
     const updateTime = () => setCurrentTime(audio.currentTime);
     const updateDuration = () => setDuration(audio.duration);
 
-    audio.addEventListener('timeupdate', updateTime);
-    audio.addEventListener('loadedmetadata', updateDuration);
+    audio.addEventListener("timeupdate", updateTime);
+    audio.addEventListener("loadedmetadata", updateDuration);
 
     return () => {
-      audio.removeEventListener('timeupdate', updateTime);
-      audio.removeEventListener('loadedmetadata', updateDuration);
+      audio.removeEventListener("timeupdate", updateTime);
+      audio.removeEventListener("loadedmetadata", updateDuration);
     };
   }, []);
 
@@ -57,7 +57,7 @@ const Sidebar = () => {
       setIsPlaying(false);
     } else {
       audio.play().catch((error) => {
-        console.log('Audio file not found or cannot be played');
+        console.log("Audio file not found or cannot be played");
         setIsPlaying(false);
       });
       setIsPlaying(true);
@@ -76,7 +76,7 @@ const Sidebar = () => {
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
   };
 
   return (
@@ -147,25 +147,38 @@ const Sidebar = () => {
           ))}
         </div>
 
-        {/* Music Player */}
-        <div className="mt-12 pt-8 flex items-center gap-3">
+        {/* Spacer to push music player to bottom */}
+        <div className="flex-1" />
+
+        {/* Music Player at the bottom */}
+        <div className="mb-8 pt-8 flex items-center gap-3">
           <button
             onClick={togglePlay}
             className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"
           >
             {isPlaying ? <Pause size={14} /> : <Play size={14} />}
           </button>
-          
-          <div className="flex-1">
+          {/* Progress Bar - slider only, no timing */}
+          <div className="flex-1 flex items-center">
             <input
               type="range"
               min="0"
-              max="100"
-              value={duration ? (currentTime / duration) * 100 : 0}
-              onChange={handleProgressChange}
+              max={duration}
+              value={currentTime}
+              onChange={(e) => {
+                const audio = audioRef.current;
+                if (!audio) return;
+                const newTime = parseFloat(e.target.value);
+                audio.currentTime = newTime;
+                setCurrentTime(newTime);
+              }}
               className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
               style={{
-                background: `linear-gradient(to right, #000 0%, #000 ${duration ? (currentTime / duration) * 100 : 0}%, #e5e7eb ${duration ? (currentTime / duration) * 100 : 0}%, #e5e7eb 100%)`
+                background: `linear-gradient(to right, #000 0%, #000 ${
+                  duration ? (currentTime / duration) * 100 : 0
+                }%, #e5e7eb ${
+                  duration ? (currentTime / duration) * 100 : 0
+                }%, #e5e7eb 100%)`,
               }}
             />
           </div>
@@ -176,7 +189,7 @@ const Sidebar = () => {
           ref={audioRef}
           src="/music.mp3"
           onEnded={() => setIsPlaying(false)}
-          style={{ display: 'none' }}
+          style={{ display: "none" }}
         />
       </div>
     </div>
