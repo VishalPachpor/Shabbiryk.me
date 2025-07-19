@@ -47,6 +47,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          suppressHydrationWarning
         >
           <MobileMenuProvider>
             <Toaster />

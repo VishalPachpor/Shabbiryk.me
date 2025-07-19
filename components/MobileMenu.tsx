@@ -33,9 +33,16 @@ const MobileMenu = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [isClient, setIsClient] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
     const audio = audioRef.current;
     if (!audio) return;
 
@@ -49,7 +56,7 @@ const MobileMenu = () => {
       audio.removeEventListener("timeupdate", updateTime);
       audio.removeEventListener("loadedmetadata", updateDuration);
     };
-  }, []);
+  }, [isClient]);
 
   const togglePlay = () => {
     const audio = audioRef.current;
