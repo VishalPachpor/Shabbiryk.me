@@ -10,6 +10,7 @@ const navLinks = [
   { name: "publications", href: "/publications" },
   { name: "talks and panels", href: "/talks-and-panels" },
   { name: "investments", href: "/investments" },
+  { name: "investment memo", href: "/investment-memo" },
   {
     name: "curriculum vitae",
     href: "https://docs.google.com/document/d/1VIBwHr-z3-Eb1Ghfqf6DASF0A6bAVyCjUd83-hjWcy4/edit?tab=t.0",
