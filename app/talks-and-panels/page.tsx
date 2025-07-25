@@ -106,7 +106,28 @@ export default function TalksAndPanelsPage() {
             ))}
           </ul>
 
-        
+          <div className="mt-12 pt-8 border-t border-gray-200">
+            <div className="flex items-center space-x-3">
+              <span className="text-blue-600">🔗</span>
+              <a
+                href="https://www.linkedin.com/in/shabbiryk/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className=" hover:text-gray-500 transition-colors duration-200"
+              >
+                LinkedIn Profile
+              </a>
+            </div>
+
+            {/* Talks Image */}
+            <div className="mt-8">
+              <img
+                src="/talks.JPG"
+                alt="Talks and panels speaking engagements"
+                className="w-full rounded-lg shadow-lg object-cover"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
