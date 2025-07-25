@@ -29,7 +29,7 @@ export default function RootLayout({
         />
         <link rel="icon" type="image/png" href="/ethereum.png" />
       </head>
-      <body>
+      <body suppressHydrationWarning={true}>
         <Providers>
           <div className="flex min-h-screen bg-white">
             <div className="hidden md:block">

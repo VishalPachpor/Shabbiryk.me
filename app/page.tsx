@@ -17,7 +17,7 @@ export default function HomePage() {
         {/* Hero Image with overlapping card */}
         <div className="relative w-[90%] mx-auto h-[600px] overflow-visible z-10">
           <Image
-            src="/hero.JPG"
+            src="/home1.JPG"
             alt="Landscape photo of person sitting on rocky cliff overlooking coastal town with cloudy sky"
             fill
             className="object-cover object-center"
@@ -60,7 +60,7 @@ export default function HomePage() {
         {/* Hero Image - full viewport height */}
         <div className="relative w-2/3 h-full ml-auto z-10">
           <Image
-            src="/hero.JPG"
+            src="/home1.JPG"
             alt="Landscape photo of person sitting on rocky cliff overlooking coastal town with cloudy sky"
             fill
             className="object-cover object-center "

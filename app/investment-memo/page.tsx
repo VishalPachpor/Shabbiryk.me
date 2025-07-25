@@ -11,42 +11,42 @@ export default function InvestmentThesisPage() {
     {
       title: "AltLayer Investment Thesis",
       description: "Layer 3 Infrastructure",
-      url: "https://docs.google.com/document/d/1F0w9gveT8t3g-limSQpotlNOE4KeWq-AF_z6xsjGftY/edit?tab=t.jevhs8pnklg7#heading=h.xn6j1vrthi97",
+      url: "https://docs.google.com/document/d/1UJxkamfrRH7xaNY2uLA5DmM4MtnVpDfaA2L4dVoITZQ/edit?usp=sharing",
     },
     {
       title: "EtherFi Investment Analysis",
       description: "Liquid Staking Protocol",
-      url: "https://docs.google.com/document/d/1F0w9gveT8t3g-limSQpotlNOE4KeWq-AF_z6xsjGftY/edit?tab=t.3atl6if8m6a2#heading=h.xn6j1vrthi97",
+      url: "https://docs.google.com/document/d/1jzyKKJtpXw2Ctl92Nxzy9SkXRX8E3nuBuIWCnXfd214/edit?usp=sharing",
     },
     {
       title: "Fhenix Investment Memo",
       description: "Privacy Infrastructure",
-      url: "https://docs.google.com/document/d/1F0w9gveT8t3g-limSQpotlNOE4KeWq-AF_z6xsjGftY/edit?tab=t.j02kz8d5vnbk#heading=h.xn6j1vrthi97",
+      url: "https://docs.google.com/document/d/1j9sXbVfczr11cFmk2Zz5Zi_H8hZjoPx1VcLtTcqvl9I/edit?usp=sharing",
     },
     {
       title: "Glint Analytics Investment Memo",
       description: "AI-powered Analytics Platform",
-      url: "https://docs.google.com/document/d/1F0w9gveT8t3g-limSQpotlNOE4KeWq-AF_z6xsjGftY/edit?tab=t.r2vbqiruzsn4#heading=h.3jp4hi2t0g2p",
+      url: "https://docs.google.com/document/d/1a97xGkPLupLyIDz7krFydRnMDrr6DDiOUAjSnXZByzY/edit?usp=sharing",
     },
     {
       title: "Maya Protocol Investment Thesis",
       description: "Cross-chain Liquidity Protocol",
-      url: "https://docs.google.com/document/d/1F0w9gveT8t3g-limSQpotlNOE4KeWq-AF_z6xsjGftY/edit?tab=t.g2t5agkn92lr#heading=h.hg3fqkgdjfp8",
+      url: "https://docs.google.com/document/d/1W86Ookgi8CC2hS2PZQO1mAHicUUEUpha3Unf1bHkIJQ/edit?usp=sharing",
     },
     {
       title: "Modulus Investment Memo",
       description: "DeFi Infrastructure",
-      url: "https://docs.google.com/document/d/1F0w9gveT8t3g-limSQpotlNOE4KeWq-AF_z6xsjGftY/edit?tab=t.khtf2z6dbpgj#heading=h.xn6j1vrthi97",
+      url: "https://docs.google.com/document/d/1nZB2rW2nXXZTGnDgmsZXlgf6bHSUpM5bWIyZttohARo/edit?usp=sharing",
     },
     {
       title: "Puffer Research Document",
       description: "Research Paper",
-      url: "https://docs.google.com/document/d/1F0w9gveT8t3g-limSQpotlNOE4KeWq-AF_z6xsjGftY/edit?tab=t.yf7ia6499ie9#heading=h.45w4nlea2hwi",
+      url: "https://docs.google.com/document/d/1o5v9xyulgmR1_ByqMTTeXaIPPWQdApWxJBqFqEjrGcA/edit?usp=sharing",
     },
     {
       title: "SorellaLabs Investment Memo",
       description: "Web3 Infrastructure",
-      url: "https://docs.google.com/document/d/1F0w9gveT8t3g-limSQpotlNOE4KeWq-AF_z6xsjGftY/edit?tab=t.0#heading=h.xn6j1vrthi97",
+      url: "https://docs.google.com/document/d/1tUwf18bunWW4LL5Fo-LNHee4MnArmvGO_bFXOUhR6QU/edit?usp=sharing",
     },
   ];
 
