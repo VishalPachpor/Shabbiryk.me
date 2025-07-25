@@ -91,7 +91,7 @@ export default function TalksAndPanelsPage() {
             content on blockchain, DeFi, and Web3.
           </p>
 
-          <ul className="list-disc pl-6 space-y-2 text-left">
+          <ul className="list pl-6 space-y-2 text-left">
             {talksAndPanels.map((talk, index) => (
               <li key={index}>
                 <a
@@ -106,19 +106,7 @@ export default function TalksAndPanelsPage() {
             ))}
           </ul>
 
-          <div className="mt-12 pt-8 border-t border-gray-200">
-            <div className="flex items-center space-x-3">
-              <span className="text-blue-600">🔗</span>
-              <a
-                href="https://www.linkedin.com/in/shabbiryk/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className=" hover:text-gray-500 transition-colors duration-200"
-              >
-                LinkedIn Profile
-              </a>
-            </div>
-          </div>
+        
         </div>
       </div>
     </div>

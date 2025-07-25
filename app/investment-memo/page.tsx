@@ -64,25 +64,20 @@ export default function InvestmentThesisPage() {
             web3 projects.
           </p>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <ul className="list pl-6 space-y-2 text-left">
             {investmentMemos.map((memo, index) => (
-              <div
-                key={index}
-                className="border rounded-lg p-6 hover:shadow-lg transition-shadow"
-              >
-                <h3 className="font-medium mb-2">{memo.title}</h3>
-                <p className="text-gray-600 text-sm mb-4">{memo.description}</p>
+              <li key={index}>
                 <a
                   href={memo.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-800 text-sm flex items-center"
+                  className="hover:text-gray-400 transition-colors duration-200"
                 >
-                  Read Memo →
+                  {memo.title}
                 </a>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
 
           <div className="mt-12 pt-8 border-t border-gray-200">
             <p className="text-gray-600 text-sm">

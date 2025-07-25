@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { MapPin, Linkedin, Twitter, Calendar, Link } from "lucide-react";
+import { MapPin } from "lucide-react";
 import MobileHeader from "@/components/MobileHeader";
 import { useMobileMenu } from "./providers";
 
@@ -51,41 +51,6 @@ export default function HomePage() {
                 <span className="text-gray-400">Dubai</span>
               </div>
             </div>
-            {/* Social Links - Mobile (inside card, bottom) */}
-            <div className="flex md:hidden flex-row space-x-4 justify-start mt-2">
-              <a
-                href="https://linkedin.com/in/shabbirkhan"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-gray-300 transition-colors duration-200"
-              >
-                <Linkedin className="w-6 h-6" />
-              </a>
-              <a
-                href="https://twitter.com/shabbirkhan"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-gray-300 transition-colors duration-200"
-              >
-                <Twitter className="w-6 h-6" />
-              </a>
-              <a
-                href="https://cal.com/shabbir-khan-dhkgcs/15min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-gray-300 transition-colors duration-200"
-              >
-                <Calendar className="w-6 h-6" />
-              </a>
-              <a
-                href="https://linktr.ee/shabbiryk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-gray-300 transition-colors duration-200"
-              >
-                <Link className="w-6 h-6" />
-              </a>
-            </div>
           </div>
         </div>
       </div>
@@ -103,9 +68,9 @@ export default function HomePage() {
             quality={100}
           />
         </div>
-        {/* Card - left, overlapping image, moved left */}
-        <div className="absolute top-1/2 left-0 -translate-y-1/2 z-20 w-[480px] h-[420px] flex flex-col items-center justify-center">
-          <div className="bg-black text-white shadow-xl w-full h-full flex flex-col justify-center p-6 pt-8">
+        {/* Card - positioned to align "Shabbir Khan" with "Home" for perfect F pattern */}
+        <div className="absolute top-[120px] left-0 z-20 w-[480px] h-[420px] flex flex-col items-center justify-center">
+          <div className="bg-black text-white w-full h-full flex flex-col justify-center p-6 pt-8">
             <div className="text-white text-lg font-bold mb-1 leading-relaxed">
               Shabbir Khan
             </div>
@@ -128,76 +93,6 @@ export default function HomePage() {
             <div className="text-white text-sm flex items-center space-x-2">
               <MapPin className="w-4 h-4" />
               <span className="text-gray-400">Dubai</span>
-            </div>
-            {/* Social Links - Mobile (inside card, below content) */}
-            <div className="flex md:hidden flex-row space-x-4 justify-start mt-2">
-              <a
-                href="https://linkedin.com/in/shabbirkhan"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-gray-300 transition-colors duration-200"
-              >
-                <Linkedin className="w-6 h-6" />
-              </a>
-              <a
-                href="https://twitter.com/shabbirkhan"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-gray-300 transition-colors duration-200"
-              >
-                <Twitter className="w-6 h-6" />
-              </a>
-              <a
-                href="https://cal.com/shabbir-khan-dhkgcs/15min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-gray-300 transition-colors duration-200"
-              >
-                <Calendar className="w-6 h-6" />
-              </a>
-              <a
-                href="https://linktr.ee/shabbiryk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-gray-300 transition-colors duration-200"
-              >
-                <Link className="w-6 h-6" />
-              </a>
-            </div>
-            {/* Social Links - Desktop (inside card, below content) */}
-            <div className="hidden md:flex flex-row space-x-4 justify-start mt-2">
-              <a
-                href="https://linkedin.com/in/shabbirkhan"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-gray-300 transition-colors duration-200"
-              >
-                <Linkedin className="w-6 h-6" />
-              </a>
-              <a
-                href="https://twitter.com/shabbirkhan"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-gray-300 transition-colors duration-200"
-              >
-                <Twitter className="w-6 h-6" />
-              </a>
-              <a
-                href="https://cal.com/shabbir-khan-dhkgcs/15min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-gray-300 transition-colors duration-200"
-              >
-                <Calendar className="w-6 h-6" />
-              </a>
-              <a
-                href="https://linktr.ee/shabbiryk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-gray-300 transition-colors duration-200"
-              >
-                <Link className="w-6 h-6" />
-              </a>
             </div>
           </div>
         </div>

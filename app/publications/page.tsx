@@ -54,65 +54,45 @@ export default function PublicationsPage() {
       <MobileHeader />
       <div className="p-8 relative z-10">
         <div className="max-w-7xl mx-auto w-full">
-          {/* Background Image only behind text content */}
-          <div className="relative">
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 w-full h-full z-0 pointer-events-none"
-              style={{
-                backgroundImage: "url(/SFimage.avif)",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                opacity: 0.22,
-                filter: "blur(2px) grayscale(0.2)",
-              }}
-            />
-            <div className="relative z-10">
-              <h1 className="text-xl mb-4 mt-8 text-left font-medium">
-                Articles & Publications
-              </h1>
-              <p className="text-gray-600 lowercase mb-8 text-left">
-                i mostly write about fundraising on-chain analysis, and
-                actionable insights on startups.
-              </p>
+          <h1 className="text-xl mb-4 mt-8 text-left font-medium">
+            Articles & Publications
+          </h1>
+          <p className="text-gray-600 lowercase mb-8 text-left">
+            i mostly write about fundraising on-chain analysis, and actionable
+            insights on startups.
+          </p>
 
-              {/* Articles Section */}
-              <ul className="list-disc pl-6 space-y-2 text-left">
-                {articles.map((publication, index) => (
-                  <li key={index}>
-                    <a
-                      href={publication.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-gray-400 transition-colors duration-200"
-                    >
-                      {publication.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          {/* Articles Section */}
+          <ul className="list pl-6 space-y-2 text-left">
+            {articles.map((publication, index) => (
+              <li key={index}>
+                <a
+                  href={publication.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-gray-400 transition-colors duration-200"
+                >
+                  {publication.title}
+                </a>
+              </li>
+            ))}
+          </ul>
 
           <div className="mt-12 pt-8 border-t border-gray-200">
-            <div className="flex items-center space-x-3 mb-3">
-              <span className="text-blue-600">🔗</span>
+            <div className="flex space-x-4 mb-6">
               <a
                 href="https://dev.to/shabbirykk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className=" hover:text-gray-500 transition-colors duration-200"
+                className="text-sm border border-gray-300 px-4 py-2 rounded hover:bg-gray-50 transition-colors duration-200"
               >
                 DEV Community Profile
               </a>
-            </div>
-            <div className="flex items-center space-x-3 mb-6">
-              <span className="text-blue-600">📊</span>
               <a
                 href="https://dune.com/dannytrump"
                 target="_blank"
                 rel="noopener noreferrer"
-                className=" hover:text-gray-500 transition-colors duration-200"
+                className="text-sm border border-gray-300 px-4 py-2 rounded hover:bg-gray-50 transition-colors duration-200"
               >
                 Dune Analytics Profile
               </a>

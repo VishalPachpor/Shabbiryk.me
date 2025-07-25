@@ -3,7 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
-import { Play, Pause } from "lucide-react";
+import {
+  Play,
+  Pause,
+  Linkedin,
+  Twitter,
+  Calendar,
+  Link as LinkIcon,
+} from "lucide-react";
 
 const navLinks = [
   { name: "home", href: "/" },
@@ -155,11 +162,47 @@ const Sidebar = () => {
           ))}
         </div>
 
-        {/* Spacer to push music player to bottom */}
+        {/* Spacer to push social links and music player to bottom */}
         <div className="flex-1" />
 
+        {/* Social Links - Above music player */}
+        <div className="mb-3 flex space-x-4 justify-start">
+          <a
+            href="https://linkedin.com/in/shabbirkhan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black hover:text-gray-600 transition-colors duration-200"
+          >
+            <Linkedin className="w-5 h-5" />
+          </a>
+          <a
+            href="https://twitter.com/shabbirkhan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black hover:text-gray-600 transition-colors duration-200"
+          >
+            <Twitter className="w-5 h-5" />
+          </a>
+          <a
+            href="https://cal.com/shabbir-khan-dhkgcs/15min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black hover:text-gray-600 transition-colors duration-200"
+          >
+            <Calendar className="w-5 h-5" />
+          </a>
+          <a
+            href="https://linktr.ee/shabbiryk"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black hover:text-gray-600 transition-colors duration-200"
+          >
+            <LinkIcon className="w-5 h-5" />
+          </a>
+        </div>
+
         {/* Music Player at the bottom */}
-        <div className="mb-8 pt-8 flex items-center gap-3">
+        <div className="mb-8 pt-4 flex items-center gap-3">
           <button
             onClick={togglePlay}
             className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"

@@ -51,7 +51,7 @@ export default function InvestmentsPage() {
             we typically write first checks ranging 100k-250k.
           </p>
 
-          <ul className="list-disc pl-6 space-y-2 text-left">
+          <ul className="list pl-6 space-y-2 text-left">
             {companies.map((company, index) => (
               <li key={index} className="tracking-wide">
                 <a
