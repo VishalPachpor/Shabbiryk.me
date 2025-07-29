@@ -31,34 +31,32 @@ const companies = [
   { name: "bitscrunch", url: "https://bitscrunch.com" },
 ];
 
-export default function InvestmentsPage() {
+export default function PortfolioPage() {
   const { isMenuOpen } = useMobileMenu();
 
   return (
     <div className="min-h-screen bg-white pb-16">
       {/* Mobile Header */}
       <MobileHeader />
-      <div className="p-8">
+      <div className="p-4">
         <div className="max-w-7xl mx-auto w-full">
-          <h3 className="text-xl mb-4 mt-8 text-left font-medium tracking-wide">
-            Investments
-          </h3>
-          <p className="mb-2 mt-2 text-left font-medium tracking-wide">
+          <h1 className="text-xl mb-3 mt-8 text-left font-medium">Portfolio</h1>
+          <p className="text-gray-700 mb-1 text-left">
             i am grateful to founder friends who've allowed me to make small
             investments in their projects.
           </p>
-          <p className="text-gray-600 mb-8 text-left tracking-wide">
+          <p className="text-gray-700 mb-3 text-left">
             we typically write first checks ranging 100k-250k.
           </p>
 
-          <ul className="list pl-6 space-y-2 text-left">
+          <ul className="list-disc pl-5 space-y-1 text-left marker:text-gray-300">
             {companies.map((company, index) => (
-              <li key={index} className="tracking-wide">
+              <li key={index}>
                 <a
                   href={company.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-500 hover:text-gray-800 transition-colors duration-200 tracking-wide"
+                  className="text-gray-800 hover:text-gray-600 transition-colors duration-200"
                 >
                   {company.name}
                 </a>

@@ -1,11 +1,31 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import { useState, useEffect } from "react";
 import MobileHeader from "@/components/MobileHeader";
 import { useMobileMenu } from "../providers";
 
 export default function TalksAndPanelsPage() {
   const { isMenuOpen } = useMobileMenu();
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Slideshow images
+  const slides = [
+    { src: "/talk1.jpeg", alt: "Talk 1" },
+    { src: "/talk2.JPG", alt: "Talk 2" },
+    { src: "/talk3.JPG", alt: "Talk 3" },
+    { src: "/talk4.JPG", alt: "Talk 4" },
+  ];
+
+  // Auto-rotate slideshow
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 3000); // Change slide every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
 
   // LinkedIn posts for talks and panels
   const talksAndPanels = [
@@ -81,24 +101,24 @@ export default function TalksAndPanelsPage() {
     <div className="min-h-screen bg-white pb-16">
       {/* Mobile Header */}
       <MobileHeader />
-      <div className="p-8">
+      <div className="p-4">
         <div className="max-w-7xl mx-auto w-full">
-          <h1 className="text-xl mb-4 mt-8 text-left font-medium">
+          <h1 className="text-xl mb-3 mt-4 text-left font-medium">
             Talks and Panels
           </h1>
-          <p className="text-gray-600 mb-8 text-left">
+          <p className="text-gray-700 mb-4 text-left">
             speaking engagements, panel discussions, and thought leadership
             content on blockchain, DeFi, and Web3.
           </p>
 
-          <ul className="list pl-6 space-y-2 text-left">
+          <ul className="list-disc pl-5 space-y-1 text-left marker:text-gray-300">
             {talksAndPanels.map((talk, index) => (
               <li key={index}>
                 <a
                   href={talk.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-gray-400 transition-colors duration-200"
+                  className="text-gray-800 hover:text-gray-600 transition-colors duration-200"
                 >
                   {talk.title}
                 </a>
@@ -106,14 +126,44 @@ export default function TalksAndPanelsPage() {
             ))}
           </ul>
 
-          <div className="mt-12 pt-8 border-t border-gray-200">
-            {/* Talks Image */}
-            <div className="mt-8">
-              <img
-                src="/talks.JPG"
-                alt="Talks and panels speaking engagements"
-                className="w-full rounded-lg shadow-lg object-cover"
-              />
+          <div className="mt-8 pt-3 border-t border-gray-200">
+            {/* Slideshow */}
+            <div className="mt-4 relative">
+              <div className="relative w-full h-[400px] rounded-lg shadow-lg overflow-hidden">
+                {slides.map((slide, index) => (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-opacity duration-1000 ${
+                      index === currentSlide ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    <Image
+                      src={slide.src}
+                      alt={slide.alt}
+                      fill
+                      className={
+                        index === 3 ? "object-contain" : "object-cover"
+                      }
+                      priority={index === 0}
+                    />
+                  </div>
+                ))}
+
+                {/* Slide indicators */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                  {slides.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      className={`w-3 h-3 rounded-full transition-colors duration-400 ${
+                        index === currentSlide
+                          ? "bg-white"
+                          : "bg-white/50 hover:bg-white/75"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -54,24 +54,24 @@ export default function InvestmentThesisPage() {
     <div className="min-h-screen bg-white pb-16">
       {/* Mobile Header */}
       <MobileHeader />
-      <div className="p-8">
+      <div className="p-4">
         <div className="max-w-7xl mx-auto w-full">
-          <h1 className="text-xl mb-4 mt-8 text-left font-medium">
+          <h1 className="text-xl mb-3 mt-4 text-left font-medium">
             Investment Thesis & Memos
           </h1>
-          <p className="text-gray-600 mb-8 text-left">
+          <p className="text-gray-700 mb-3 text-left">
             detailed analysis and investment theses for various blockchain and
             web3 projects.
           </p>
 
-          <ul className="list pl-6 space-y-2 text-left">
+          <ul className="list-disc pl-5 space-y-1 text-left marker:text-gray-300">
             {investmentMemos.map((memo, index) => (
               <li key={index}>
                 <a
                   href={memo.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-gray-400 transition-colors duration-200"
+                  className="text-gray-800 hover:text-gray-600 transition-colors duration-200"
                 >
                   {memo.title}
                 </a>
@@ -79,12 +79,15 @@ export default function InvestmentThesisPage() {
             ))}
           </ul>
 
-          <div className="mt-12 pt-8 border-t border-gray-200">
-            <p className="text-gray-600 text-sm">
-              These investment memos represent detailed analysis and due
-              diligence conducted for various projects. Each document contains
-              proprietary research and insights.
-            </p>
+          <div className="mt-8 pt-4 border-t border-gray-200">
+            {/* SFImage */}
+            <div className="mt-4">
+              <img
+                src="/SFimage.avif"
+                alt="San Francisco landscape and cityscape"
+                className="w-full rounded-lg shadow-lg object-cover"
+              />
+            </div>
           </div>
         </div>
       </div>

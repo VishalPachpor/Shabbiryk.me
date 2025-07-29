@@ -13,7 +13,7 @@ This project uses Next.js 15 with the App Router:
 │   ├── not-found.tsx      # 404 page
 │   ├── globals.css        # Global styles
 │   ├── publications/      # Publications page
-│   ├── investments/       # Investments page
+│   ├── investments/       # Portfolio page
 │   ├── shelf/            # Shelf page
 │   ├── coffee/           # Coffee page
 │   └── contact/          # Contact page
@@ -86,7 +86,7 @@ npm run dev
 
 - **Home** - Main portfolio page with hero section
 - **Publications** - Research and writings
-- **Investments** - Investment portfolio
+- **Portfolio** - Investment portfolio
 - **Shelf** - Reading list and resources
 - **Coffee** - Meeting scheduling
 - **Contact** - Contact information

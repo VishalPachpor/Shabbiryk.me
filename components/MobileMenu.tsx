@@ -10,8 +10,8 @@ const navLinks = [
   { name: "home", href: "/" },
   { name: "publications", href: "/publications" },
   { name: "talks and panels", href: "/talks-and-panels" },
-  { name: "investments", href: "/investments" },
-  { name: "investment thesis", href: "/investment-thesis" },
+  { name: "portfolio", href: "/investments" },
+  { name: "investment memo", href: "/investment-memo" },
   {
     name: "curriculum vitae",
     href: "https://docs.google.com/document/d/1VIBwHr-z3-Eb1Ghfqf6DASF0A6bAVyCjUd83-hjWcy4/edit?tab=t.0",
@@ -22,7 +22,7 @@ const navLinks = [
 const bottomLinks = [
   { name: "tweet @ me", href: "https://x.com/shabbiryk", external: true },
   {
-    name: "connect on linkedin",
+    name: "connect on Linkedin",
     href: "https://www.linkedin.com/in/shabbiryk/",
     external: true,
   },
@@ -47,8 +47,14 @@ const MobileMenu = () => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    const updateTime = () => setCurrentTime(audio.currentTime);
-    const updateDuration = () => setDuration(audio.duration);
+    const updateTime = () => {
+      setCurrentTime(audio.currentTime);
+      console.log("Mobile time update:", audio.currentTime);
+    };
+    const updateDuration = () => {
+      setDuration(audio.duration);
+      console.log("Mobile duration update:", audio.duration);
+    };
 
     audio.addEventListener("timeupdate", updateTime);
     audio.addEventListener("loadedmetadata", updateDuration);
@@ -80,6 +86,11 @@ const MobileMenu = () => {
     if (!audio) return;
 
     const newTime = (parseFloat(e.target.value) / 100) * duration;
+    console.log("Mobile progress change:", {
+      value: e.target.value,
+      newTime,
+      duration,
+    });
     audio.currentTime = newTime;
     setCurrentTime(newTime);
   };
@@ -160,15 +171,9 @@ const MobileMenu = () => {
                 <input
                   type="range"
                   min="0"
-                  max={duration}
-                  value={currentTime}
-                  onChange={(e) => {
-                    const audio = audioRef.current;
-                    if (!audio) return;
-                    const newTime = parseFloat(e.target.value);
-                    audio.currentTime = newTime;
-                    setCurrentTime(newTime);
-                  }}
+                  max="100"
+                  value={duration ? (currentTime / duration) * 100 : 0}
+                  onChange={handleProgressChange}
                   className="w-full h-2 bg-white/30 rounded-lg appearance-none cursor-pointer slider"
                   style={{
                     background: `linear-gradient(to right, #fff 0%, #fff ${

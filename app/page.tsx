@@ -25,7 +25,7 @@ export default function HomePage() {
             quality={100}
           />
           {/* Overlapping Card - half on image, half below */}
-          <div className="absolute left-[10%] bottom-[22px] translate-y-1/2 w-[110%] max-w-[98vw] max-h-[480px] bg-black text-white shadow-xl flex flex-col justify-between p-6 pt-8 z-20 overflow-y-auto break-words whitespace-normal">
+            <div className="absolute left-[10%] bottom-[22px] translate-y-1/2 w-[110%] max-w-[98vw] max-h-[400px] bg-black text-white shadow-xl flex flex-col justify-between p-6 pt-4 pb-4 z-20 overflow-y-auto break-words whitespace-normal">
             <div>
               <div className="text-white text-lg font-bold mb-1 leading-relaxed">
                 Shabbir Khan
@@ -69,8 +69,8 @@ export default function HomePage() {
           />
         </div>
         {/* Card - positioned to align "Shabbir Khan" with "Home" for perfect F pattern */}
-        <div className="absolute top-[120px] left-0 z-20 w-[480px] h-[420px] flex flex-col items-center justify-center">
-          <div className="bg-black text-white w-full h-full flex flex-col justify-center p-6 pt-8">
+        <div className="absolute top-[120px] left-0 z-20 w-[480px] h-[340px] flex flex-col items-center justify-center">
+          <div className="bg-black text-white w-full h-full flex flex-col justify-center p-6 pt-4 pb-4">
             <div className="text-white text-lg font-bold mb-1 leading-relaxed">
               Shabbir Khan
             </div>
