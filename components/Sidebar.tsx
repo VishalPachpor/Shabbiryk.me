@@ -13,13 +13,13 @@ import {
 } from "lucide-react";
 
 const navLinks = [
-  { name: "home", href: "/" },
-  { name: "publications", href: "/publications" },
-  { name: "talks and panels", href: "/talks-and-panels" },
-  { name: "portfolio", href: "/investments" },
-  { name: "investment memos", href: "/investment-memo" },
+  { name: "Home", href: "/" },
+  { name: "Publications", href: "/publications" },
+  { name: "Talks and panels", href: "/talks-and-panels" },
+  { name: "Portfolio", href: "/investments" },
+  { name: "Investment memos", href: "/investment-memo" },
   {
-    name: "curriculum vitae",
+    name: "Curriculum vitae",
     href: "https://docs.google.com/document/d/1VIBwHr-z3-Eb1Ghfqf6DASF0A6bAVyCjUd83-hjWcy4/edit?tab=t.0",
     external: true,
   },
@@ -124,7 +124,7 @@ const Sidebar = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`text-base lowercase transition-colors duration-200 cursor-pointer text-left ${
+                  className={`text-base  transition-colors duration-200 cursor-pointer text-left ${
                     isActive
                       ? "text-gray-400 font-normal"
                       : "text-black font-bold"
@@ -138,7 +138,7 @@ const Sidebar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-base lowercase transition-colors duration-200 cursor-pointer text-left ${
+                className={`text-base transition-colors duration-200 cursor-pointer text-left ${
                   isActive
                     ? "text-gray-400 font-normal"
                     : "text-black font-bold"
@@ -157,11 +157,11 @@ const Sidebar = () => {
         <div className="mb-2 flex flex-col gap-2 text-start">
           <a
             href="https://x.com/shabbiryk"
-            className="text-sm lowercase text-black font-normal hover:text-gray-600 transition-colors duration-200"
+            className="text-sm  text-black font-normal hover:text-gray-600 transition-colors duration-200"
             target="_blank"
             rel="noopener noreferrer"
           >
-            tweet @ me
+            Tweet @ me
           </a>
           <a
             href="https://www.linkedin.com/in/shabbiryk/"
@@ -169,7 +169,7 @@ const Sidebar = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            connect on LinkedIn
+            Connect on LinkedIn
           </a>
         </div>
 

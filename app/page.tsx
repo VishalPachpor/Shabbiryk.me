@@ -13,7 +13,7 @@ export default function HomePage() {
       {/* Mobile Header */}
       <MobileHeader />
       {/* Mobile Layout: Hero+Card Section */}
-      <div className="md:hidden w-full min-h-screen pt-2 px-4 pb-2 relative overflow-auto">
+      <div className="md:hidden w-full min-h-screen pt-2 px-4 pb-2 relative overflow-y-auto overflow-x-hidden">
         {/* Hero Image with overlapping card */}
         <div className="relative w-[90%] mx-auto h-[600px] overflow-visible z-10">
           <Image
@@ -25,24 +25,25 @@ export default function HomePage() {
             quality={100}
           />
           {/* Overlapping Card - half on image, half below */}
-            <div className="absolute left-[10%] bottom-[22px] translate-y-1/2 w-[110%] max-w-[98vw] max-h-[400px] bg-black text-white shadow-xl flex flex-col justify-between p-6 pt-4 pb-4 z-20 overflow-y-auto break-words whitespace-normal">
+          <div className="absolute left-6 right-2 bottom-6 translate-y-1/2 max-h-[400px] bg-black text-white shadow-xl flex flex-col justify-between p-6 pt-4 pb-4 z-20 overflow-y-auto break-words whitespace-normal rounded-md">
             <div>
               <div className="text-white text-lg font-bold mb-1 leading-relaxed">
                 Shabbir Khan
               </div>
               <div className="text-white text-sm mb-2 leading-relaxed">
-                investment partner at EAK Ventures (fund based in dubai) —
-                mainly deploying in AI, longevity and RWAs
-              </div>
-              <div className="text-white text-sm mb-2 leading-relaxed">
-                an angel and a finance nerd who loves to hold assets in a
+                An investor, finance nerd who loves to hold assets in a
                 decentralized way.
               </div>
-              <div className="text-gray-300 text-sm italic mb-2 leading-relaxed">
-                Academics: system programming, algorithms, distributed systems,
-                hyperledger fabric.
+              <div className="text-white text-sm mb-2 leading-relaxed">
+                An angel and Investment Partner at EAK Ventures,
               </div>
-              <div className="space-y-3 mb-2"></div>
+              <div className="text-white text-sm mb-2 leading-relaxed">
+                a crypto fund based in Dubai.
+              </div>
+              <div className="text-white text-sm mb-2 leading-relaxed">
+                Mainly deploying in AI, longevity and RWAs.
+              </div>
+              <div className="space-y-2 mb-2"></div>
               <div className="italic text-gray-300 text-xs mb-2">
                 prev. JP Morgan's ONYX, Chainlink, Coinswitch Ventures
               </div>
@@ -75,16 +76,17 @@ export default function HomePage() {
               Shabbir Khan
             </div>
             <div className="text-white text-sm mb-2 leading-relaxed">
-              investment partner at EAK Ventures (fund based in dubai) — mainly
-              deploying in AI, longevity and RWAs
-            </div>
-            <div className="text-white text-sm mb-2 leading-relaxed">
-              an angel and a finance nerd who loves to hold assets in a
+              An investor, finance nerd who loves to hold assets in a
               decentralized way.
             </div>
-            <div className="text-gray-300 text-sm italic mb-2 leading-relaxed">
-              Academics: system programming, algorithms, distributed systems,
-              hyperledger fabric.
+            <div className="text-white text-sm mb-2 leading-relaxed">
+              An angel and Investment Partner at EAK Ventures,
+            </div>
+            <div className="text-white text-sm mb-2 leading-relaxed">
+              a crypto fund based in Dubai.
+            </div>
+            <div className="text-white text-sm mb-2 leading-relaxed">
+              Mainly deploying in AI, longevity and RWAs.
             </div>
             <div className="space-y-3 mb-2"></div>
             <div className="italic text-gray-300 text-xs mb-2">

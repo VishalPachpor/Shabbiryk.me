@@ -57,8 +57,8 @@ export default function PublicationsPage() {
           <h1 className="text-xl mb-3 mt-8 text-left font-medium">
             Articles & Publications
           </h1>
-          <p className="text-gray-700 mb-4 text-left lowercase">
-            i mostly write about fundraising on-chain analysis, and actionable
+          <p className="text-gray-700 mb-4 text-left ">
+            I mostly write about fundraising on-chain analysis, and actionable
             insights on startups.
           </p>
 

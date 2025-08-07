@@ -126,6 +126,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Keep overlay links consistently white; avoid hover/tap color shift on mobile */
+.mobile-menu-custom a,
+.mobile-menu-custom a:visited,
+.mobile-menu-custom a:active {
+  color: #ffffff !important;
+}
+.mobile-menu-custom a:hover {
+  color: #ffffff !important;
+  opacity: 1;
+}
+
 /* Enhanced smooth scrolling for mobile */
 @layer utilities {
   .scroll-smooth {
