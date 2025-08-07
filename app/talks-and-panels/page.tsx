@@ -107,7 +107,7 @@ export default function TalksAndPanelsPage() {
             Talks and Panels
           </h1>
           <p className="text-gray-700 mb-4 text-left">
-            speaking engagements, panel discussions, and thought leadership
+            Speaking engagements, panel discussions, and thought leadership
             content on blockchain, DeFi, and Web3.
           </p>
 
