@@ -54,6 +54,15 @@
     @apply border-border;
   }
   
+  /* Disable default scroll behavior for Lenis */
+  html {
+    scroll-behavior: auto;
+  }
+  
+  body {
+    scroll-behavior: auto;
+  }
+  
   /* Ensure consistent font loading */
   @font-face {
     font-family: 'Proxima Nova';
@@ -140,17 +149,31 @@
 /* Enhanced smooth scrolling for mobile */
 @layer utilities {
   .scroll-smooth {
-    scroll-behavior: smooth;
+    scroll-behavior: auto; /* Disable default smooth scroll for Lenis */
     -webkit-overflow-scrolling: touch;
   }
   
   /* Mobile-specific smooth scrolling improvements */
   @media (max-width: 768px) {
     .scroll-smooth {
-      scroll-behavior: smooth;
+      scroll-behavior: auto; /* Disable default smooth scroll for Lenis */
       -webkit-overflow-scrolling: touch;
       overscroll-behavior: contain;
     }
+  }
+}
+
+/* Lenis smooth scrolling enhancements */
+@layer base {
+  /* Ensure smooth scrolling works with all elements */
+  * {
+    scroll-behavior: auto;
+  }
+  
+  /* Optimize for Lenis performance */
+  html, body {
+    scroll-behavior: auto;
+    overflow-x: hidden;
   }
 }
 

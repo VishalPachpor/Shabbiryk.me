@@ -15,7 +15,7 @@ export default function TalksAndPanelsPage() {
     { src: "/talk1.jpeg", alt: "Talk 1" },
     { src: "/talk2.JPG", alt: "Talk 2" },
     { src: "/talk3.JPG", alt: "Talk 3" },
-    { src: "/talk4.JPG", alt: "Talk 4" },
+    { src: "/talk4.jpg", alt: "Talk 4" },
   ];
 
   // Auto-rotate slideshow
@@ -118,7 +118,7 @@ export default function TalksAndPanelsPage() {
                   href={talk.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-800 hover:text-gray-600 transition-colors duration-200"
+                  className="text-gray-800 hover:text-gray-600 hover:underline transition-colors duration-200"
                 >
                   {talk.title}
                 </a>

@@ -56,7 +56,7 @@ export default function PortfolioPage() {
                   href={company.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-800 hover:text-gray-600 transition-colors duration-200"
+                  className="text-gray-800 hover:text-gray-600 hover:underline transition-colors duration-200"
                 >
                   {company.name}
                 </a>

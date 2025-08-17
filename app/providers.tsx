@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactNode } from "react";
 import { ThemeProvider } from "next-themes";
 import { createContext, useContext, useState } from "react";
+import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,9 @@ export const MobileMenuProvider = ({ children }: { children: ReactNode }) => {
 };
 
 export default function Providers({ children }: { children: React.ReactNode }) {
+  // Initialize smooth scrolling
+  useSmoothScroll();
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
