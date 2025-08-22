@@ -23,11 +23,12 @@ export default function HomePage() {
             className="object-cover object-center"
             priority
             quality={100}
+            sizes="90vw"
           />
           {/* Overlapping Card - half on image, half below */}
           <div className="absolute left-6 right-2 bottom-6 translate-y-1/2 max-h-[400px] bg-black text-white shadow-xl flex flex-col justify-between p-6 pt-4 pb-4 z-20 overflow-y-auto break-words whitespace-normal rounded-md">
             <div>
-              <div className="text-white text-lg font-bold mb-1 leading-relaxed">
+              <div className="text-white text-lg font-medium mb-1 leading-relaxed">
                 Shabbir Khan
               </div>
               <div className="text-white text-sm mb-2 leading-relaxed">
@@ -67,12 +68,13 @@ export default function HomePage() {
             className="object-cover object-center "
             priority
             quality={100}
+            sizes="(min-width: 768px) 66vw, 90vw"
           />
         </div>
         {/* Card - positioned to align "Shabbir Khan" with "Home" for perfect F pattern */}
         <div className="absolute top-[120px] left-0 z-20 w-[480px] h-[340px] flex flex-col items-center justify-center">
           <div className="bg-black text-white w-full h-full flex flex-col justify-center p-6 pt-4 pb-4">
-            <div className="text-white text-lg font-bold mb-1 leading-relaxed">
+            <div className="text-white text-lg font-medium mb-1 leading-relaxed">
               Shabbir Khan
             </div>
             <div className="text-white text-sm mb-2 leading-relaxed">

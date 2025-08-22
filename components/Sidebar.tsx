@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSharedAudio } from "@/app/providers";
 import { useState, useRef, useEffect } from "react";
 import {
   Play,
@@ -27,15 +28,74 @@ const navLinks = [
 
 const Sidebar = () => {
   const pathname = usePathname();
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
+  const {
+    isPlaying,
+    setIsPlaying,
+    currentTime,
+    setCurrentTime,
+    duration,
+    setDuration,
+    volume,
+    setVolume,
+  } = useSharedAudio();
   const [isClient, setIsClient] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  // Autoplay functionality with volume control
+  useEffect(() => {
+    if (!isClient) return;
+
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    // Set volume to 60% (0.6)
+    audio.volume = 0.6;
+    setVolume(60);
+
+    // Attempt autoplay when audio is ready
+    const attemptAutoplay = async () => {
+      try {
+        // Try to play immediately
+        await audio.play();
+        setIsPlaying(true);
+        console.log("Autoplay successful!");
+      } catch (error: any) {
+        console.log("Autoplay failed:", error?.name || "Unknown error");
+        // Autoplay failed - this is expected in modern browsers
+        // We'll use the fallback interaction listeners below
+      }
+    };
+
+    // Try autoplay when audio metadata is loaded
+    audio.addEventListener("loadedmetadata", attemptAutoplay);
+
+    // Also try when audio can start playing
+    audio.addEventListener("canplay", attemptAutoplay);
+
+    // Mobile-specific: Try to resume audio context on user interaction
+    const resumeAudioContext = () => {
+      if (audio.readyState >= 2) {
+        attemptAutoplay();
+      }
+    };
+
+    // Listen for user interactions that might enable audio
+    document.addEventListener("touchstart", resumeAudioContext, { once: true });
+    document.addEventListener("click", resumeAudioContext, { once: true });
+    document.addEventListener("keydown", resumeAudioContext, { once: true });
+
+    return () => {
+      audio.removeEventListener("loadedmetadata", attemptAutoplay);
+      audio.removeEventListener("canplay", attemptAutoplay);
+      document.removeEventListener("touchstart", resumeAudioContext);
+      document.removeEventListener("click", resumeAudioContext);
+      document.removeEventListener("keydown", resumeAudioContext);
+    };
+  }, [isClient]);
 
   useEffect(() => {
     if (!isClient) return;
@@ -52,12 +112,17 @@ const Sidebar = () => {
       console.log("Duration update:", audio.duration);
     };
 
+    // Add multiple event listeners for better compatibility
     audio.addEventListener("timeupdate", updateTime);
     audio.addEventListener("loadedmetadata", updateDuration);
+    audio.addEventListener("canplay", updateDuration);
+    audio.addEventListener("loadeddata", updateDuration);
 
     return () => {
       audio.removeEventListener("timeupdate", updateTime);
       audio.removeEventListener("loadedmetadata", updateDuration);
+      audio.removeEventListener("canplay", updateDuration);
+      audio.removeEventListener("loadeddata", updateDuration);
     };
   }, [isClient]);
 
@@ -69,11 +134,25 @@ const Sidebar = () => {
       audio.pause();
       setIsPlaying(false);
     } else {
-      audio.play().catch((error) => {
-        console.log("Audio file not found or cannot be played");
-        setIsPlaying(false);
-      });
-      setIsPlaying(true);
+      // Mobile-friendly play with better error handling
+      const playPromise = audio.play();
+
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true);
+            console.log("Audio started successfully");
+          })
+          .catch((error) => {
+            console.log("Audio play failed:", error);
+            setIsPlaying(false);
+
+            // On mobile, show specific error handling
+            if (error.name === "NotAllowedError") {
+              console.log("User interaction required on mobile");
+            }
+          });
+      }
     }
   };
 
@@ -87,8 +166,12 @@ const Sidebar = () => {
       newTime,
       duration,
     });
-    audio.currentTime = newTime;
-    setCurrentTime(newTime);
+
+    // Ensure audio is ready before seeking
+    if (audio.readyState >= 2 && duration > 0) {
+      audio.currentTime = newTime;
+      setCurrentTime(newTime);
+    }
   };
 
   const formatTime = (time: number) => {
@@ -96,6 +179,24 @@ const Sidebar = () => {
     const seconds = Math.floor(time % 60);
     return `${minutes}:${seconds.toString().padStart(2, "0")}`;
   };
+
+  // Ensure progress bar updates reliably across browsers while playing
+  useEffect(() => {
+    if (!isClient) return;
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (isPlaying) {
+      // Use a more frequent interval for smoother progress bar updates
+      const intervalId = setInterval(() => {
+        if (audio.readyState >= 2) {
+          // HAVE_CURRENT_DATA
+          setCurrentTime(audio.currentTime || 0);
+        }
+      }, 100); // Update more frequently for smoother progress
+      return () => clearInterval(intervalId);
+    }
+  }, [isPlaying, isClient]);
 
   return (
     <div className="hidden md:flex w-60 h-screen bg-white flex-col fixed left-0 top-0 z-10 border-r border-gray-100 py-6 px-6">
@@ -127,7 +228,7 @@ const Sidebar = () => {
                   className={`text-base  transition-colors duration-200 cursor-pointer text-left ${
                     isActive
                       ? "text-gray-400 font-normal"
-                      : "text-black font-bold"
+                      : "text-black font-normal"
                   }`}
                 >
                   {link.name}
@@ -141,7 +242,7 @@ const Sidebar = () => {
                 className={`text-base transition-colors duration-200 cursor-pointer text-left ${
                   isActive
                     ? "text-gray-400 font-normal"
-                    : "text-black font-bold"
+                    : "text-black font-normal"
                 }`}
               >
                 {link.name}
@@ -215,7 +316,7 @@ const Sidebar = () => {
             onClick={togglePlay}
             className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"
           >
-            {isPlaying ? <Pause size={14} /> : <Play size={14} />}
+            {isPlaying ? <Pause size={14} /> : <Play size={16} />}
           </button>
           {/* Progress Bar - slider only, no timing */}
           <div className="flex-1 flex items-center">
@@ -223,15 +324,43 @@ const Sidebar = () => {
               type="range"
               min="0"
               max="100"
-              value={duration ? (currentTime / duration) * 100 : 0}
+              value={
+                duration > 0 ? Math.min((currentTime / duration) * 100, 100) : 0
+              }
               onChange={handleProgressChange}
-              className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+              onInput={handleProgressChange} // Add onInput for better touch handling
+              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider touch-manipulation"
               style={{
                 background: `linear-gradient(to right, #000 0%, #000 ${
-                  duration ? (currentTime / duration) * 100 : 0
+                  duration > 0
+                    ? Math.min((currentTime / duration) * 100, 100)
+                    : 0
                 }%, #e5e7eb ${
-                  duration ? (currentTime / duration) * 100 : 0
+                  duration > 0
+                    ? Math.min((currentTime / duration) * 100, 100)
+                    : 0
                 }%, #e5e7eb 100%)`,
+              }}
+            />
+          </div>
+          {/* Volume Control */}
+          <div className="w-12 flex items-center">
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={volume}
+              onChange={(e) => {
+                const newVolume = parseInt(e.target.value);
+                setVolume(newVolume);
+                const audio = audioRef.current;
+                if (audio) {
+                  audio.volume = newVolume / 100;
+                }
+              }}
+              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider touch-manipulation"
+              style={{
+                background: `linear-gradient(to right, #000 0%, #000 ${volume}%, #e5e7eb ${volume}%, #e5e7eb 100%)`,
               }}
             />
           </div>
@@ -240,10 +369,20 @@ const Sidebar = () => {
         {/* Hidden Audio Element */}
         <audio
           ref={audioRef}
-          src="/music.mp3"
+          src="/ShabbirBhaijaan.mp3"
+          preload="metadata"
+          autoPlay
+          playsInline
           onEnded={() => setIsPlaying(false)}
           style={{ display: "none" }}
         />
+
+        {/* Piano Cover Signature */}
+        <div className="text-center ">
+          <span className="text-lg text-gray-600 font-cursive italic">
+            my piano cover
+          </span>
+        </div>
       </div>
     </div>
   );

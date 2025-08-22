@@ -10,6 +10,10 @@ export default function PublicationsPage() {
   // All publications in a simple array
   const publications = [
     {
+      title: "The Intelligent Evolution of DeFi: From Automation to AgentFi",
+      url: "https://medium.com/@shabbiryk/the-intelligent-evolution-of-defi-from-automation-to-agentfi-3f6f2576632a",
+    },
+    {
       title:
         "Overview of CyberConnect on-chain protocol and explore the potential use cases",
       url: "https://dev.to/shabbirykk/overview-of-cyberconnect-on-chain-protocol-and-explore-the-potential-use-cases-4c04",

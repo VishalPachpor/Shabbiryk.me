@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMobileMenu } from "@/app/providers";
+import { useMobileMenu, useSharedAudio } from "@/app/providers";
 import { useState, useRef, useEffect } from "react";
 import { Play, Pause, Twitter, Linkedin } from "lucide-react";
 
@@ -30,16 +30,73 @@ const bottomLinks = [
 
 const MobileMenu = () => {
   const { isMenuOpen, setIsMenuOpen } = useMobileMenu();
+  const {
+    isPlaying,
+    setIsPlaying,
+    currentTime,
+    setCurrentTime,
+    duration,
+    setDuration,
+    volume,
+    setVolume,
+  } = useSharedAudio();
   const pathname = usePathname();
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
   const [isClient, setIsClient] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  // Autoplay functionality with volume control (audio is always mounted)
+  useEffect(() => {
+    if (!isClient) return;
+
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    // Set volume to 60% (0.6)
+    audio.volume = 0.6;
+    setVolume(60);
+
+    const attemptAutoplay = async () => {
+      try {
+        // Try to play immediately
+        await audio.play();
+        setIsPlaying(true);
+        console.log("Autoplay successful!");
+      } catch (error: any) {
+        console.log("Autoplay failed:", error?.name || "Unknown error");
+        // Autoplay failed - this is expected in modern browsers
+        // We'll use the fallback interaction listeners below
+      }
+    };
+
+    // Try autoplay when audio is ready
+    audio.addEventListener("loadedmetadata", attemptAutoplay);
+    audio.addEventListener("canplay", attemptAutoplay);
+
+    // Fallback: start on first user interaction (touch/click anywhere)
+    const resumeAudioContext = () => {
+      if (audio.readyState >= 2) {
+        console.log("User interaction detected, starting audio...");
+        attemptAutoplay();
+      }
+    };
+
+    // Listen for any user interaction to start audio
+    document.addEventListener("touchstart", resumeAudioContext, { once: true });
+    document.addEventListener("click", resumeAudioContext, { once: true });
+    document.addEventListener("keydown", resumeAudioContext, { once: true });
+
+    return () => {
+      audio.removeEventListener("loadedmetadata", attemptAutoplay);
+      audio.removeEventListener("canplay", attemptAutoplay);
+      document.removeEventListener("touchstart", resumeAudioContext);
+      document.removeEventListener("click", resumeAudioContext);
+      document.removeEventListener("keydown", resumeAudioContext);
+    };
+  }, [isClient]);
 
   useEffect(() => {
     if (!isClient) return;
@@ -56,12 +113,17 @@ const MobileMenu = () => {
       console.log("Mobile duration update:", audio.duration);
     };
 
+    // Add multiple event listeners for better mobile compatibility
     audio.addEventListener("timeupdate", updateTime);
     audio.addEventListener("loadedmetadata", updateDuration);
+    audio.addEventListener("canplay", updateDuration);
+    audio.addEventListener("loadeddata", updateDuration);
 
     return () => {
       audio.removeEventListener("timeupdate", updateTime);
       audio.removeEventListener("loadedmetadata", updateDuration);
+      audio.removeEventListener("canplay", updateDuration);
+      audio.removeEventListener("loadeddata", updateDuration);
     };
   }, [isClient]);
 
@@ -73,11 +135,25 @@ const MobileMenu = () => {
       audio.pause();
       setIsPlaying(false);
     } else {
-      audio.play().catch((error) => {
-        console.log("Audio file not found or cannot be played");
-        setIsPlaying(false);
-      });
-      setIsPlaying(true);
+      // Mobile-friendly play with better error handling
+      const playPromise = audio.play();
+
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true);
+            console.log("Audio started successfully");
+          })
+          .catch((error) => {
+            console.log("Audio play failed:", error);
+            setIsPlaying(false);
+
+            // On mobile, show specific error handling
+            if (error.name === "NotAllowedError") {
+              console.log("User interaction required on mobile");
+            }
+          });
+      }
     }
   };
 
@@ -88,9 +164,13 @@ const MobileMenu = () => {
     if (!audio) return;
 
     if (isPlaying) {
+      // Use a more frequent interval for smoother progress bar updates on mobile
       const intervalId = setInterval(() => {
-        setCurrentTime(audio.currentTime || 0);
-      }, 500);
+        if (audio.readyState >= 2) {
+          // HAVE_CURRENT_DATA
+          setCurrentTime(audio.currentTime || 0);
+        }
+      }, 100); // Update more frequently for smoother progress
       return () => clearInterval(intervalId);
     }
   }, [isPlaying, isClient]);
@@ -105,8 +185,12 @@ const MobileMenu = () => {
       newTime,
       duration,
     });
-    audio.currentTime = newTime;
-    setCurrentTime(newTime);
+
+    // Ensure audio is ready before seeking
+    if (audio.readyState >= 2 && duration > 0) {
+      audio.currentTime = newTime;
+      setCurrentTime(newTime);
+    }
   };
 
   const formatTime = (seconds: number) => {
@@ -119,9 +203,13 @@ const MobileMenu = () => {
     <div className="md:hidden">
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-40 flex items-center justify-center bg-gray-400/90 transition-all duration-300 animate-fade-in mobile-menu-custom">
+        <div
+          className="fixed inset-0 z-40 flex items-center justify-center transition-all duration-300 animate-fade-in mobile-menu-custom"
+          style={{ backgroundColor: "#a3a3a3" }}
+        >
           <div
-            className="absolute inset-0 bg-gray-400/90"
+            className="absolute inset-0"
+            style={{ backgroundColor: "#a3a3a3" }}
             onClick={() => setIsMenuOpen(false)}
           />
           <div className="relative w-full h-full flex flex-col items-center justify-between">
@@ -215,30 +303,80 @@ const MobileMenu = () => {
 
               {/* Music Player */}
               <div className="flex items-center gap-3 px-4">
-                <button
-                  onClick={togglePlay}
-                  className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
-                >
-                  {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-                </button>
+                <div className="flex flex-col items-center flex-none w-10">
+                  <button
+                    onClick={togglePlay}
+                    className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center transition-colors"
+                    style={{ backgroundColor: "#fff" }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.backgroundColor = "#a3a3a3")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.backgroundColor = "#fff")
+                    }
+                  >
+                    {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+                  </button>
+                  {/* Mobile audio hint */}
+                  {!isPlaying && (
+                    <span className="sr-only">Tap to enable audio</span>
+                  )}
+                </div>
                 {/* Progress Bar - slider only, no timing */}
                 <div className="flex-1 flex items-center">
                   <input
                     type="range"
                     min="0"
                     max="100"
-                    value={duration ? (currentTime / duration) * 100 : 0}
+                    value={
+                      duration > 0
+                        ? Math.min((currentTime / duration) * 100, 100)
+                        : 0
+                    }
                     onChange={handleProgressChange}
-                    className="w-full h-2 bg-white/30 rounded-lg appearance-none cursor-pointer slider"
+                    onInput={handleProgressChange} // Add onInput for better mobile touch handling
+                    className="w-full h-3 bg-white/30 rounded-lg appearance-none cursor-pointer slider touch-manipulation"
                     style={{
                       background: `linear-gradient(to right, #fff 0%, #fff ${
-                        duration ? (currentTime / duration) * 100 : 0
+                        duration > 0
+                          ? Math.min((currentTime / duration) * 100, 100)
+                          : 0
                       }%, rgba(255,255,255,0.3) ${
-                        duration ? (currentTime / duration) * 100 : 0
+                        duration > 0
+                          ? Math.min((currentTime / duration) * 100, 100)
+                          : 0
                       }%, rgba(255,255,255,0.3) 100%)`,
                     }}
                   />
                 </div>
+                {/* Volume Control */}
+                <div className="w-16 flex items-center">
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value={volume}
+                    onChange={(e) => {
+                      const newVolume = parseInt(e.target.value);
+                      setVolume(newVolume);
+                      const audio = audioRef.current;
+                      if (audio) {
+                        audio.volume = newVolume / 100;
+                      }
+                    }}
+                    className="w-full h-3 bg-white/30 rounded-lg appearance-none cursor-pointer slider touch-manipulation"
+                    style={{
+                      background: `linear-gradient(to right, #fff 0%, #fff ${volume}%, rgba(255,255,255,0.3) ${volume}%, rgba(255,255,255,0.3) 100%)`,
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Piano Cover Signature - Below Music Player */}
+              <div className="text-center mt-4 px-4">
+                <span className="text-2xl text-white font-cursive italic">
+                  my piano cover
+                </span>
               </div>
             </div>
           </div>
@@ -246,8 +384,10 @@ const MobileMenu = () => {
           {/* Hidden Audio Element */}
           <audio
             ref={audioRef}
-            src="/music.mp3"
+            src="/ShabbirBhaijaan.mp3"
             preload="metadata"
+            autoPlay
+            playsInline
             onEnded={() => setIsPlaying(false)}
             style={{ display: "none" }}
           />

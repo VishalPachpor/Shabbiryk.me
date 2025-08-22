@@ -29,6 +29,30 @@ export const useMobileMenu = () => {
   return context;
 };
 
+// Create context for shared audio state
+interface SharedAudioContextType {
+  isPlaying: boolean;
+  setIsPlaying: (playing: boolean) => void;
+  currentTime: number;
+  setCurrentTime: (time: number) => void;
+  duration: number;
+  setDuration: (dur: number) => void;
+  volume: number;
+  setVolume: (vol: number) => void;
+}
+
+const SharedAudioContext = createContext<SharedAudioContextType | undefined>(
+  undefined
+);
+
+export const useSharedAudio = () => {
+  const context = useContext(SharedAudioContext);
+  if (context === undefined) {
+    throw new Error("useSharedAudio must be used within a SharedAudioProvider");
+  }
+  return context;
+};
+
 export const MobileMenuProvider = ({ children }: { children: ReactNode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -36,6 +60,30 @@ export const MobileMenuProvider = ({ children }: { children: ReactNode }) => {
     <MobileMenuContext.Provider value={{ isMenuOpen, setIsMenuOpen }}>
       {children}
     </MobileMenuContext.Provider>
+  );
+};
+
+export const SharedAudioProvider = ({ children }: { children: ReactNode }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [volume, setVolume] = useState(60);
+
+  return (
+    <SharedAudioContext.Provider
+      value={{
+        isPlaying,
+        setIsPlaying,
+        currentTime,
+        setCurrentTime,
+        duration,
+        setDuration,
+        volume,
+        setVolume,
+      }}
+    >
+      {children}
+    </SharedAudioContext.Provider>
   );
 };
 
@@ -53,9 +101,11 @@ export default function Providers({ children }: { children: React.ReactNode }) {
           disableTransitionOnChange
         >
           <MobileMenuProvider>
-            <Toaster />
-            <Sonner />
-            {children}
+            <SharedAudioProvider>
+              <Toaster />
+              <Sonner />
+              {children}
+            </SharedAudioProvider>
           </MobileMenuProvider>
         </ThemeProvider>
       </TooltipProvider>
