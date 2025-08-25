@@ -311,7 +311,7 @@ const Sidebar = () => {
         </div>
 
         {/* Music Player and Signature Combined */}
-        <div className="mb-6 pt-2 flex flex-col gap-0">
+        <div className="mb-6 flex flex-col">
           {/* Music Player */}
           <div className="flex items-center gap-3">
             <button
@@ -370,8 +370,8 @@ const Sidebar = () => {
             </div>
           </div>
 
-          {/* Piano Cover Signature - Below Music Player with minimal spacing */}
-          <div className="text-center -mt-2">
+          {/* Piano Cover Signature - Right below Music Player with minimal gap */}
+          <div className="text-center mt-0.5">
             <span className="text-lg text-gray-600 font-cursive italic">
               my piano cover
             </span>
