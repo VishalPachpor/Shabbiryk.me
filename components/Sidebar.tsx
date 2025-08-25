@@ -310,59 +310,71 @@ const Sidebar = () => {
           </a>
         </div>
 
-        {/* Music Player at the bottom */}
-        <div className="mb-6 pt-2 flex items-center gap-3">
-          <button
-            onClick={togglePlay}
-            className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"
-          >
-            {isPlaying ? <Pause size={14} /> : <Play size={16} />}
-          </button>
-          {/* Progress Bar - slider only, no timing */}
-          <div className="flex-1 flex items-center">
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value={
-                duration > 0 ? Math.min((currentTime / duration) * 100, 100) : 0
-              }
-              onChange={handleProgressChange}
-              onInput={handleProgressChange} // Add onInput for better touch handling
-              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider touch-manipulation"
-              style={{
-                background: `linear-gradient(to right, #000 0%, #000 ${
+        {/* Music Player and Signature Combined */}
+        <div className="mb-6 pt-2 flex flex-col gap-0">
+          {/* Music Player */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={togglePlay}
+              className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"
+            >
+              {isPlaying ? <Pause size={14} /> : <Play size={16} />}
+            </button>
+            {/* Progress Bar - slider only, no timing */}
+            <div className="flex-1 flex items-center">
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={
                   duration > 0
                     ? Math.min((currentTime / duration) * 100, 100)
                     : 0
-                }%, #e5e7eb ${
-                  duration > 0
-                    ? Math.min((currentTime / duration) * 100, 100)
-                    : 0
-                }%, #e5e7eb 100%)`,
-              }}
-            />
-          </div>
-          {/* Volume Control */}
-          <div className="w-12 flex items-center">
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value={volume}
-              onChange={(e) => {
-                const newVolume = parseInt(e.target.value);
-                setVolume(newVolume);
-                const audio = audioRef.current;
-                if (audio) {
-                  audio.volume = newVolume / 100;
                 }
-              }}
-              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider touch-manipulation"
-              style={{
-                background: `linear-gradient(to right, #000 0%, #000 ${volume}%, #e5e7eb ${volume}%, #e5e7eb 100%)`,
-              }}
-            />
+                onChange={handleProgressChange}
+                onInput={handleProgressChange} // Add onInput for better touch handling
+                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider touch-manipulation"
+                style={{
+                  background: `linear-gradient(to right, #000 0%, #000 ${
+                    duration > 0
+                      ? Math.min((currentTime / duration) * 100, 100)
+                      : 0
+                  }%, #e5e7eb ${
+                    duration > 0
+                      ? Math.min((currentTime / duration) * 100, 100)
+                      : 0
+                  }%, #e5e7eb 100%)`,
+                }}
+              />
+            </div>
+            {/* Volume Control */}
+            <div className="w-12 flex items-center">
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={volume}
+                onChange={(e) => {
+                  const newVolume = parseInt(e.target.value);
+                  setVolume(newVolume);
+                  const audio = audioRef.current;
+                  if (audio) {
+                    audio.volume = newVolume / 100;
+                  }
+                }}
+                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider touch-manipulation"
+                style={{
+                  background: `linear-gradient(to right, #000 0%, #000 ${volume}%, #e5e7eb ${volume}%, #e5e7eb 100%)`,
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Piano Cover Signature - Below Music Player with minimal spacing */}
+          <div className="text-center -mt-2">
+            <span className="text-lg text-gray-600 font-cursive italic">
+              my piano cover
+            </span>
           </div>
         </div>
 
@@ -376,13 +388,6 @@ const Sidebar = () => {
           onEnded={() => setIsPlaying(false)}
           style={{ display: "none" }}
         />
-
-        {/* Piano Cover Signature */}
-        <div className="text-center ">
-          <span className="text-lg text-gray-600 font-cursive italic">
-            my piano cover
-          </span>
-        </div>
       </div>
     </div>
   );

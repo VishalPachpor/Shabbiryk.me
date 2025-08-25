@@ -69,6 +69,7 @@ const MobileMenu = () => {
         console.log("Autoplay failed:", error?.name || "Unknown error");
         // Autoplay failed - this is expected in modern browsers
         // We'll use the fallback interaction listeners below
+        setIsPlaying(false); // Ensure state is explicitly set
       }
     };
 
@@ -89,9 +90,20 @@ const MobileMenu = () => {
     document.addEventListener("click", resumeAudioContext, { once: true });
     document.addEventListener("keydown", resumeAudioContext, { once: true });
 
+    // Ensure audio state is properly initialized
+    audio.addEventListener("loadstart", () => {
+      console.log("Audio loading started");
+    });
+
+    audio.addEventListener("canplaythrough", () => {
+      console.log("Audio can play through");
+    });
+
     return () => {
       audio.removeEventListener("loadedmetadata", attemptAutoplay);
       audio.removeEventListener("canplay", attemptAutoplay);
+      audio.removeEventListener("loadstart", () => {});
+      audio.removeEventListener("canplaythrough", () => {});
       document.removeEventListener("touchstart", resumeAudioContext);
       document.removeEventListener("click", resumeAudioContext);
       document.removeEventListener("keydown", resumeAudioContext);
@@ -134,6 +146,7 @@ const MobileMenu = () => {
     if (isPlaying) {
       audio.pause();
       setIsPlaying(false);
+      console.log("Audio paused");
     } else {
       // Mobile-friendly play with better error handling
       const playPromise = audio.play();
@@ -301,82 +314,112 @@ const MobileMenu = () => {
                 </a>
               </div>
 
-              {/* Music Player */}
-              <div className="flex items-center gap-3 px-4">
-                <div className="flex flex-col items-center flex-none w-10">
-                  <button
-                    onClick={togglePlay}
-                    className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center transition-colors"
-                    style={{ backgroundColor: "#fff" }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.backgroundColor = "#a3a3a3")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.backgroundColor = "#fff")
-                    }
-                  >
-                    {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-                  </button>
-                  {/* Mobile audio hint */}
-                  {!isPlaying && (
-                    <span className="sr-only">Tap to enable audio</span>
-                  )}
-                </div>
-                {/* Progress Bar - slider only, no timing */}
-                <div className="flex-1 flex items-center">
-                  <input
-                    type="range"
-                    min="0"
-                    max="100"
-                    value={
-                      duration > 0
-                        ? Math.min((currentTime / duration) * 100, 100)
-                        : 0
-                    }
-                    onChange={handleProgressChange}
-                    onInput={handleProgressChange} // Add onInput for better mobile touch handling
-                    className="w-full h-3 bg-white/30 rounded-lg appearance-none cursor-pointer slider touch-manipulation"
-                    style={{
-                      background: `linear-gradient(to right, #fff 0%, #fff ${
-                        duration > 0
-                          ? Math.min((currentTime / duration) * 100, 100)
-                          : 0
-                      }%, rgba(255,255,255,0.3) ${
-                        duration > 0
-                          ? Math.min((currentTime / duration) * 100, 100)
-                          : 0
-                      }%, rgba(255,255,255,0.3) 100%)`,
-                    }}
-                  />
-                </div>
-                {/* Volume Control */}
-                <div className="w-16 flex items-center">
-                  <input
-                    type="range"
-                    min="0"
-                    max="100"
-                    value={volume}
-                    onChange={(e) => {
-                      const newVolume = parseInt(e.target.value);
-                      setVolume(newVolume);
-                      const audio = audioRef.current;
-                      if (audio) {
-                        audio.volume = newVolume / 100;
+              {/* Music Player and Signature Combined */}
+              <div className="flex flex-col items-center gap-[1px] px-4">
+                {/* Music Player */}
+                <div className="flex items-center gap-3 w-full">
+                  <div className="flex flex-col items-center flex-none w-10 h-10">
+                    <button
+                      onClick={togglePlay}
+                      className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center transition-colors hover:bg-gray-200 active:bg-gray-300 touch-manipulation mobile-play-button"
+                      style={{
+                        backgroundColor: "#fff",
+                        minWidth: "40px",
+                        minHeight: "40px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        position: "relative",
+                        zIndex: 10,
+                      }}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.backgroundColor = "#a3a3a3")
                       }
-                    }}
-                    className="w-full h-3 bg-white/30 rounded-lg appearance-none cursor-pointer slider touch-manipulation"
-                    style={{
-                      background: `linear-gradient(to right, #fff 0%, #fff ${volume}%, rgba(255,255,255,0.3) ${volume}%, rgba(255,255,255,0.3) 100%)`,
-                    }}
-                  />
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.backgroundColor = "#fff")
+                      }
+                      onTouchStart={(e) => {
+                        e.currentTarget.style.backgroundColor = "#a3a3a3";
+                      }}
+                      onTouchEnd={(e) => {
+                        e.currentTarget.style.backgroundColor = "#fff";
+                      }}
+                      aria-label={isPlaying ? "Pause audio" : "Play audio"}
+                      title={isPlaying ? "Pause audio" : "Play audio"}
+                    >
+                      {isPlaying ? (
+                        <Pause
+                          size={16}
+                          style={{ display: "block", pointerEvents: "none" }}
+                        />
+                      ) : (
+                        <Play
+                          size={16}
+                          style={{ display: "block", pointerEvents: "none" }}
+                        />
+                      )}
+                    </button>
+                    {/* Mobile audio hint */}
+                    {!isPlaying && (
+                      <span className="sr-only">Tap to enable audio</span>
+                    )}
+                  </div>
+                  {/* Progress Bar - slider only, no timing */}
+                  <div className="flex-1 flex items-center">
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      value={
+                        duration > 0
+                          ? Math.min((currentTime / duration) * 100, 100)
+                          : 0
+                      }
+                      onChange={handleProgressChange}
+                      onInput={handleProgressChange} // Add onInput for better mobile touch handling
+                      className="w-full h-3 bg-white/30 rounded-lg appearance-none cursor-pointer slider touch-manipulation"
+                      style={{
+                        background: `linear-gradient(to right, #fff 0%, #fff ${
+                          duration > 0
+                            ? Math.min((currentTime / duration) * 100, 100)
+                            : 0
+                        }%, rgba(255,255,255,0.3) ${
+                          duration > 0
+                            ? Math.min((currentTime / duration) * 100, 100)
+                            : 0
+                        }%, rgba(255,255,255,0.3) 100%)`,
+                      }}
+                    />
+                  </div>
+                  {/* Volume Control */}
+                  <div className="w-16 flex items-center">
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      value={volume}
+                      onChange={(e) => {
+                        const newVolume = parseInt(e.target.value);
+                        setVolume(newVolume);
+                        const audio = audioRef.current;
+                        if (audio) {
+                          audio.volume = newVolume / 100;
+                        }
+                      }}
+                      className="w-full h-3 bg-white/30 rounded-lg appearance-none cursor-pointer slider touch-manipulation"
+                      style={{
+                        background: `linear-gradient(to right, #fff 0%, #fff ${volume}%, rgba(255,255,255,0.3) ${volume}%, rgba(255,255,255,0.3) 100%)`,
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
 
-              {/* Piano Cover Signature - Below Music Player */}
-              <div className="text-center mt-4 px-4">
-                <span className="text-2xl text-white font-cursive italic">
-                  my piano cover
-                </span>
+                {/* Piano Cover Signature - Below Music Player with minimal spacing */}
+                <div className="text-center -mt-1">
+                  <span className="text-2xl text-white font-cursive italic">
+                    my piano cover
+                  </span>
+                </div>
               </div>
             </div>
           </div>

@@ -238,6 +238,83 @@ input[type="range"]::-moz-range-thumb {
   background: #fff;
 }
 
+/* Ensure play/pause button is always visible on mobile */
+.mobile-menu-custom button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.mobile-menu-custom button:active {
+  transform: scale(0.95);
+}
+
+/* Mobile-specific button visibility fixes */
+@media (max-width: 768px) {
+  .mobile-menu-custom button {
+    min-width: 40px !important;
+    min-height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  .mobile-menu-custom button svg {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Specific styling for mobile play button */
+.mobile-play-button {
+  -webkit-tap-highlight-color: transparent !important;
+  touch-action: manipulation !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+.mobile-play-button:active {
+  transform: scale(0.95) !important;
+}
+
+/* Ensure the button container is always visible */
+.mobile-menu-custom .flex-none {
+  min-width: 40px !important;
+  min-height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Final fallback to ensure button visibility */
+.mobile-menu-custom button[class*="mobile-play-button"],
+.mobile-menu-custom .mobile-play-button {
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: flex !important;
+  position: relative !important;
+  z-index: 999 !important;
+  pointer-events: auto !important;
+  -webkit-pointer-events: auto !important;
+}
+
+.mobile-menu-custom .mobile-play-button svg {
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
+  pointer-events: none !important;
+}
+
 /* Animated underline for publications */
 .publication-link {
   position: relative;
