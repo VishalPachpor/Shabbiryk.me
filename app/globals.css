@@ -192,50 +192,69 @@ input[type="range"] {
   appearance: none;
   background: transparent;
   cursor: pointer;
+  height: 8px;
 }
 
+/* Base track visible, light gray like the reference */
 input[type="range"]::-webkit-slider-track {
-  background: transparent;
-  height: 4px;
-  border-radius: 2px;
+  background: #e5e7eb !important; /* tailwind gray-200 */
+  height: 8px !important;
+  border-radius: 9999px !important;
+  border: none !important;
 }
 
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  height: 12px;
-  width: 12px;
-  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  border-radius: 9999px;
   background: #000;
   cursor: pointer;
-  border: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 2px solid #000;
+  margin-top: -8px; /* center thumb on 8px track: (20px thumb - 8px track) / 2 = 6px, but we need -8px for perfect centering */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
 
 input[type="range"]::-moz-range-track {
-  background: transparent;
-  height: 4px;
-  border-radius: 2px;
-  border: none;
+  background: #e5e7eb !important;
+  height: 8px !important;
+  border-radius: 9999px !important;
+  border: none !important;
 }
 
 input[type="range"]::-moz-range-thumb {
-  height: 12px;
-  width: 12px;
-  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  border-radius: 9999px;
   background: #000;
   cursor: pointer;
-  border: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 2px solid #000;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  /* Mozilla automatically centers the thumb, so no margin needed */
 }
 
 /* Mobile menu specific range input styling */
+.mobile-menu-custom input[type="range"]::-webkit-slider-track {
+  background: rgba(255,255,255,0.6) !important;
+}
 .mobile-menu-custom input[type="range"]::-webkit-slider-thumb {
-  background: #fff;
+  background: #ffffff !important;
+  border-color: #ffffff !important;
 }
 
+.mobile-menu-custom input[type="range"]::-moz-range-track {
+  background: rgba(255,255,255,0.6) !important;
+}
 .mobile-menu-custom input[type="range"]::-moz-range-thumb {
-  background: #fff;
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+/* Ensure range inputs are always visible */
+input[type="range"] {
+  background: #e5e7eb !important;
+  border-radius: 9999px !important;
 }
 
 /* Ensure play/pause button is always visible on mobile */

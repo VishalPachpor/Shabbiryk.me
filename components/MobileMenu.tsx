@@ -1,8 +1,9 @@
 "use client";
 
 import { useSharedAudio, useMobileMenu } from "@/app/providers";
-import { Play, Pause, Twitter, Linkedin } from "lucide-react";
+import { Play, Pause, Twitter, Linkedin, Github, Mail } from "lucide-react";
 import Link from "next/link";
+import LinearProgress from "@/components/ui/linear-progress";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
@@ -146,7 +147,7 @@ const MobileMenu = () => {
   if (!isMobile) return null; // ❌ Don't render anything on desktop
 
   return (
-    <div className="md:hidden">
+    <div className="md:hidden mobile-menu-custom">
       {isMenuOpen && (
         <div
           className="fixed inset-0 z-40 flex items-center justify-center transition-all duration-300"
@@ -160,6 +161,11 @@ const MobileMenu = () => {
 
           {/* Mobile Content */}
           <div className="relative w-full h-full flex flex-col items-center justify-between">
+            <img
+              src="/side.gif"
+              alt="logo"
+              className="absolute left-6 top-6 w-10 h-10 rounded-full object-cover opacity-90"
+            />
             {/* Navigation */}
             <div className="flex-1 flex flex-col items-center justify-center">
               <nav className="flex flex-col items-center gap-3">
@@ -189,6 +195,30 @@ const MobileMenu = () => {
               </nav>
             </div>
 
+            {/* Social Links */}
+            <div className="flex flex-col gap-3 items-center mb-6">
+              <a
+                href="https://x.com/shabbiryk"
+                className="text-white hover:text-gray-300 flex items-center gap-2"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <Twitter size={18} />
+                Tweet @ me
+              </a>
+              <a
+                href="https://www.linkedin.com/in/shabbiryk/"
+                className="text-white hover:text-gray-300 flex items-center gap-2"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <Linkedin size={18} />
+                Connect on LinkedIn
+              </a>
+            </div>
+
             {/* Player */}
             <div className="w-full px-8 pb-8">
               <div className="flex items-center gap-3 w-full">
@@ -200,33 +230,17 @@ const MobileMenu = () => {
                   {isPlaying ? <Pause size={16} /> : <Play size={16} />}
                 </button>
 
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  value={duration > 0 ? (currentTime / duration) * 100 : 0}
-                  onChange={handleProgressChange}
-                  className="flex-1"
-                />
-
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  value={volume}
-                  onChange={(e) => {
-                    const newVol = parseInt(e.target.value);
-                    setVolume(newVol);
-                    if (audioRef.current) {
-                      audioRef.current.volume = newVol / 100;
-                    }
-                  }}
-                  className="w-16"
-                />
+                <div className="flex-1 flex items-center">
+                  <LinearProgress
+                    value={duration > 0 ? (currentTime / duration) * 100 : 0}
+                    height={4}
+                    className="w-full"
+                  />
+                </div>
               </div>
 
               <div className="text-center mt-2">
-                <span className="mt-2 italic text-gray-500 text-sm">
+                <span className="mt-2 text-white/80 text-base font-cursive">
                   my piano cover
                 </span>
               </div>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSharedAudio } from "@/app/providers";
 import { useState, useRef, useEffect } from "react";
+import LinearProgress from "@/components/ui/linear-progress";
 import {
   Play,
   Pause,
@@ -11,6 +12,8 @@ import {
   Twitter,
   Calendar,
   Link as LinkIcon,
+  Github,
+  Mail,
 } from "lucide-react";
 
 const navLinks = [
@@ -227,41 +230,22 @@ const Sidebar = () => {
 
             {/* Progress */}
             <div className="flex-1 flex items-center">
-              <input
-                type="range"
-                min="0"
-                max="100"
+              <LinearProgress
                 value={
                   duration > 0
                     ? Math.min((currentTime / duration) * 100, 100)
                     : 0
                 }
-                onChange={handleProgressChange}
-                className="w-full h-2 bg-gray-200 rounded-lg cursor-pointer"
-              />
-            </div>
-
-            {/* Volume */}
-            <div className="w-12 flex items-center">
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value={volume}
-                onChange={(e) => {
-                  const newVol = parseInt(e.target.value);
-                  setVolume(newVol);
-                  if (audioRef.current) {
-                    audioRef.current.volume = newVol / 100;
-                  }
-                }}
-                className="w-full h-2 bg-gray-200 rounded-lg cursor-pointer"
+                height={4}
+                className="w-full"
               />
             </div>
           </div>
 
           <div className="text-center mt-0.5">
-            <span className="text-lg text-gray-600 italic">my piano cover</span>
+            <span className="text-lg text-gray-600 font-cursive">
+              my piano cover
+            </span>
           </div>
         </div>
 
