@@ -1,17 +1,23 @@
 "use client";
 
+import { ReactNode, createContext, useContext, useState } from "react";
+import { ThemeProvider } from "next-themes";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactNode } from "react";
-import { ThemeProvider } from "next-themes";
-import { createContext, useContext, useState } from "react";
+
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 
+// --------------------
+// Query Client
+// --------------------
 const queryClient = new QueryClient();
 
-// Create context for mobile menu state
+// --------------------
+// Mobile Menu Context
+// --------------------
 interface MobileMenuContextType {
   isMenuOpen: boolean;
   setIsMenuOpen: (open: boolean) => void;
@@ -21,15 +27,27 @@ const MobileMenuContext = createContext<MobileMenuContextType | undefined>(
   undefined
 );
 
-export const useMobileMenu = () => {
+export const useMobileMenu = (): MobileMenuContextType => {
   const context = useContext(MobileMenuContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error("useMobileMenu must be used within a MobileMenuProvider");
   }
   return context;
 };
 
-// Create context for shared audio state
+export const MobileMenuProvider = ({ children }: { children: ReactNode }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  return (
+    <MobileMenuContext.Provider value={{ isMenuOpen, setIsMenuOpen }}>
+      {children}
+    </MobileMenuContext.Provider>
+  );
+};
+
+// --------------------
+// Shared Audio Context
+// --------------------
 interface SharedAudioContextType {
   isPlaying: boolean;
   setIsPlaying: (playing: boolean) => void;
@@ -45,29 +63,19 @@ const SharedAudioContext = createContext<SharedAudioContextType | undefined>(
   undefined
 );
 
-export const useSharedAudio = () => {
+export const useSharedAudio = (): SharedAudioContextType => {
   const context = useContext(SharedAudioContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error("useSharedAudio must be used within a SharedAudioProvider");
   }
   return context;
-};
-
-export const MobileMenuProvider = ({ children }: { children: ReactNode }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  return (
-    <MobileMenuContext.Provider value={{ isMenuOpen, setIsMenuOpen }}>
-      {children}
-    </MobileMenuContext.Provider>
-  );
 };
 
 export const SharedAudioProvider = ({ children }: { children: ReactNode }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(60);
+  const [volume, setVolume] = useState(60); // Default to 60%
 
   return (
     <SharedAudioContext.Provider
@@ -87,8 +95,11 @@ export const SharedAudioProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export default function Providers({ children }: { children: React.ReactNode }) {
-  // Initialize smooth scrolling
+// --------------------
+// Root Providers
+// --------------------
+export default function Providers({ children }: { children: ReactNode }) {
+  // Enable smooth scrolling globally
   useSmoothScroll();
 
   return (
@@ -102,8 +113,10 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         >
           <MobileMenuProvider>
             <SharedAudioProvider>
+              {/* Global Toasters */}
               <Toaster />
               <Sonner />
+
               {children}
             </SharedAudioProvider>
           </MobileMenuProvider>

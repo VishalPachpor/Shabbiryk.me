@@ -39,94 +39,80 @@ const Sidebar = () => {
     setVolume,
   } = useSharedAudio();
   const [isClient, setIsClient] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
+  // Detect desktop
   useEffect(() => {
     setIsClient(true);
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 768);
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
+    return () => window.removeEventListener("resize", checkDesktop);
   }, []);
 
-  // Autoplay functionality with volume control
+  // Autoplay only if desktop
   useEffect(() => {
-    if (!isClient) return;
+    if (!isClient || !isDesktop) return;
 
     const audio = audioRef.current;
     if (!audio) return;
 
-    // Set volume to 60% (0.6)
     audio.volume = 0.6;
     setVolume(60);
 
-    // Attempt autoplay when audio is ready
-    const attemptAutoplay = async () => {
+    let attempted = false;
+
+    const attemptPlay = async () => {
+      if (attempted) return;
+      attempted = true;
       try {
-        // Try to play immediately
         await audio.play();
         setIsPlaying(true);
-        console.log("Autoplay successful!");
-      } catch (error: any) {
-        console.log("Autoplay failed:", error?.name || "Unknown error");
-        // Autoplay failed - this is expected in modern browsers
-        // We'll use the fallback interaction listeners below
+      } catch {
+        setIsPlaying(false);
       }
     };
 
-    // Try autoplay when audio metadata is loaded
-    audio.addEventListener("loadedmetadata", attemptAutoplay);
+    audio.addEventListener("loadedmetadata", attemptPlay);
 
-    // Also try when audio can start playing
-    audio.addEventListener("canplay", attemptAutoplay);
-
-    // Mobile-specific: Try to resume audio context on user interaction
-    const resumeAudioContext = () => {
-      if (audio.readyState >= 2) {
-        attemptAutoplay();
+    const resume = async () => {
+      if (!attempted && audio.readyState >= 2) {
+        await attemptPlay();
       }
     };
 
-    // Listen for user interactions that might enable audio
-    document.addEventListener("touchstart", resumeAudioContext, { once: true });
-    document.addEventListener("click", resumeAudioContext, { once: true });
-    document.addEventListener("keydown", resumeAudioContext, { once: true });
+    document.addEventListener("click", resume, { once: true });
+    document.addEventListener("keydown", resume, { once: true });
 
     return () => {
-      audio.removeEventListener("loadedmetadata", attemptAutoplay);
-      audio.removeEventListener("canplay", attemptAutoplay);
-      document.removeEventListener("touchstart", resumeAudioContext);
-      document.removeEventListener("click", resumeAudioContext);
-      document.removeEventListener("keydown", resumeAudioContext);
+      audio.removeEventListener("loadedmetadata", attemptPlay);
+      document.removeEventListener("click", resume);
+      document.removeEventListener("keydown", resume);
     };
-  }, [isClient]);
+  }, [isClient, isDesktop]);
 
+  // Sync time/duration
   useEffect(() => {
-    if (!isClient) return;
-
+    if (!isClient || !isDesktop) return;
     const audio = audioRef.current;
     if (!audio) return;
 
-    const updateTime = () => {
-      setCurrentTime(audio.currentTime);
-      console.log("Time update:", audio.currentTime);
-    };
-    const updateDuration = () => {
-      setDuration(audio.duration);
-      console.log("Duration update:", audio.duration);
-    };
+    const updateTime = () => setCurrentTime(audio.currentTime);
+    const updateDuration = () => setDuration(audio.duration);
 
-    // Add multiple event listeners for better compatibility
     audio.addEventListener("timeupdate", updateTime);
     audio.addEventListener("loadedmetadata", updateDuration);
-    audio.addEventListener("canplay", updateDuration);
-    audio.addEventListener("loadeddata", updateDuration);
 
     return () => {
       audio.removeEventListener("timeupdate", updateTime);
       audio.removeEventListener("loadedmetadata", updateDuration);
-      audio.removeEventListener("canplay", updateDuration);
-      audio.removeEventListener("loadeddata", updateDuration);
     };
-  }, [isClient]);
+  }, [isClient, isDesktop]);
 
-  const togglePlay = () => {
+  const togglePlay = async () => {
+    if (!isDesktop) return;
+
     const audio = audioRef.current;
     if (!audio) return;
 
@@ -134,74 +120,34 @@ const Sidebar = () => {
       audio.pause();
       setIsPlaying(false);
     } else {
-      // Mobile-friendly play with better error handling
-      const playPromise = audio.play();
-
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            setIsPlaying(true);
-            console.log("Audio started successfully");
-          })
-          .catch((error) => {
-            console.log("Audio play failed:", error);
-            setIsPlaying(false);
-
-            // On mobile, show specific error handling
-            if (error.name === "NotAllowedError") {
-              console.log("User interaction required on mobile");
-            }
-          });
+      try {
+        await audio.play();
+        setIsPlaying(true);
+      } catch {
+        setIsPlaying(false);
       }
     }
   };
 
   const handleProgressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!isDesktop) return;
+
     const audio = audioRef.current;
     if (!audio) return;
 
     const newTime = (parseFloat(e.target.value) / 100) * duration;
-    console.log("Progress change:", {
-      value: e.target.value,
-      newTime,
-      duration,
-    });
-
-    // Ensure audio is ready before seeking
     if (audio.readyState >= 2 && duration > 0) {
       audio.currentTime = newTime;
       setCurrentTime(newTime);
     }
   };
 
-  const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
-  };
-
-  // Ensure progress bar updates reliably across browsers while playing
-  useEffect(() => {
-    if (!isClient) return;
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    if (isPlaying) {
-      // Use a more frequent interval for smoother progress bar updates
-      const intervalId = setInterval(() => {
-        if (audio.readyState >= 2) {
-          // HAVE_CURRENT_DATA
-          setCurrentTime(audio.currentTime || 0);
-        }
-      }, 100); // Update more frequently for smoother progress
-      return () => clearInterval(intervalId);
-    }
-  }, [isPlaying, isClient]);
+  if (!isDesktop) return null; // ❌ Don’t render sidebar on mobile
 
   return (
     <div className="hidden md:flex w-60 h-screen bg-white flex-col fixed left-0 top-0 z-10 border-r border-gray-100 py-6 px-6">
       <div className="flex flex-col h-full">
-        {/* Logo - Small circular logo at the top */}
+        {/* Logo */}
         <div className="flex flex-col items-start mb-8">
           <Link href="/" className="cursor-pointer">
             <img
@@ -212,7 +158,7 @@ const Sidebar = () => {
           </Link>
         </div>
 
-        {/* Navigation Menu - Vertical navigation with links */}
+        {/* Navigation */}
         <nav className="flex flex-col gap-2 text-start">
           {navLinks.map((link) => {
             const isActive =
@@ -225,10 +171,8 @@ const Sidebar = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`text-base  transition-colors duration-200 cursor-pointer text-left ${
-                    isActive
-                      ? "text-gray-400 font-normal"
-                      : "text-black font-normal"
+                  className={`text-base cursor-pointer ${
+                    isActive ? "text-gray-400" : "text-black"
                   }`}
                 >
                   {link.name}
@@ -239,10 +183,8 @@ const Sidebar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-base transition-colors duration-200 cursor-pointer text-left ${
-                  isActive
-                    ? "text-gray-400 font-normal"
-                    : "text-black font-normal"
+                className={`text-base cursor-pointer ${
+                  isActive ? "text-gray-400" : "text-black"
                 }`}
               >
                 {link.name}
@@ -251,14 +193,13 @@ const Sidebar = () => {
           })}
         </nav>
 
-        {/* Spacer to push social links and music player to bottom */}
         <div className="flex-1" />
 
-        {/* Text Social Links - Above icons */}
+        {/* Social Links */}
         <div className="mb-2 flex flex-col gap-2 text-start">
           <a
             href="https://x.com/shabbiryk"
-            className="text-sm  text-black font-normal hover:text-gray-600 transition-colors duration-200"
+            className="text-sm text-black hover:text-gray-600"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -266,7 +207,7 @@ const Sidebar = () => {
           </a>
           <a
             href="https://www.linkedin.com/in/shabbiryk/"
-            className="text-sm text-black font-normal hover:text-gray-600 transition-colors duration-200"
+            className="text-sm text-black hover:text-gray-600"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -274,53 +215,17 @@ const Sidebar = () => {
           </a>
         </div>
 
-        {/* Social Icons - Below text links */}
-        <div className="mb-2 mt-2 flex space-x-3 justify-start">
-          <a
-            href="https://linkedin.com/in/shabbirkhan"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-black hover:text-gray-600 transition-colors duration-200"
-          >
-            <Linkedin className="w-5 h-5" />
-          </a>
-          <a
-            href="https://twitter.com/shabbirkhan"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-black hover:text-gray-600 transition-colors duration-200"
-          >
-            <Twitter className="w-5 h-5" />
-          </a>
-          <a
-            href="https://cal.com/shabbir-khan-dhkgcs/15min"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-black hover:text-gray-600 transition-colors duration-200"
-          >
-            <Calendar className="w-5 h-5" />
-          </a>
-          <a
-            href="https://linktr.ee/shabbiryk"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-black hover:text-gray-600 transition-colors duration-200"
-          >
-            <LinkIcon className="w-5 h-5" />
-          </a>
-        </div>
-
-        {/* Music Player and Signature Combined */}
+        {/* Music Player */}
         <div className="mb-6 flex flex-col">
-          {/* Music Player */}
           <div className="flex items-center gap-3">
             <button
               onClick={togglePlay}
-              className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"
+              className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800"
             >
               {isPlaying ? <Pause size={14} /> : <Play size={16} />}
             </button>
-            {/* Progress Bar - slider only, no timing */}
+
+            {/* Progress */}
             <div className="flex-1 flex items-center">
               <input
                 type="range"
@@ -332,22 +237,11 @@ const Sidebar = () => {
                     : 0
                 }
                 onChange={handleProgressChange}
-                onInput={handleProgressChange} // Add onInput for better touch handling
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider touch-manipulation"
-                style={{
-                  background: `linear-gradient(to right, #000 0%, #000 ${
-                    duration > 0
-                      ? Math.min((currentTime / duration) * 100, 100)
-                      : 0
-                  }%, #e5e7eb ${
-                    duration > 0
-                      ? Math.min((currentTime / duration) * 100, 100)
-                      : 0
-                  }%, #e5e7eb 100%)`,
-                }}
+                className="w-full h-2 bg-gray-200 rounded-lg cursor-pointer"
               />
             </div>
-            {/* Volume Control */}
+
+            {/* Volume */}
             <div className="w-12 flex items-center">
               <input
                 type="range"
@@ -355,35 +249,27 @@ const Sidebar = () => {
                 max="100"
                 value={volume}
                 onChange={(e) => {
-                  const newVolume = parseInt(e.target.value);
-                  setVolume(newVolume);
-                  const audio = audioRef.current;
-                  if (audio) {
-                    audio.volume = newVolume / 100;
+                  const newVol = parseInt(e.target.value);
+                  setVolume(newVol);
+                  if (audioRef.current) {
+                    audioRef.current.volume = newVol / 100;
                   }
                 }}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider touch-manipulation"
-                style={{
-                  background: `linear-gradient(to right, #000 0%, #000 ${volume}%, #e5e7eb ${volume}%, #e5e7eb 100%)`,
-                }}
+                className="w-full h-2 bg-gray-200 rounded-lg cursor-pointer"
               />
             </div>
           </div>
 
-          {/* Piano Cover Signature - Right below Music Player with minimal gap */}
           <div className="text-center mt-0.5">
-            <span className="text-lg text-gray-600 font-cursive italic">
-              my piano cover
-            </span>
+            <span className="text-lg text-gray-600 italic">my piano cover</span>
           </div>
         </div>
 
-        {/* Hidden Audio Element */}
+        {/* Hidden Audio */}
         <audio
           ref={audioRef}
           src="/ShabbirBhaijaan.mp3"
           preload="metadata"
-          autoPlay
           playsInline
           onEnded={() => setIsPlaying(false)}
           style={{ display: "none" }}
