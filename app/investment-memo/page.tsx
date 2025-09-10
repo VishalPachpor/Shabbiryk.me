@@ -9,42 +9,42 @@ export default function InvestmentThesisPage() {
 
   const investmentMemos = [
     {
-      title: "AltLayer Investment Thesis",
+      title: "AltLayer",
       description: "Layer 3 Infrastructure",
       url: "https://docs.google.com/document/d/1UJxkamfrRH7xaNY2uLA5DmM4MtnVpDfaA2L4dVoITZQ/edit?usp=sharing",
     },
     {
-      title: "EtherFi Investment Analysis",
+      title: "EtherFi",
       description: "Liquid Staking Protocol",
       url: "https://docs.google.com/document/d/1jzyKKJtpXw2Ctl92Nxzy9SkXRX8E3nuBuIWCnXfd214/edit?usp=sharing",
     },
     {
-      title: "Fhenix Investment Memo",
+      title: "Fhenix",
       description: "Privacy Infrastructure",
       url: "https://docs.google.com/document/d/1j9sXbVfczr11cFmk2Zz5Zi_H8hZjoPx1VcLtTcqvl9I/edit?usp=sharing",
     },
     {
-      title: "Glint Analytics Investment Memo",
+      title: "Glint Analytics",
       description: "AI-powered Analytics Platform",
       url: "https://docs.google.com/document/d/1a97xGkPLupLyIDz7krFydRnMDrr6DDiOUAjSnXZByzY/edit?usp=sharing",
     },
     {
-      title: "Maya Protocol Investment Thesis",
+      title: "Maya Protocol",
       description: "Cross-chain Liquidity Protocol",
       url: "https://docs.google.com/document/d/1W86Ookgi8CC2hS2PZQO1mAHicUUEUpha3Unf1bHkIJQ/edit?usp=sharing",
     },
     {
-      title: "Modulus Investment Memo",
+      title: "Modulus",
       description: "DeFi Infrastructure",
       url: "https://docs.google.com/document/d/1nZB2rW2nXXZTGnDgmsZXlgf6bHSUpM5bWIyZttohARo/edit?usp=sharing",
     },
     {
-      title: "Puffer Research Document",
+      title: "Puffer",
       description: "Research Paper",
       url: "https://docs.google.com/document/d/1o5v9xyulgmR1_ByqMTTeXaIPPWQdApWxJBqFqEjrGcA/edit?usp=sharing",
     },
     {
-      title: "SorellaLabs Investment Memo",
+      title: "SorellaLabs",
       description: "Web3 Infrastructure",
       url: "https://docs.google.com/document/d/1tUwf18bunWW4LL5Fo-LNHee4MnArmvGO_bFXOUhR6QU/edit?usp=sharing",
     },
