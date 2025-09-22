@@ -76,7 +76,7 @@ export default function HomePage() {
           />
         </div>
         {/* Card - positioned to align "Shabbir Khan" with "Home" for perfect F pattern */}
-        <div className="absolute top-[120px] left-0 z-20 w-[480px] h-[340px] flex flex-col items-center justify-center">
+        <div className="absolute top-[120px] left-0 z-20 w-[480px] h-[350px] flex flex-col items-center justify-center">
           <div className="bg-black text-white w-full h-full flex flex-col justify-center p-6 pt-4 pb-4">
             <div className="text-white text-lg font-medium mb-1 leading-relaxed">
               Shabbir Khan
@@ -101,11 +101,7 @@ export default function HomePage() {
               <p className="italic text-gray-300 text-xs mb-2">
                 Partner @ EAK Ventures
               </p>
-              prev. State Street, Al-Thani Family Office, Coinswitch Ventures,
-            </div>
-            <div className="text-white text-sm flex items-center space-x-2">
-              <MapPin className="w-4 h-4" />
-              <span className="text-gray-400">Dubai</span>
+              Prev. State Street, Al-Thani Family Office, Coinswitch Ventures,
             </div>
           </div>
         </div>
