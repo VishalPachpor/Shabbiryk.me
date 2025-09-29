@@ -3,10 +3,8 @@
 import Image from "next/image";
 import { MapPin } from "lucide-react";
 import MobileHeader from "@/components/MobileHeader";
-import { useMobileMenu } from "./providers";
 
 export default function HomePage() {
-  const { isMenuOpen } = useMobileMenu();
 
   return (
     <main className="flex-1">
@@ -34,12 +32,12 @@ export default function HomePage() {
               <div className="text-white text-sm mb-2 leading-relaxed">
                 Backed 40+ projects, from early infra to tokenized assets, and
                 helped 20+ teams close their first checks since 2022. Along the
-                way, he's written 60+ memos, built trading strategies, and ended
+                way, he&apos;s written 60+ memos, built trading strategies, and ended
                 up co-writing a whitepaper for a tokenized penthouse in Dubai.
               </div>
               <div className="text-white text-sm mb-2 leading-relaxed">
                 A Kauffman Fellow, EF NextBillion Fellow, and long-time
-                Chainlink contributor. You'll usually find him in pitch
+                Chainlink contributor. You&apos;ll usually find him in pitch
                 sessions, collective analysis calls, or connecting founders with
                 the right capital allocators.
               </div>
@@ -85,12 +83,12 @@ export default function HomePage() {
             <div className="text-white text-sm mb-2 leading-relaxed">
               Backed 40+ projects, from early infra to tokenized assets, and
               helped 20+ teams close their first checks since 2022. Along the
-              way, he's written 60+ memos, built trading strategies, &amp; ended
+              way, he&apos;s written 60+ memos, built trading strategies, and ended
               up co-writing a whitepaper for a tokenized penthouse in Dubai.
             </div>
             <div className="text-white text-sm mb-2 leading-relaxed">
               A Kauffman Fellow, EF NextBillion Fellow, and long-time Chainlink
-              contributor. You'll usually find him in pitch sessions, collective
+              contributor. You&apos;ll usually find him in pitch sessions, collective
               analysis calls, or connecting founders with the right capital
               allocators.
             </div>
