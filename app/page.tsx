@@ -32,25 +32,26 @@ export default function HomePage() {
                 Shabbir Khan
               </div>
               <div className="text-white text-sm mb-2 leading-relaxed">
-                He's backed 40+ projects, from early infra to tokenized assets,
-                and helped 20+ teams close their first checks since 2022. Along
-                the way, he's written countless memos, built trading strategies,
-                and somehow ended up co-writing a whitepaper for a tokenized
-                penthouse in Dubai.
+                Backed 40+ projects, from early infra to tokenized assets, and
+                helped 20+ teams close their first checks since 2022. Along the
+                way, he's written 60+ memos, built trading strategies, and ended
+                up co-writing a whitepaper for a tokenized penthouse in Dubai.
               </div>
               <div className="text-white text-sm mb-2 leading-relaxed">
                 A Kauffman Fellow, EF NextBillion Fellow, and long-time
-                Chainlink contributor, Shabbir cares less about buzzwords and
-                more about helping real builders ship. You'll usually find him
-                deep in deal flow, at a hackathon, or connecting founders with
-                the right capital.
+                Chainlink contributor. You'll usually find him in pitch
+                sessions, collective analysis calls, or connecting founders with
+                the right capital allocators.
               </div>
               <div className="text-white text-sm mb-2 leading-relaxed">
                 Just another degen trying to push good projects forward.
               </div>
-              <div className="space-y-2 mb-2"></div>
+              <div className="space-y-3 mb-2"></div>
               <div className="italic text-gray-300 text-xs mb-2">
-                prev. JP Morgan's ONYX, Chainlink, Coinswitch Ventures
+                <p className="italic text-gray-300 text-xs mb-2">
+                  Partner @ EAK Ventures
+                </p>
+                Prev. State Street, Al-Thani Family Office, Coinswitch Ventures.
               </div>
               <div className="text-white text-sm flex items-center space-x-2 mb-4">
                 <MapPin className="w-4 h-4" />
@@ -101,7 +102,7 @@ export default function HomePage() {
               <p className="italic text-gray-300 text-xs mb-2">
                 Partner @ EAK Ventures
               </p>
-              Prev. State Street, Al-Thani Family Office, Coinswitch Ventures,
+              Prev. State Street, Al-Thani Family Office, Coinswitch Ventures.
             </div>
           </div>
         </div>
