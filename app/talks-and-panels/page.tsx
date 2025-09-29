@@ -1,13 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import MobileHeader from "@/components/MobileHeader";
-import { useMobileMenu } from "../providers";
 
 export default function TalksAndPanelsPage() {
-  const { isMenuOpen } = useMobileMenu();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // Slideshow images

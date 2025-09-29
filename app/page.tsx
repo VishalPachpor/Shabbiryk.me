@@ -5,7 +5,6 @@ import { MapPin } from "lucide-react";
 import MobileHeader from "@/components/MobileHeader";
 
 export default function HomePage() {
-
   return (
     <main className="flex-1">
       {/* Mobile Header */}
@@ -32,8 +31,9 @@ export default function HomePage() {
               <div className="text-white text-sm mb-2 leading-relaxed">
                 Backed 40+ projects, from early infra to tokenized assets, and
                 helped 20+ teams close their first checks since 2022. Along the
-                way, he&apos;s written 60+ memos, built trading strategies, and ended
-                up co-writing a whitepaper for a tokenized penthouse in Dubai.
+                way, he&apos;s written 60+ memos, built trading strategies, and
+                ended up co-writing a whitepaper for a tokenized penthouse in
+                Dubai.
               </div>
               <div className="text-white text-sm mb-2 leading-relaxed">
                 A Kauffman Fellow, EF NextBillion Fellow, and long-time
@@ -83,14 +83,15 @@ export default function HomePage() {
             <div className="text-white text-sm mb-2 leading-relaxed">
               Backed 40+ projects, from early infra to tokenized assets, and
               helped 20+ teams close their first checks since 2022. Along the
-              way, he&apos;s written 60+ memos, built trading strategies, and ended
-              up co-writing a whitepaper for a tokenized penthouse in Dubai.
+              way, he&apos;s written 60+ memos, built trading strategies, and
+              ended up co-writing a whitepaper for a tokenized penthouse in
+              Dubai.
             </div>
             <div className="text-white text-sm mb-2 leading-relaxed">
               A Kauffman Fellow, EF NextBillion Fellow, and long-time Chainlink
-              contributor. You&apos;ll usually find him in pitch sessions, collective
-              analysis calls, or connecting founders with the right capital
-              allocators.
+              contributor. You&apos;ll usually find him in pitch sessions,
+              collective analysis calls, or connecting founders with the right
+              capital allocators.
             </div>
             <div className="text-white text-sm mb-2 leading-relaxed">
               Just another degen trying to push good projects forward.

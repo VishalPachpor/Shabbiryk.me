@@ -1,12 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import MobileHeader from "@/components/MobileHeader";
-import { useMobileMenu } from "../providers";
 
 export default function InvestmentThesisPage() {
-  const { isMenuOpen } = useMobileMenu();
-
   const investmentMemos = [
     {
       title: "AltLayer",

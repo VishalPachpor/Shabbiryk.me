@@ -1,12 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import MobileHeader from "@/components/MobileHeader";
-import { useMobileMenu } from "../providers";
 
 export default function PublicationsPage() {
-  const { isMenuOpen } = useMobileMenu();
-
   // All publications in a simple array
   const publications = [
     {

@@ -12,4 +12,12 @@ const compat = new FlatCompat({
 export default [
   js.configs.recommended,
   ...compat.extends("next/core-web-vitals"),
+  {
+    rules: {
+      "no-unused-vars": "warn",
+      "react/no-unescaped-entities": "warn",
+      "no-undef": "warn",
+      "@next/next/no-img-element": "warn",
+    },
+  },
 ];
