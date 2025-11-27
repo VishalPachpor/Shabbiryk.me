@@ -12,6 +12,7 @@ const navLinks = [
   { name: "Publications", href: "/publications" },
   { name: "Talks and panels", href: "/talks-and-panels" },
   { name: "Portfolio", href: "/investments" },
+  { name: "Inspiration", href: "/inspiration" },
   { name: "Investment memo", href: "/investment-memo" },
   {
     name: "Curriculum vitae",
