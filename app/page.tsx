@@ -44,7 +44,7 @@ export default function HomePage() {
                 the right capital allocators.
               </div>
               <div className="text-white text-sm leading-relaxed">
-                Just another degen trying to push good projects forward.
+                Just a native trying to push good projects forward.
               </div>
               <div className="space-y-1">
                 <p className="italic text-gray-300 text-xs">
@@ -95,12 +95,12 @@ export default function HomePage() {
               </div>
               <div className="text-white text-sm leading-relaxed">
                 A Kauffman Fellow, EF NextBillion Fellow, and long-time Chainlink
-                contributor. You&apos;ll usually find him in pitch sessions,
+                contributor. You&apos;ll find him in pitch sessions,
                 collective analysis calls, or connecting founders with the right
                 capital allocators.
               </div>
               <div className="text-white text-sm leading-relaxed">
-                Just another degen trying to push good projects forward.
+                Just a native trying to push good projects forward.
               </div>
               <div className="space-y-1">
                 <p className="italic text-gray-300 text-xs">

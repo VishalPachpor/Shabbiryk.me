@@ -96,6 +96,15 @@ export default function PublicationsPage() {
               >
                 Dune Analytics Profile
               </a>
+
+              <a
+                href="https://dune.com/the_defi_report/the-sol-report"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm border border-gray-300 px-4 py-2 rounded hover:bg-gray-50 transition-colors duration-200"
+              >
+                Solana Report
+              </a>
             </div>
 
             {/* End Video */}
