@@ -25,7 +25,7 @@ const navLinks = [
   { name: "Investment memos", href: "/investment-memo" },
   {
     name: "Curriculum vitae",
-    href: "https://docs.google.com/document/d/1VIBwHr-z3-Eb1Ghfqf6DASF0A6bAVyCjUd83-hjWcy4/edit?tab=t.0",
+    href: "https://docs.google.com/document/d/1JvdGLWviJ1mJ7WC91O55sTickCXqUy8IKZnHFndpiiA/edit?usp=sharing",
     external: true,
   },
 ];
@@ -175,9 +175,8 @@ const Sidebar = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`text-base cursor-pointer ${
-                    isActive ? "text-gray-400" : "text-black"
-                  }`}
+                  className={`text-base cursor-pointer ${isActive ? "text-gray-400" : "text-black"
+                    }`}
                 >
                   {link.name}
                 </a>
@@ -187,9 +186,8 @@ const Sidebar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-base cursor-pointer ${
-                  isActive ? "text-gray-400" : "text-black"
-                }`}
+                className={`text-base cursor-pointer ${isActive ? "text-gray-400" : "text-black"
+                  }`}
               >
                 {link.name}
               </Link>

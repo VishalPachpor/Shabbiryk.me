@@ -4,6 +4,10 @@ import MobileHeader from "@/components/MobileHeader";
 import { useMobileMenu } from "../providers";
 
 const companies = [
+  { name: "PathPulse", url: "https://pathpulse.ai/" },
+  { name: "TrueNorth", url: "https://x.com/get_truenorth" },
+  { name: "PrismaX", url: "https://x.com/PrismaXai" },
+  { name: "Bitrobot", url: "https://x.com/BitRobotNetwork" },
   { name: "superverse", url: "https://superverse.com" },
   { name: "manta network", url: "https://manta.network" },
   { name: "imaginary ones", url: "https://www.imaginaryones.com" },

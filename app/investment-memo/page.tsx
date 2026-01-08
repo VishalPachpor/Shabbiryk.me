@@ -10,9 +10,19 @@ export default function InvestmentThesisPage() {
       url: "https://docs.google.com/document/d/1UJxkamfrRH7xaNY2uLA5DmM4MtnVpDfaA2L4dVoITZQ/edit?usp=sharing",
     },
     {
+      title: "Bitrobot",
+      description: "Investment Memo",
+      url: "#",
+    },
+    {
       title: "EtherFi",
       description: "Liquid Staking Protocol",
       url: "https://docs.google.com/document/d/1jzyKKJtpXw2Ctl92Nxzy9SkXRX8E3nuBuIWCnXfd214/edit?usp=sharing",
+    },
+    {
+      title: "Fractal Labs",
+      description: "Investment Memo",
+      url: "#",
     },
     {
       title: "Fhenix",
@@ -35,6 +45,11 @@ export default function InvestmentThesisPage() {
       url: "https://docs.google.com/document/d/1nZB2rW2nXXZTGnDgmsZXlgf6bHSUpM5bWIyZttohARo/edit?usp=sharing",
     },
     {
+      title: "PathPulse",
+      description: "Investment Memo",
+      url: "#",
+    },
+    {
       title: "Puffer",
       description: "Research Paper",
       url: "https://docs.google.com/document/d/1o5v9xyulgmR1_ByqMTTeXaIPPWQdApWxJBqFqEjrGcA/edit?usp=sharing",
@@ -43,6 +58,11 @@ export default function InvestmentThesisPage() {
       title: "SorellaLabs",
       description: "Web3 Infrastructure",
       url: "https://docs.google.com/document/d/1tUwf18bunWW4LL5Fo-LNHee4MnArmvGO_bFXOUhR6QU/edit?usp=sharing",
+    },
+    {
+      title: "TrueNorth",
+      description: "Investment Memo",
+      url: "#",
     },
   ];
 

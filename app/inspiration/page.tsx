@@ -5,6 +5,12 @@ import { useMobileMenu } from "../providers";
 
 const inspirations = [
   {
+    title: "Situational Awareness",
+    author: "Leopold Aschenbrenner",
+    url: "https://situational-awareness.ai/from-gpt-4-to-agi/",
+    note: "Everyone, regardless of your interest in AI, should read this.",
+  },
+  {
     title: "Dare to Do Legendary Things",
     author: "Mike Maples",
     url: "https://www.youtube.com/watch?v=yRgI6-LJVKc",

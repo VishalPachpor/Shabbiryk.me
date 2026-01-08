@@ -30,7 +30,8 @@ export default function HomePage() {
               </div>
               <div className="text-white text-sm leading-relaxed">
                 Started as a dev and on-chain analyst, later managing concentrated equity portfolios for family offices and RIA firms.
-                Looking for founders living in the future who&apos;ve discovered secrets the market hasn&apos;t figured out yet.
+              </div>
+              <div className="text-white text-sm leading-relaxed">
                 Backed over 40 projects, from early infra to tokenized assets, and
                 helped 20+ teams close their first checks since 2022. Along the
                 way, he&apos;s written 60+ memos, built trading strategies, and
@@ -48,10 +49,7 @@ export default function HomePage() {
               </div>
               <div className="space-y-1">
                 <p className="italic text-gray-300 text-xs">
-                  Partner @ EAK Ventures
-                </p>
-                <p className="italic text-gray-300 text-xs">
-                  Prev. State Street, Al-Thani Family Office, Coinswitch Ventures.
+                  Prev. Al-Thani Family Office, State Street, EAK Ventures Coinswitch Ventures.
                 </p>
                 <div className="text-white text-sm flex items-center space-x-2 pt-0">
                   <MapPin className="w-4 h-4" />
@@ -86,7 +84,8 @@ export default function HomePage() {
               </div>
               <div className="text-white text-sm leading-relaxed">
                 Started as a dev and on-chain analyst, later managing concentrated equity portfolios for family offices and RIA firms.
-                Looking for founders living in the future who&apos;ve discovered secrets the market hasn&apos;t figured out yet.
+              </div>
+              <div className="text-white text-sm leading-relaxed">
                 Backed over 40 projects, from early infra to tokenized assets, and
                 helped 20+ teams close their first checks since 2022. Along the
                 way, he&apos;s written 60+ memos, built trading strategies, and
@@ -104,17 +103,14 @@ export default function HomePage() {
               </div>
               <div className="space-y-1">
                 <p className="italic text-gray-300 text-xs">
-                  Partner @ EAK Ventures
-                </p>
-                <p className="italic text-gray-300 text-xs">
-                  Prev. State Street, Al-Thani Family Office, Coinswitch Ventures.
+                  Prev. Al-Thani Family Office, State Street, EAK Ventures Coinswitch Ventures.
                 </p>
                 <div className="text-white text-sm flex items-center space-x-2 pt-0">
                   <MapPin className="w-4 h-4" />
                   <span className="text-gray-400">Dubai</span>
                 </div>
               </div>
-             
+
             </div>
           </div>
         </div>
