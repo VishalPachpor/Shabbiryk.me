@@ -23,7 +23,7 @@ export default function HomePage() {
             sizes="90vw"
           />
           {/* Overlapping Card - half on image, half below */}
-          <div className="absolute left-6 right-2 bottom-6 translate-y-1/2 max-h-[450px] bg-black text-white shadow-xl flex flex-col justify-between p-8 pl-10 z-20 overflow-y-auto break-words whitespace-normal rounded-md">
+          <div className="absolute cursor-pointer left-6 right-2 bottom-6 translate-y-1/2 max-h-[450px] bg-black text-white shadow-xl flex flex-col justify-between p-8 pl-10 z-20 overflow-y-auto break-words whitespace-normal rounded-md">
             <div className="space-y-4">
               <div className="text-white text-lg font-medium leading-relaxed">
                 Shabbir Khan
@@ -39,17 +39,16 @@ export default function HomePage() {
                 Dubai.
               </div>
               <div className="text-white text-sm leading-relaxed">
-                A Kauffman Fellow, EF NextBillion Fellow, and long-time
+                A Kauffman Fellow, a VC Institute grad and long-time
                 Chainlink contributor. You&apos;ll usually find him in pitch
-                sessions, collective analysis calls, or connecting founders with
-                the right capital allocators.
+                sessions, collective analysis calls, or leading the IC calls.
               </div>
               <div className="text-white text-sm leading-relaxed">
-                Just a native trying to push good projects forward.
+                Just a native trying to push good projects and funds forward.
               </div>
               <div className="space-y-1">
                 <p className="italic text-gray-300 text-xs">
-                  Prev. Al-Thani Family Office, State Street, EAK Ventures Coinswitch Ventures.
+                  Prev. Private Office at Al-Thani, State Street, EAK Ventures, Coinswitch Ventures.
                 </p>
                 <div className="text-white text-sm flex items-center space-x-2 pt-0">
                   <MapPin className="w-4 h-4" />
@@ -93,13 +92,12 @@ export default function HomePage() {
                 Dubai.
               </div>
               <div className="text-white text-sm leading-relaxed">
-                A Kauffman Fellow, EF NextBillion Fellow, and long-time Chainlink
-                contributor. You&apos;ll find him in pitch sessions,
-                collective analysis calls, or connecting founders with the right
-                capital allocators.
+                A Kauffman Fellow, a VC Institute grad and long-time
+                Chainlink contributor. You&apos;ll usually find him in pitch
+                sessions, collective analysis calls, or leading the IC calls.
               </div>
               <div className="text-white text-sm leading-relaxed">
-                Just a native trying to push good projects forward.
+                Just a native trying to push good projects and funds forward.
               </div>
               <div className="space-y-1">
                 <p className="italic text-gray-300 text-xs">
