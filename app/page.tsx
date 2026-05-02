@@ -44,12 +44,12 @@ export default function HomePage() {
                 You&apos;ll find me speaking at family office summits and somewhere between founders, capital, and the point where conviction gets priced in.
               </div>
               <div className="space-y-1">
-                <p className="italic text-gray-300 text-xs">
-                  <a href="https://www.yusufalthani.com/" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">Private Office</a>,{" "}
-                  <a href="https://bluegreen.vc" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">Blugreen Venture</a>,{" "}
-                  <a href="https://www.statestreet.com/us/en/solutions/digital-assets" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">State Street</a>,{" "}
-                  <a href="https://www.eak.ventures/" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">EAK Ventures</a> and{" "}
-                  <a href="https://coinswitch.co/ventures" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">Coinswitch Venture</a>
+                <p className="italic text-white text-sm">
+                  <a href="https://www.yusufalthani.com/" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-white">Private Office</a>,{" "}
+                  <a href="https://bluegreen.vc" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-white">Blugreen Venture</a>,{" "}
+                  <a href="https://www.statestreet.com/us/en/solutions/digital-assets" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-white">State Street</a>,{" "}
+                  <a href="https://www.eak.ventures/" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-white">EAK Ventures</a> and{" "}
+                  <a href="https://coinswitch.co/ventures" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-white">Coinswitch Venture</a>
                 </p>
                 <div className="text-white text-sm flex items-center space-x-2 pt-0">
                   <MapPin className="w-4 h-4" />
@@ -98,12 +98,12 @@ export default function HomePage() {
                 You&apos;ll find me speaking at family office summits and somewhere between founders, capital, and the point where conviction gets priced in.
               </div>
               <div className="space-y-1">
-                <p className="italic text-gray-300 text-xs">
-                  <a href="https://www.yusufalthani.com/" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">Private Office</a>,{" "}
-                  <a href="https://bluegreen.vc" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">Blugreen Venture</a>,{" "}
-                  <a href="https://www.statestreet.com/us/en/solutions/digital-assets" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">State Street</a>,{" "}
-                  <a href="https://www.eak.ventures/" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">EAK Ventures</a> and{" "}
-                  <a href="https://coinswitch.co/ventures" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">Coinswitch Venture</a>
+                <p className="italic text-white text-sm">
+                  <a href="https://www.yusufalthani.com/" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-white">Private Office</a>,{" "}
+                  <a href="https://bluegreen.vc" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-white">Blugreen Venture</a>,{" "}
+                  <a href="https://www.statestreet.com/us/en/solutions/digital-assets" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-white">State Street</a>,{" "}
+                  <a href="https://www.eak.ventures/" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-white">EAK Ventures</a> and{" "}
+                  <a href="https://coinswitch.co/ventures" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-white">Coinswitch Venture</a>
                 </p>
                 <div className="text-white text-sm flex items-center space-x-2 pt-0">
                   <MapPin className="w-4 h-4" />
