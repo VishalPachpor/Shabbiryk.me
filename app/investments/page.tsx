@@ -44,13 +44,6 @@ export default function PortfolioPage() {
       <div className="p-4">
         <div className="max-w-7xl mx-auto w-full">
           <h1 className="text-xl mb-3 mt-8 text-left font-medium">Portfolio</h1>
-          <p className="text-gray-700 mb-1 text-left">
-            I am grateful to founder friends who&apos;ve allowed me to make
-            small investments in their projects.
-          </p>
-          <p className="text-gray-700 mb-3 text-left">
-            we typically write first checks ranging 100k-250k.
-          </p>
 
           <ul className="list-disc pl-5 space-y-1 text-left marker:text-gray-300">
             {companies.map((company, index) => (
