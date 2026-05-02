@@ -48,7 +48,7 @@ export default function HomePage() {
               </div>
               <div className="space-y-1">
                 <p className="italic text-gray-300 text-xs">
-                  Prev. Private Office at Al-Thani, State Street, EAK Ventures, Coinswitch Ventures.
+                  Private Office, Blugreen Venture, State Street, EAK Ventures and Coinswitch Venture
                 </p>
                 <div className="text-white text-sm flex items-center space-x-2 pt-0">
                   <MapPin className="w-4 h-4" />
@@ -101,7 +101,7 @@ export default function HomePage() {
               </div>
               <div className="space-y-1">
                 <p className="italic text-gray-300 text-xs">
-                  Prev. Al-Thani Family Office, State Street, EAK Ventures Coinswitch Ventures.
+                  Private Office, Blugreen Venture, State Street, EAK Ventures and Coinswitch Venture
                 </p>
                 <div className="text-white text-sm flex items-center space-x-2 pt-0">
                   <MapPin className="w-4 h-4" />
