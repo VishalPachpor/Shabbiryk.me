@@ -29,22 +29,19 @@ export default function HomePage() {
                 Shabbir Khan
               </div>
               <div className="text-white text-sm leading-relaxed">
-                Started as a dev and on-chain analyst, later managing concentrated equity portfolios for family offices and RIA firms.
+                Started in code and on-chain analytics. Moved quickly into concentrated allocations across public and private markets for family offices, sovereign-linked capital, and RIA platforms.
               </div>
               <div className="text-white text-sm leading-relaxed">
-                Backed over 40 projects, from early infra to tokenized assets, and
-                helped 20+ teams close their first checks since 2022. Along the
-                way, he&apos;s written 60+ memos, built trading strategies, and
-                ended up co-writing a whitepaper for a tokenized penthouse in
-                Dubai.
+                Ran crypto and crossover exposure at Blugreen, while advising principal groups on venture entries, secondary paper, and tokenized asset structures.
               </div>
               <div className="text-white text-sm leading-relaxed">
-                A Kauffman Fellow, a VC Institute grad and long-time
-                Chainlink contributor. You&apos;ll usually find him in pitch
-                sessions, collective analysis calls, or leading the IC calls.
+                Capital deployed across 9 GP commitments, 12 SPACs, and 24 primary and secondary positions, alongside early conviction in infrastructure, DeFi, and real-world asset tokenization. Since 2022, helped 20+ teams secure their first institutional checks, authored 60+ investment memos, built trading theses, and structured deployment pipelines from diligence to execution.
               </div>
               <div className="text-white text-sm leading-relaxed">
-                Just a native trying to push good projects and funds forward.
+                CFA. Kauffman Fellow. VC Institute Grad &mdash; a native pushing good funds and solid founders forward.
+              </div>
+              <div className="text-white text-sm leading-relaxed">
+                You&apos;ll find me speaking at family office summits and somewhere between founders, capital, and the point where conviction gets priced in.
               </div>
               <div className="space-y-1">
                 <p className="italic text-gray-300 text-xs">
@@ -56,7 +53,7 @@ export default function HomePage() {
                 </p>
                 <div className="text-white text-sm flex items-center space-x-2 pt-0">
                   <MapPin className="w-4 h-4" />
-                  <span className="text-gray-400">Dubai</span>
+                  <span className="text-gray-400">Dubai / SF</span>
                 </div>
               </div>
             </div>
@@ -79,29 +76,26 @@ export default function HomePage() {
           />
         </div>
         {/* Card - positioned to align "Shabbir Khan" with "Home" for perfect F pattern */}
-        <div className="absolute top-[120px] left-0 z-20 w-[480px] h-[500px] flex flex-col items-center justify-center">
-          <div className="bg-black text-white w-full h-full flex flex-col justify-center p-8 pl-10">
+        <div className="absolute top-[120px] left-0 z-20 w-[480px] max-h-[calc(100vh-160px)] flex flex-col items-center justify-center">
+          <div className="bg-black text-white w-full flex flex-col justify-center p-8 pl-10 overflow-y-auto">
             <div className="space-y-4">
               <div className="text-white text-lg font-medium leading-relaxed">
                 Shabbir Khan
               </div>
               <div className="text-white text-sm leading-relaxed">
-                Started as a dev and on-chain analyst, later managing concentrated equity portfolios for family offices and RIA firms.
+                Started in code and on-chain analytics. Moved quickly into concentrated allocations across public and private markets for family offices, sovereign-linked capital, and RIA platforms.
               </div>
               <div className="text-white text-sm leading-relaxed">
-                Backed over 40 projects, from early infra to tokenized assets, and
-                helped 20+ teams close their first checks since 2022. Along the
-                way, he&apos;s written 60+ memos, built trading strategies, and
-                ended up co-writing a whitepaper for a tokenized penthouse in
-                Dubai.
+                Ran crypto and crossover exposure at Blugreen, while advising principal groups on venture entries, secondary paper, and tokenized asset structures.
               </div>
               <div className="text-white text-sm leading-relaxed">
-                A Kauffman Fellow, a VC Institute grad and long-time
-                Chainlink contributor. You&apos;ll usually find him in pitch
-                sessions, collective analysis calls, or leading the IC calls.
+                Capital deployed across 9 GP commitments, 12 SPACs, and 24 primary and secondary positions, alongside early conviction in infrastructure, DeFi, and real-world asset tokenization. Since 2022, helped 20+ teams secure their first institutional checks, authored 60+ investment memos, built trading theses, and structured deployment pipelines from diligence to execution.
               </div>
               <div className="text-white text-sm leading-relaxed">
-                Just a native trying to push good projects and funds forward.
+                CFA. Kauffman Fellow. VC Institute Grad &mdash; a native pushing good funds and solid founders forward.
+              </div>
+              <div className="text-white text-sm leading-relaxed">
+                You&apos;ll find me speaking at family office summits and somewhere between founders, capital, and the point where conviction gets priced in.
               </div>
               <div className="space-y-1">
                 <p className="italic text-gray-300 text-xs">
@@ -113,7 +107,7 @@ export default function HomePage() {
                 </p>
                 <div className="text-white text-sm flex items-center space-x-2 pt-0">
                   <MapPin className="w-4 h-4" />
-                  <span className="text-gray-400">Dubai</span>
+                  <span className="text-gray-400">Dubai / SF</span>
                 </div>
               </div>
 

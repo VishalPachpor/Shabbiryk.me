@@ -35,12 +35,6 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
       );
     }
 
-    // Try autoplay once
-    audioRef.current
-      .play()
-      .then(() => setIsPlaying(true))
-      .catch(() => setIsPlaying(false));
-
     return () => {
       audioRef.current?.pause();
     };
