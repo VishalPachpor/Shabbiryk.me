@@ -35,7 +35,32 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
       );
     }
 
+    const tryPlay = () => {
+      audioRef.current
+        ?.play()
+        .then(() => setIsPlaying(true))
+        .catch(() => setIsPlaying(false));
+    };
+
+    tryPlay();
+
+    const onFirstInteraction = () => {
+      if (audioRef.current && audioRef.current.paused) {
+        tryPlay();
+      }
+      window.removeEventListener("pointerdown", onFirstInteraction);
+      window.removeEventListener("keydown", onFirstInteraction);
+      window.removeEventListener("touchstart", onFirstInteraction);
+    };
+
+    window.addEventListener("pointerdown", onFirstInteraction, { once: true });
+    window.addEventListener("keydown", onFirstInteraction, { once: true });
+    window.addEventListener("touchstart", onFirstInteraction, { once: true });
+
     return () => {
+      window.removeEventListener("pointerdown", onFirstInteraction);
+      window.removeEventListener("keydown", onFirstInteraction);
+      window.removeEventListener("touchstart", onFirstInteraction);
       audioRef.current?.pause();
     };
   }, []);

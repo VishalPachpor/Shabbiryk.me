@@ -45,11 +45,11 @@ export default function HomePage() {
               </div>
               <div className="space-y-1">
                 <p className="italic text-gray-300 text-xs">
-                  <a href="https://www.yusufalthani.com/" target="_blank" rel="noopener noreferrer" className="hover:underline">Private Office</a>,{" "}
-                  <a href="https://bluegreen.vc" target="_blank" rel="noopener noreferrer" className="hover:underline">Blugreen Venture</a>,{" "}
-                  <a href="https://www.statestreet.com/us/en/solutions/digital-assets" target="_blank" rel="noopener noreferrer" className="hover:underline">State Street</a>,{" "}
-                  <a href="https://www.eak.ventures/" target="_blank" rel="noopener noreferrer" className="hover:underline">EAK Ventures</a> and{" "}
-                  <a href="https://coinswitch.co/ventures" target="_blank" rel="noopener noreferrer" className="hover:underline">Coinswitch Venture</a>
+                  <a href="https://www.yusufalthani.com/" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">Private Office</a>,{" "}
+                  <a href="https://bluegreen.vc" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">Blugreen Venture</a>,{" "}
+                  <a href="https://www.statestreet.com/us/en/solutions/digital-assets" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">State Street</a>,{" "}
+                  <a href="https://www.eak.ventures/" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">EAK Ventures</a> and{" "}
+                  <a href="https://coinswitch.co/ventures" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">Coinswitch Venture</a>
                 </p>
                 <div className="text-white text-sm flex items-center space-x-2 pt-0">
                   <MapPin className="w-4 h-4" />
@@ -99,11 +99,11 @@ export default function HomePage() {
               </div>
               <div className="space-y-1">
                 <p className="italic text-gray-300 text-xs">
-                  <a href="https://www.yusufalthani.com/" target="_blank" rel="noopener noreferrer" className="hover:underline">Private Office</a>,{" "}
-                  <a href="https://bluegreen.vc" target="_blank" rel="noopener noreferrer" className="hover:underline">Blugreen Venture</a>,{" "}
-                  <a href="https://www.statestreet.com/us/en/solutions/digital-assets" target="_blank" rel="noopener noreferrer" className="hover:underline">State Street</a>,{" "}
-                  <a href="https://www.eak.ventures/" target="_blank" rel="noopener noreferrer" className="hover:underline">EAK Ventures</a> and{" "}
-                  <a href="https://coinswitch.co/ventures" target="_blank" rel="noopener noreferrer" className="hover:underline">Coinswitch Venture</a>
+                  <a href="https://www.yusufalthani.com/" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">Private Office</a>,{" "}
+                  <a href="https://bluegreen.vc" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">Blugreen Venture</a>,{" "}
+                  <a href="https://www.statestreet.com/us/en/solutions/digital-assets" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">State Street</a>,{" "}
+                  <a href="https://www.eak.ventures/" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">EAK Ventures</a> and{" "}
+                  <a href="https://coinswitch.co/ventures" target="_blank" rel="noopener noreferrer" className="hover:underline hover:!text-gray-300">Coinswitch Venture</a>
                 </p>
                 <div className="text-white text-sm flex items-center space-x-2 pt-0">
                   <MapPin className="w-4 h-4" />
