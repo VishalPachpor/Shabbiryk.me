@@ -45,6 +45,7 @@ export default function HomePage() {
               </div>
               <div className="space-y-1">
                 <p className="italic text-white text-sm">
+                  Founder at Recallr AI,{" "}
                   <a href="https://www.yusufalthani.com/" target="_blank" rel="noopener noreferrer" className="!text-white hover:underline hover:!text-white">Private Office</a>,{" "}
                   <a href="https://bluegreen.vc" target="_blank" rel="noopener noreferrer" className="!text-white hover:underline hover:!text-white">Blugreen Venture</a>,{" "}
                   <a href="https://www.statestreet.com/us/en/solutions/digital-assets" target="_blank" rel="noopener noreferrer" className="!text-white hover:underline hover:!text-white">State Street</a>,{" "}
@@ -99,6 +100,7 @@ export default function HomePage() {
               </div>
               <div className="space-y-1">
                 <p className="italic text-white text-sm">
+                  Founder at Recallr AI,{" "}
                   <a href="https://www.yusufalthani.com/" target="_blank" rel="noopener noreferrer" className="!text-white hover:underline hover:!text-white">Private Office</a>,{" "}
                   <a href="https://bluegreen.vc" target="_blank" rel="noopener noreferrer" className="!text-white hover:underline hover:!text-white">Blugreen Venture</a>,{" "}
                   <a href="https://www.statestreet.com/us/en/solutions/digital-assets" target="_blank" rel="noopener noreferrer" className="!text-white hover:underline hover:!text-white">State Street</a>,{" "}

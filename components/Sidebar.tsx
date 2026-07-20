@@ -65,25 +65,30 @@ const Sidebar = () => {
     audio.volume = 0.6;
     setVolume(60);
 
-    let attempted = false;
+    let hasStarted = false;
 
     const attemptPlay = async () => {
-      if (attempted) return;
-      attempted = true;
+      if (hasStarted) return;
+
       try {
         await audio.play();
+        hasStarted = true;
         setIsPlaying(true);
       } catch {
+        // Browsers normally block audible autoplay. Keep the player eligible
+        // for another attempt during the visitor's first interaction.
         setIsPlaying(false);
       }
     };
 
-    audio.addEventListener("loadedmetadata", attemptPlay);
+    if (audio.readyState >= 1) {
+      void attemptPlay();
+    } else {
+      audio.addEventListener("loadedmetadata", attemptPlay);
+    }
 
-    const resume = async () => {
-      if (!attempted && audio.readyState >= 2) {
-        await attemptPlay();
-      }
+    const resume = () => {
+      void attemptPlay();
     };
 
     document.addEventListener("click", resume, { once: true });
@@ -223,6 +228,7 @@ const Sidebar = () => {
             <button
               onClick={togglePlay}
               className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800"
+              aria-label={isPlaying ? "Pause audio" : "Play audio"}
             >
               {isPlaying ? <Pause size={14} /> : <Play size={16} />}
             </button>

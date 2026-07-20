@@ -61,35 +61,40 @@ const MobileMenu = () => {
     audio.volume = 0.6;
     setVolume(60);
 
-    let attempted = false;
+    let hasStarted = false;
 
     const attemptPlay = async () => {
-      if (attempted) return;
-      attempted = true;
+      if (hasStarted) return;
+
       try {
         await audio.play();
+        hasStarted = true;
         setIsPlaying(true);
       } catch {
+        // Browsers normally block audible autoplay. Keep the player eligible
+        // for another attempt during the visitor's first interaction.
         setIsPlaying(false);
       }
     };
 
-    audio.addEventListener("loadedmetadata", attemptPlay);
+    if (audio.readyState >= 1) {
+      void attemptPlay();
+    } else {
+      audio.addEventListener("loadedmetadata", attemptPlay);
+    }
 
-    // fallback on user interaction
-    const resume = async () => {
-      if (!attempted && audio.readyState >= 2) {
-        await attemptPlay();
-      }
+    // Retry during a real user gesture when the browser blocks autoplay.
+    const resume = () => {
+      void attemptPlay();
     };
 
-    document.addEventListener("touchstart", resume, { once: true });
     document.addEventListener("click", resume, { once: true });
+    document.addEventListener("keydown", resume, { once: true });
 
     return () => {
       audio.removeEventListener("loadedmetadata", attemptPlay);
-      document.removeEventListener("touchstart", resume);
       document.removeEventListener("click", resume);
+      document.removeEventListener("keydown", resume);
     };
   }, [isClient, isMobile]);
 
@@ -248,17 +253,19 @@ const MobileMenu = () => {
             </div>
           </div>
 
-          {/* Hidden Audio */}
-          <audio
-            ref={audioRef}
-            src="/ShabbirBhaijaan.mp3"
-            preload="metadata"
-            playsInline
-            onEnded={() => setIsPlaying(false)}
-            style={{ display: "none" }}
-          />
         </div>
       )}
+
+      {/* Keep audio mounted while the menu is closed so first-interaction
+          playback works anywhere on the mobile site. */}
+      <audio
+        ref={audioRef}
+        src="/ShabbirBhaijaan.mp3"
+        preload="metadata"
+        playsInline
+        onEnded={() => setIsPlaying(false)}
+        style={{ display: "none" }}
+      />
     </div>
   );
 };
