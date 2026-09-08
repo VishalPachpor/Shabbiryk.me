@@ -25,7 +25,7 @@ const navLinks = [
   { name: "Investment memos", href: "/investment-memo" },
   {
     name: "Curriculum vitae",
-    href: "https://docs.google.com/document/d/1JvdGLWviJ1mJ7WC91O55sTickCXqUy8IKZnHFndpiiA/edit?usp=sharing",
+    href: "https://drive.google.com/file/d/1BUzLNUXHKJcmNT7AK-xeTsCcTVS7UhxM/view?usp=drive_link",
     external: true,
   },
 ];

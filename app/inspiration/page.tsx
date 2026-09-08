@@ -11,6 +11,30 @@ const inspirations = [
     note: "Everyone, regardless of your interest in AI, should read this.",
   },
   {
+    title: "Venture Capital Start-up Selection",
+    author: "Young Soo Jang and Steven N. Kaplan",
+    url: "https://www.nber.org/papers/w33483",
+    note: "A rare look inside more than 8,000 sourced deals, and a useful challenge to how much weight investors place on team versus market and product.",
+  },
+  {
+    title: "Do Venture Capitalists Beat Random Allocation?",
+    author: "Max Sina Knicker, Jean-Philippe Bouchaud, and Michael Benzaquen",
+    url: "https://arxiv.org/abs/2605.03980",
+    note: "A provocative test of skill, luck, and portfolio construction in a market where a few outcomes shape almost everything.",
+  },
+  {
+    title: "All in the Family: Family Offices and the Limits of Financial Regulation",
+    author: "Melinda Roth",
+    url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7233101",
+    note: "A thoughtful account of why family offices sit awkwardly between private flexibility and public-market systemic risk.",
+  },
+  {
+    title: "How Constraining Are Limits to Arbitrage?",
+    author: "Alexander Ljungqvist and Wenlan Qian",
+    url: "https://www.nber.org/papers/w19834",
+    note: "An interesting study of how credible research and public disclosure can unlock a trade when capital and shorting constraints get in the way.",
+  },
+  {
     title: "Dare to Do Legendary Things",
     author: "Mike Maples",
     url: "https://www.youtube.com/watch?v=yRgI6-LJVKc",
@@ -53,7 +77,7 @@ export default function InspirationPage() {
         <div className="max-w-7xl mx-auto w-full">
           <h1 className="text-xl mb-3 mt-8 text-left font-medium">Inspiration</h1>
           <p className="text-gray-700 mb-3 text-left">
-            Talks, books, and people that shaped how I think.
+            Papers, talks, books, and people that shaped how I think.
           </p>
 
           <ul className="list-disc pl-5 space-y-4 text-left marker:text-gray-300">
@@ -92,4 +116,3 @@ export default function InspirationPage() {
     </div>
   );
 }
-

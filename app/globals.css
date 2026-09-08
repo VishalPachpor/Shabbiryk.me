@@ -132,7 +132,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-} 
+}
 
 .mobile-menu-custom {
   font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -153,6 +153,81 @@
 .mobile-menu-custom a:hover {
   color: #ffffff !important;
   opacity: 1;
+}
+
+@keyframes biography-statistic-enter {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes biography-statistic-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-7px);
+  }
+}
+
+.biography-statistic-enter {
+  animation: biography-statistic-enter 350ms ease both;
+}
+
+.biography-statistic-exit {
+  animation: biography-statistic-exit 350ms ease both;
+}
+
+.life-timeline-mobile {
+  scrollbar-color: rgba(156, 163, 175, 0.55) transparent;
+  scrollbar-width: thin;
+}
+
+.life-timeline-mobile::-webkit-scrollbar {
+  width: 4px;
+}
+
+.life-timeline-mobile::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.55);
+  border-radius: 999px;
+}
+
+.life-timeline-milestone {
+  opacity: 0.46;
+  transition: opacity 300ms ease;
+}
+
+.life-timeline-milestone.is-active {
+  opacity: 1;
+}
+
+@media (min-width: 768px) and (hover: hover) {
+  .life-timeline-list:hover .life-timeline-milestone {
+    opacity: 0.2;
+  }
+
+  .life-timeline-list .life-timeline-milestone:hover,
+  .life-timeline-list .life-timeline-milestone:focus-within {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .life-timeline-track,
+  .life-timeline-track *,
+  .life-timeline-mobile,
+  .life-timeline-mobile * {
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Enhanced smooth scrolling for mobile */
@@ -382,4 +457,4 @@ input[type="range"] {
   100% {
     width: 0;
   }
-} 
+}

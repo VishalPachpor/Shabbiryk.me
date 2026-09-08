@@ -1,13 +1,13 @@
-# Jad Esber Portfolio - Next.js 15
+# Shabbir Khan Portfolio - Next.js 16
 
-A modern personal portfolio website built with Next.js 15, React, TypeScript, and shadcn/ui.
+A modern personal portfolio website for Shabbir Khan, built with Next.js, React, TypeScript, and shadcn/ui.
 
 ## Project Structure
 
-This project uses Next.js 15 with the App Router:
+This project uses Next.js with the App Router:
 
 ```
-├── app/                    # Next.js 15 App Router
+├── app/                    # Next.js App Router
 │   ├── layout.tsx         # Root layout
 │   ├── page.tsx           # Home page
 │   ├── not-found.tsx      # 404 page
@@ -27,7 +27,7 @@ This project uses Next.js 15 with the App Router:
 
 ## Technologies Used
 
-- **Next.js 15** - React framework with App Router
+- **Next.js 16** - React framework with App Router
 - **React 18** - UI library
 - **TypeScript** - Type safety
 - **Tailwind CSS** - Utility-first CSS framework
@@ -49,7 +49,7 @@ This project uses Next.js 15 with the App Router:
 
 ```bash
 git clone <repository-url>
-cd jadme-portfolio-nextjs
+cd Shabbiryk.me
 ```
 
 2. Install dependencies:

@@ -4,6 +4,14 @@ import MobileHeader from "@/components/MobileHeader";
 import { useMobileMenu } from "../providers";
 
 const companies = [
+  { name: "Cerebras", url: "https://www.cerebras.ai/" },
+  { name: "SpaceX", url: "https://www.spacex.com/" },
+  {
+    name: "Prometheus",
+    url: "https://www.axios.com/2026/06/11/prometheus-bezos-industrial-ai",
+  },
+  { name: "Cognition AI", url: "https://cognition.ai/" },
+  { name: "Coco Robotics", url: "https://www.cocodelivery.com/" },
   { name: "PathPulse", url: "https://pathpulse.ai/" },
   { name: "TrueNorth", url: "https://x.com/get_truenorth" },
   { name: "PrismaX", url: "https://x.com/PrismaXai" },

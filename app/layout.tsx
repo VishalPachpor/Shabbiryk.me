@@ -6,8 +6,9 @@ import Sidebar from "@/components/Sidebar";
 import MobileMenu from "@/components/MobileMenu";
 
 export const metadata: Metadata = {
-  title: "shabbiryk",
-  description: "shabbiryk portfolio website",
+  title: "Shabbir Khan | Portfolio",
+  description:
+    "Shabbir Khan's portfolio, featuring his work across venture capital, digital assets, private markets, and Recallr AI.",
 };
 
 export default function RootLayout({
@@ -39,8 +40,8 @@ export default function RootLayout({
             <div className="block md:hidden">
               <MobileMenu />
             </div>
-            <main className="flex-1 flex justify-center px-6 md:ml-60">
-              <div className="w-full max-w-5xl">{children}</div>
+            <main className="flex min-w-0 flex-1 justify-center px-6 md:ml-60">
+              <div className="min-w-0 w-full max-w-5xl">{children}</div>
             </main>
           </div>
         </Providers>
