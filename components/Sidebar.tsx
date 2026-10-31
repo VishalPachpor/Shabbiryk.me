@@ -25,7 +25,7 @@ const navLinks = [
   { name: "Investment memos", href: "/investment-memo" },
   {
     name: "Curriculum vitae",
-    href: "https://drive.google.com/file/d/1BUzLNUXHKJcmNT7AK-xeTsCcTVS7UhxM/view?usp=drive_link",
+    href: "/Shabbir_CV_ILL.pdf",
     external: true,
   },
 ];
