@@ -167,11 +167,13 @@ const MobileMenu = () => {
 
           {/* Mobile Content */}
           <div className="relative w-full h-full flex flex-col items-center justify-between">
-            <img
-              src="/side.gif"
-              alt="logo"
-              className="absolute left-6 top-6 w-10 h-10 rounded-full object-cover opacity-90"
-            />
+            <span className="private-office-mark-wrap absolute left-6 top-6 block w-28">
+              <img
+                src="/private-office-gold.png"
+                alt="The Private Office logo"
+                className="private-office-mark w-full h-auto object-contain opacity-90"
+              />
+            </span>
             {/* Navigation */}
             <div className="flex-1 flex flex-col items-center justify-center">
               <nav className="flex flex-col items-center gap-3">

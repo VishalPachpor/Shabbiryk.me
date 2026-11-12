@@ -15,11 +15,13 @@ const MobileHeader = () => {
           isMenuOpen ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
       >
-        <img
-          src="/side.gif"
-          alt="Sidebar Logo"
-          className="w-full h-full cursor-pointer"
-        />
+        <span className="private-office-mark-wrap block w-full h-full">
+          <img
+            src="/private-office-gold.png"
+            alt="The Private Office logo"
+            className="private-office-mark w-full h-full object-contain cursor-pointer"
+          />
+        </span>
       </Link>
       {/* Menu Button */}
       <button

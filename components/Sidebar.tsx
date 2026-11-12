@@ -159,11 +159,13 @@ const Sidebar = () => {
         {/* Logo */}
         <div className="flex flex-col items-start mb-8">
           <Link href="/" className="cursor-pointer">
-            <img
-              src="/side.gif"
-              alt="Sidebar Logo"
-              className="w-16 h-16 rounded-full object-cover"
-            />
+            <span className="private-office-mark-wrap block w-full max-w-[170px]" aria-label="The Private Office">
+              <img
+                src="/private-office-gold.png"
+                alt="The Private Office logo"
+                className="private-office-mark w-full h-auto object-contain"
+              />
+            </span>
           </Link>
         </div>
 
