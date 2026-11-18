@@ -6,6 +6,7 @@ import Link from "next/link";
 import LinearProgress from "@/components/ui/linear-progress";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { track } from "@vercel/analytics";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -184,7 +185,10 @@ const MobileMenu = () => {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={() => setIsMenuOpen(false)}
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        track("cv_opened");
+                      }}
                       className="text-lg text-white"
                     >
                       {link.name}

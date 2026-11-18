@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSharedAudio } from "@/app/providers";
 import { useState, useRef, useEffect } from "react";
+import { track } from "@vercel/analytics";
 import LinearProgress from "@/components/ui/linear-progress";
 import {
   Play,
@@ -182,6 +183,7 @@ const Sidebar = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => track("cv_opened")}
                   className={`text-base cursor-pointer ${isActive ? "text-gray-400" : "text-black"
                     }`}
                 >

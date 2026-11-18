@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { MapPin } from "lucide-react";
+import { track } from "@vercel/analytics";
 
 const statistics = [
   "9 GP commitments",
@@ -148,7 +149,10 @@ export default function BiographyCard() {
           type="button"
           aria-expanded="false"
           aria-controls={biographyId}
-          onClick={() => setIsExpanded(true)}
+          onClick={() => {
+            setIsExpanded(true);
+            track("biography_expanded");
+          }}
           className="mt-4 rounded-sm text-sm text-[#c8875b] underline decoration-[#c8875b]/50 underline-offset-4 transition-colors hover:text-[#dda078] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c8875b] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
         >
           A little more about me

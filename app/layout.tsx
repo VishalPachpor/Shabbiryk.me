@@ -4,6 +4,7 @@ import "./globals.css";
 import Providers from "./providers";
 import Sidebar from "@/components/Sidebar";
 import MobileMenu from "@/components/MobileMenu";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Shabbir Khan | Portfolio",
@@ -44,6 +45,7 @@ export default function RootLayout({
               <div className="min-w-0 w-full max-w-5xl">{children}</div>
             </main>
           </div>
+          <Analytics />
         </Providers>
       </body>
     </html>
